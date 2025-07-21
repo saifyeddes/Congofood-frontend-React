@@ -92,17 +92,19 @@ export default function Header() {
                 <span className="hidden lg:inline">Sign In</span>
               </Button>
             )}
-            <Button variant="outline" size="sm" className="relative">
-              <ShoppingCart className="w-4 h-4 mr-2" />
-              <span className="hidden lg:inline">Cart</span>
-              {state.totalItems > 0 && (
-                <Badge
-                  variant="destructive"
-                  className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center text-xs p-0"
-                >
-                  {state.totalItems}
-                </Badge>
-              )}
+            <Button asChild variant="outline" size="sm" className="relative">
+              <Link to="/cart">
+                <ShoppingCart className="w-4 h-4 mr-2" />
+                <span className="hidden lg:inline">Panier</span>
+                {state.totalItems > 0 && (
+                  <Badge
+                    variant="destructive"
+                    className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center text-xs p-0"
+                  >
+                    {state.totalItems}
+                  </Badge>
+                )}
+              </Link>
             </Button>
           </div>
 
