@@ -193,6 +193,12 @@ export default function Header() {
           </div>
         )}
       </div>
+
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        defaultMode={authMode}
+      />
     </header>
   );
 }
