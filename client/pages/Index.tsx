@@ -35,16 +35,6 @@ export default function Index() {
 
   const featuredDishes = [
     {
-      id: 1,
-      name: "Truffle Mushroom Burger",
-      description: "Juicy beef patty with truffle mayo, wild mushrooms, and arugula",
-      price: 18.99,
-      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&h=200&fit=crop&crop=center",
-      rating: 4.8,
-      category: "popular",
-      preparationTime: "15-20 min"
-    },
-    {
       id: 2,
       name: "Lobster Ravioli",
       description: "Handmade pasta filled with fresh lobster in creamy sage butter sauce",
@@ -55,14 +45,14 @@ export default function Index() {
       preparationTime: "20-25 min"
     },
     {
-      id: 3,
-      name: "Korean BBQ Bowl",
-      description: "Marinated beef bulgogi with steamed rice and fresh vegetables",
-      price: 16.99,
-      image: "https://images.unsplash.com/photo-1512058556904-645dd1bb2de7?w=300&h=200&fit=crop&crop=center",
-      rating: 4.7,
-      category: "healthy",
-      preparationTime: "10-15 min"
+      id: 1,
+      name: "Truffle Mushroom Burger",
+      description: "Juicy beef patty with truffle mayo, wild mushrooms, and arugula",
+      price: 18.99,
+      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&h=200&fit=crop&crop=center",
+      rating: 4.8,
+      category: "popular",
+      preparationTime: "15-20 min"
     },
     {
       id: 4,
@@ -73,6 +63,16 @@ export default function Index() {
       rating: 4.6,
       category: "popular",
       preparationTime: "12-18 min"
+    },
+    {
+      id: 3,
+      name: "Korean BBQ Bowl",
+      description: "Marinated beef bulgogi with steamed rice and fresh vegetables",
+      price: 16.99,
+      image: "https://images.unsplash.com/photo-1512058556904-645dd1bb2de7?w=300&h=200&fit=crop&crop=center",
+      rating: 4.7,
+      category: "healthy",
+      preparationTime: "10-15 min"
     }
   ];
 
