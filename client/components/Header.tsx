@@ -2,12 +2,28 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ShoppingCart, Menu, X, Phone, User } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
+import { ShoppingCart, Menu, X, Phone, User, LogOut, Settings } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import { useAuth } from "@/contexts/AuthContext";
+import AuthModal from "./auth/AuthModal";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<"signin" | "signup">("signin");
   const { state } = useCart();
+  const { state: authState, signOut } = useAuth();
+
+  const handleSignInClick = () => {
+    setAuthMode("signin");
+    setIsAuthModalOpen(true);
+  };
+
+  const handleSignUpClick = () => {
+    setAuthMode("signup");
+    setIsAuthModalOpen(true);
+  };
 
   return (
     <header className="bg-white shadow-sm border-b border-border sticky top-0 z-50">
