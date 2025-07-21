@@ -39,7 +39,7 @@ export default function Index() {
       name: "Truffle Mushroom Burger",
       description: "Juicy beef patty with truffle mayo, wild mushrooms, and arugula",
       price: 18.99,
-      image: "/api/placeholder/300/200",
+      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&h=200&fit=crop&crop=center",
       rating: 4.8,
       category: "popular",
       preparationTime: "15-20 min"
@@ -49,7 +49,7 @@ export default function Index() {
       name: "Lobster Ravioli",
       description: "Handmade pasta filled with fresh lobster in creamy sage butter sauce",
       price: 24.99,
-      image: "/api/placeholder/300/200",
+      image: "https://images.unsplash.com/photo-1563379091339-03246963d96c?w=300&h=200&fit=crop&crop=center",
       rating: 4.9,
       category: "popular",
       preparationTime: "20-25 min"
@@ -59,7 +59,7 @@ export default function Index() {
       name: "Korean BBQ Bowl",
       description: "Marinated beef bulgogi with steamed rice and fresh vegetables",
       price: 16.99,
-      image: "/api/placeholder/300/200",
+      image: "https://images.unsplash.com/photo-1512058556904-645dd1bb2de7?w=300&h=200&fit=crop&crop=center",
       rating: 4.7,
       category: "healthy",
       preparationTime: "10-15 min"
@@ -69,7 +69,7 @@ export default function Index() {
       name: "Margherita Pizza",
       description: "Wood-fired pizza with fresh mozzarella, basil, and San Marzano tomatoes",
       price: 14.99,
-      image: "/api/placeholder/300/200",
+      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300&h=200&fit=crop&crop=center",
       rating: 4.6,
       category: "popular",
       preparationTime: "12-18 min"
