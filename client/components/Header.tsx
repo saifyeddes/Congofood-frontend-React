@@ -166,10 +166,28 @@ export default function Header() {
                   <Phone className="w-4 h-4 mr-2" />
                   Call Now
                 </Button>
-                <Button variant="ghost" size="sm" className="w-full justify-start">
-                  <User className="w-4 h-4 mr-2" />
-                  Sign In
-                </Button>
+                {authState.isAuthenticated ? (
+                  <>
+                    <Button variant="ghost" size="sm" className="w-full justify-start mb-2">
+                      <User className="w-4 h-4 mr-2" />
+                      {authState.user?.firstName} {authState.user?.lastName}
+                    </Button>
+                    <Button variant="ghost" size="sm" className="w-full justify-start" onClick={signOut}>
+                      <LogOut className="w-4 h-4 mr-2" />
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button variant="ghost" size="sm" className="w-full justify-start mb-2" onClick={handleSignInClick}>
+                      <User className="w-4 h-4 mr-2" />
+                      Sign In
+                    </Button>
+                    <Button variant="outline" size="sm" className="w-full justify-start" onClick={handleSignUpClick}>
+                      Sign Up
+                    </Button>
+                  </>
+                )}
               </div>
             </nav>
           </div>
