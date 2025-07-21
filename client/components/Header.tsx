@@ -68,12 +68,12 @@ export default function Header() {
           <div className="md:hidden flex items-center space-x-2">
             <Button variant="outline" size="sm" className="relative">
               <ShoppingCart className="w-4 h-4" />
-              {cartItems > 0 && (
-                <Badge 
-                  variant="destructive" 
+              {state.totalItems > 0 && (
+                <Badge
+                  variant="destructive"
                   className="absolute -top-2 -right-2 w-4 h-4 flex items-center justify-center text-xs p-0"
                 >
-                  {cartItems}
+                  {state.totalItems}
                 </Badge>
               )}
             </Button>
