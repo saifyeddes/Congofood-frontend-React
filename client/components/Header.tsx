@@ -62,10 +62,36 @@ export default function Header() {
               <Phone className="w-4 h-4 mr-2" />
               <span className="hidden lg:inline">Call Now</span>
             </Button>
-            <Button variant="ghost" size="sm">
-              <User className="w-4 h-4 mr-2" />
-              <span className="hidden lg:inline">Sign In</span>
-            </Button>
+            {authState.isAuthenticated ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm">
+                    <User className="w-4 h-4 mr-2" />
+                    <span className="hidden lg:inline">{authState.user?.firstName}</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuItem>
+                    <User className="w-4 h-4 mr-2" />
+                    Profile
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Settings className="w-4 h-4 mr-2" />
+                    Settings
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={signOut}>
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Sign Out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Button variant="ghost" size="sm" onClick={handleSignInClick}>
+                <User className="w-4 h-4 mr-2" />
+                <span className="hidden lg:inline">Sign In</span>
+              </Button>
+            )}
             <Button variant="outline" size="sm" className="relative">
               <ShoppingCart className="w-4 h-4 mr-2" />
               <span className="hidden lg:inline">Cart</span>
