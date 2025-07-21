@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Menu, X, Phone, User } from "lucide-react";
+import { useCart } from "@/contexts/CartContext";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [cartItems] = useState(3); // This will be connected to cart state later
+  const { state } = useCart();
 
   return (
     <header className="bg-white shadow-sm border-b border-border sticky top-0 z-50">
