@@ -146,12 +146,9 @@ export default function Menu() {
   ];
 
   const categories = [
-    { id: "all", name: "All Items", count: menuItems.length },
-    { id: "mains", name: "Main Courses", count: menuItems.filter(item => item.category === "mains").length },
-    { id: "bowls", name: "Bowls", count: menuItems.filter(item => item.category === "bowls").length },
-    { id: "pizza", name: "Pizza", count: menuItems.filter(item => item.category === "pizza").length },
-    { id: "salads", name: "Salads", count: menuItems.filter(item => item.category === "salads").length },
-    { id: "sushi", name: "Sushi", count: menuItems.filter(item => item.category === "sushi").length },
+    { id: "all", name: "Tous les Plats", count: menuItems.length },
+    { id: "plats", name: "Plats Principaux", count: menuItems.filter(item => item.category === "plats").length },
+    { id: "accompagnements", name: "Accompagnements", count: menuItems.filter(item => item.category === "accompagnements").length },
     { id: "desserts", name: "Desserts", count: menuItems.filter(item => item.category === "desserts").length }
   ];
 
@@ -202,11 +199,11 @@ export default function Menu() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center space-y-4">
               <h1 className="text-4xl lg:text-5xl font-bold text-foreground">
-                Our Menu
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Discover our carefully crafted dishes made with the finest ingredients
-              </p>
+              Notre Menu
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Découvrez nos plats congolais authentiques préparés avec les meilleurs ingrédients
+            </p>
             </div>
           </div>
         </section>
