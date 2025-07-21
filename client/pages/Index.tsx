@@ -351,9 +351,9 @@ export default function Index() {
             </div>
 
             <div className="relative">
-              <img 
-                src="/api/placeholder/500/600" 
-                alt="Fresh ingredients" 
+              <img
+                src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500&h=600&fit=crop&crop=center"
+                alt="Fresh ingredients"
                 className="rounded-2xl shadow-xl"
               />
             </div>
