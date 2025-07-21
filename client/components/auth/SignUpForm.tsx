@@ -101,7 +101,7 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
       <CardHeader className="text-center">
         <CardTitle className="text-2xl">Create Account</CardTitle>
         <CardDescription>
-          Join FoodieExpress for faster ordering
+          Rejoignez Congo Food pour commander plus rapidement
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
