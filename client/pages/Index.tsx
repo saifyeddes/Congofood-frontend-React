@@ -297,10 +297,10 @@ export default function Index() {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-                  Why Choose FoodieExpress?
+                  Pourquoi Choisir Congo Food?
                 </h2>
                 <p className="text-xl text-muted-foreground">
-                  We're committed to delivering not just food, but an exceptional dining experience
+                  Nous nous engageons à livrer non seulement de la nourriture, mais une expérience culinaire exceptionnelle
                 </p>
               </div>
 
