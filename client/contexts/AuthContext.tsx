@@ -93,13 +93,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Mock authentication - in real app, this would be an API call
-      if (email === "demo@foodieexpress.com" && password === "password") {
+      if (email === "demo@congofood.com" && password === "password") {
         const user: User = {
           id: "1",
           firstName: "Demo",
           lastName: "User",
-          email: "demo@foodieexpress.com",
-          phone: "+1 (555) 123-4567"
+          email: "demo@congofood.com",
+          phone: "+243 (0) 123-456-789"
         };
         
         localStorage.setItem("foodie_user", JSON.stringify(user));
