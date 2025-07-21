@@ -156,10 +156,10 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-              Featured Dishes
+              Plats Vedettes
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Handpicked favorites from our kitchen, crafted with love and the finest ingredients
+              Sélection de nos spécialités congolaises, préparées avec amour et les meilleurs ingrédients
             </p>
           </div>
 
@@ -243,10 +243,10 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-              How It Works
+              Comment Ça Marche
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Three simple steps to enjoy delicious food at your doorstep
+              Trois étapes simples pour savourer nos délicieux plats à votre porte
             </p>
           </div>
 
@@ -256,9 +256,9 @@ export default function Index() {
                 <Utensils className="w-8 h-8 text-white" />
               </div>
               <div className="space-y-2">
-                <h3 className="text-xl font-bold text-foreground">1. Choose Your Meal</h3>
+                <h3 className="text-xl font-bold text-foreground">1. Choisissez Votre Repas</h3>
                 <p className="text-muted-foreground">
-                  Browse our extensive menu and select your favorite dishes from various cuisines
+                  Parcourez notre menu et sélectionnez vos plats congolais préférés
                 </p>
               </div>
             </div>
@@ -268,9 +268,9 @@ export default function Index() {
                 <MapPin className="w-8 h-8 text-white" />
               </div>
               <div className="space-y-2">
-                <h3 className="text-xl font-bold text-foreground">2. Place Your Order</h3>
+                <h3 className="text-xl font-bold text-foreground">2. Passez Votre Commande</h3>
                 <p className="text-muted-foreground">
-                  Add items to cart, enter delivery address, and choose your preferred payment method
+                  Ajoutez au panier, entrez votre adresse et choisissez votre mode de paiement
                 </p>
               </div>
             </div>
@@ -280,9 +280,9 @@ export default function Index() {
                 <Truck className="w-8 h-8 text-white" />
               </div>
               <div className="space-y-2">
-                <h3 className="text-xl font-bold text-foreground">3. Fast Delivery</h3>
+                <h3 className="text-xl font-bold text-foreground">3. Livraison Rapide</h3>
                 <p className="text-muted-foreground">
-                  Sit back and relax while we prepare and deliver your order in 30 minutes or less
+                  Détendez-vous pendant que nous préparons et livrons votre commande en 30 minutes
                 </p>
               </div>
             </div>
