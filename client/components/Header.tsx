@@ -32,11 +32,11 @@ export default function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">F</span>
+              <span className="text-white font-bold text-lg">C</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-foreground">FoodieExpress</h1>
-              <p className="text-xs text-muted-foreground">Fresh • Fast • Delivered</p>
+              <h1 className="text-xl font-bold text-foreground">Congo Food</h1>
+              <p className="text-xs text-muted-foreground">Saveurs Authentiques • Livraison Rapide</p>
             </div>
           </Link>
 
