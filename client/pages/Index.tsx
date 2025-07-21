@@ -111,28 +111,28 @@ export default function Index() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="text-lg px-8">
                   <Link to="/menu">
-                    Order Now
+                    Commander Maintenant
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" className="text-lg px-8">
                   <Phone className="mr-2 w-5 h-5" />
-                  Call (555) 123-4567
+                  Appeler (+243) 123-456-789
                 </Button>
               </div>
 
               <div className="grid grid-cols-3 gap-8 pt-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-foreground">30+</div>
-                  <div className="text-sm text-muted-foreground">Minutes Delivery</div>
+                  <div className="text-2xl font-bold text-foreground">30</div>
+                  <div className="text-sm text-muted-foreground">Minutes Livraison</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-foreground">4.8★</div>
-                  <div className="text-sm text-muted-foreground">Customer Rating</div>
+                  <div className="text-sm text-muted-foreground">Note Clients</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-foreground">10K+</div>
-                  <div className="text-sm text-muted-foreground">Happy Customers</div>
+                  <div className="text-sm text-muted-foreground">Clients Satisfaits</div>
                 </div>
               </div>
             </div>
@@ -230,7 +230,7 @@ export default function Index() {
           <div className="text-center mt-12">
             <Button asChild variant="outline" size="lg">
               <Link to="/menu">
-                View Full Menu
+                Voir le Menu Complet
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
