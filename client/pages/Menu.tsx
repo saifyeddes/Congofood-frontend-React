@@ -252,9 +252,9 @@ export default function Menu() {
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center">
-                      <ShoppingCart className="w-5 h-5 mr-2" />
-                      Cart Summary
-                    </CardTitle>
+                    <ShoppingCart className="w-5 h-5 mr-2" />
+                    Résumé du Panier
+                  </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
