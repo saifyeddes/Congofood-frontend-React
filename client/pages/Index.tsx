@@ -220,7 +220,7 @@ export default function Index() {
                     onClick={() => addToCart(dish)}
                   >
                     <Plus className="w-4 h-4 mr-2" />
-                    Add to Cart
+                    Ajouter au Panier
                   </Button>
                 </CardFooter>
               </Card>
