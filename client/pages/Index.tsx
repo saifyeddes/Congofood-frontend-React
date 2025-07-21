@@ -19,6 +19,19 @@ import {
 
 export default function Index() {
   const [selectedCategory, setSelectedCategory] = useState("popular");
+  const { dispatch } = useCart();
+
+  const addToCart = (dish: any) => {
+    dispatch({
+      type: "ADD_ITEM",
+      payload: {
+        id: dish.id,
+        name: dish.name,
+        price: dish.price,
+        image: dish.image
+      }
+    });
+  };
 
   const featuredDishes = [
     {
