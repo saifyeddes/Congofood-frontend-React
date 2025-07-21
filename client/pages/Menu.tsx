@@ -142,34 +142,36 @@ export default function Menu() {
     return matchesCategory && matchesSearch;
   });
 
-  const addToCart = (itemId: number) => {
-    setCart(prev => ({
-      ...prev,
-      [itemId]: (prev[itemId] || 0) + 1
-    }));
-  };
-
-  const removeFromCart = (itemId: number) => {
-    setCart(prev => {
-      const newCart = { ...prev };
-      if (newCart[itemId] > 1) {
-        newCart[itemId]--;
-      } else {
-        delete newCart[itemId];
+  const addToCart = (item: MenuItem) => {
+    dispatch({
+      type: "ADD_ITEM",
+      payload: {
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        image: item.image
       }
-      return newCart;
     });
   };
 
-  const getTotalItems = () => {
-    return Object.values(cart).reduce((sum, count) => sum + count, 0);
+  const removeFromCart = (itemId: number) => {
+    const currentItem = state.items.find(item => item.id === itemId);
+    if (currentItem && currentItem.quantity > 1) {
+      dispatch({
+        type: "UPDATE_QUANTITY",
+        payload: { id: itemId, quantity: currentItem.quantity - 1 }
+      });
+    } else {
+      dispatch({
+        type: "REMOVE_ITEM",
+        payload: itemId
+      });
+    }
   };
 
-  const getTotalPrice = () => {
-    return Object.entries(cart).reduce((sum, [itemId, count]) => {
-      const item = menuItems.find(item => item.id === parseInt(itemId));
-      return sum + (item ? item.price * count : 0);
-    }, 0);
+  const getItemQuantity = (itemId: number) => {
+    const item = state.items.find(item => item.id === itemId);
+    return item ? item.quantity : 0;
   };
 
   return (
