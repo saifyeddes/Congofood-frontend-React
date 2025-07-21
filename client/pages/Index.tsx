@@ -96,15 +96,15 @@ export default function Index() {
             <div className="space-y-8">
               <div className="space-y-4">
                 <Badge variant="secondary" className="text-primary bg-primary/10">
-                  🚀 Now delivering in 30 minutes or less
+                  🚀 Livraison en 30 minutes ou moins
                 </Badge>
                 <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-                  Delicious Food
-                  <span className="text-primary block">Delivered Fast</span>
+                  Saveurs du Congo
+                  <span className="text-primary block">Livrées Rapidement</span>
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-lg">
-                  Experience culinary excellence delivered to your doorstep. Fresh ingredients, 
-                  expert chefs, and lightning-fast delivery.
+                  Découvrez l'excellence culinaire congolaise livrée à votre porte.
+                  Ingrédients frais, chefs experts, livraison rapide.
                 </p>
               </div>
               
