@@ -268,8 +268,10 @@ export default function Menu() {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full">
-                      Proceed to Checkout
+                    <Button asChild className="w-full">
+                      <Link to="/cart">
+                        Voir le Panier
+                      </Link>
                     </Button>
                   </CardFooter>
                 </Card>
