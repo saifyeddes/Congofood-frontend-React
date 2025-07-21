@@ -357,7 +357,7 @@ export default function Menu() {
                           onClick={() => addToCart(item)}
                         >
                           <Plus className="w-4 h-4 mr-2" />
-                          Add to Cart
+                          Ajouter au Panier
                         </Button>
                       )}
                     </CardFooter>
