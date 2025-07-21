@@ -110,16 +110,18 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
-            <Button variant="outline" size="sm" className="relative">
-              <ShoppingCart className="w-4 h-4" />
-              {state.totalItems > 0 && (
-                <Badge
-                  variant="destructive"
-                  className="absolute -top-2 -right-2 w-4 h-4 flex items-center justify-center text-xs p-0"
-                >
-                  {state.totalItems}
-                </Badge>
-              )}
+            <Button asChild variant="outline" size="sm" className="relative">
+              <Link to="/cart">
+                <ShoppingCart className="w-4 h-4" />
+                {state.totalItems > 0 && (
+                  <Badge
+                    variant="destructive"
+                    className="absolute -top-2 -right-2 w-4 h-4 flex items-center justify-center text-xs p-0"
+                  >
+                    {state.totalItems}
+                  </Badge>
+                )}
+              </Link>
             </Button>
             <Button
               variant="ghost"
