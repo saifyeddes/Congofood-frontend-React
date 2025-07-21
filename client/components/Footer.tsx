@@ -11,12 +11,12 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold">F</span>
+                  <span className="text-white font-bold">C</span>
                 </div>
-                <h3 className="text-lg font-bold text-foreground">FoodieExpress</h3>
+                <h3 className="text-lg font-bold text-foreground">Congo Food</h3>
               </div>
               <p className="text-muted-foreground text-sm">
-                Delivering fresh, delicious meals to your doorstep. Fast, reliable, and always tasty.
+                Livraison de repas congolais authentiques à votre porte. Frais, délicieux et traditionnel.
               </p>
               <div className="flex space-x-4">
                 <Facebook className="w-5 h-5 text-muted-foreground hover:text-primary cursor-pointer transition-colors" />
@@ -73,7 +73,7 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-primary" />
-                  <span className="text-muted-foreground text-sm">hello@foodieexpress.com</span>
+                  <span className="text-muted-foreground text-sm">hello@congofood.com</span>
                 </div>
                 <div className="flex items-start space-x-2">
                   <MapPin className="w-4 h-4 text-primary mt-0.5" />
@@ -92,7 +92,7 @@ export default function Footer() {
         <div className="py-6 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
             <p className="text-muted-foreground text-sm">
-              © 2024 FoodieExpress. All rights reserved.
+              © 2024 Congo Food. Tous droits réservés.
             </p>
             <div className="flex space-x-6">
               <Link to="/terms" className="text-muted-foreground hover:text-primary transition-colors text-sm">
