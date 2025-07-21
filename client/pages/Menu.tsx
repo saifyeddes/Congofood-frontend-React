@@ -306,7 +306,7 @@ export default function Menu() {
                       </div>
                     </CardContent>
                     <CardFooter className="p-4 pt-0">
-                      {cart[item.id] ? (
+                      {getItemQuantity(item.id) > 0 ? (
                         <div className="flex items-center justify-between w-full">
                           <div className="flex items-center space-x-2">
                             <Button
@@ -317,24 +317,24 @@ export default function Menu() {
                               <Minus className="w-4 h-4" />
                             </Button>
                             <span className="font-medium min-w-[2rem] text-center">
-                              {cart[item.id]}
+                              {getItemQuantity(item.id)}
                             </span>
                             <Button
                               size="sm"
                               variant="outline"
-                              onClick={() => addToCart(item.id)}
+                              onClick={() => addToCart(item)}
                             >
                               <Plus className="w-4 h-4" />
                             </Button>
                           </div>
                           <span className="text-sm font-medium text-muted-foreground">
-                            ${(item.price * cart[item.id]).toFixed(2)}
+                            ${(item.price * getItemQuantity(item.id)).toFixed(2)}
                           </span>
                         </div>
                       ) : (
-                        <Button 
+                        <Button
                           className="w-full"
-                          onClick={() => addToCart(item.id)}
+                          onClick={() => addToCart(item)}
                         >
                           <Plus className="w-4 h-4 mr-2" />
                           Add to Cart
