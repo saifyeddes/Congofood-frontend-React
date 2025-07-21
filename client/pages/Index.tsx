@@ -365,20 +365,20 @@ export default function Index() {
       <section className="py-20 bg-primary text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           <h2 className="text-3xl lg:text-4xl font-bold">
-            Ready to Experience Amazing Food?
+            Prêt à Découvrir une Cuisine Exceptionnelle?
           </h2>
           <p className="text-xl opacity-90 max-w-2xl mx-auto">
-            Join thousands of satisfied customers who trust FoodieExpress for their daily meals
+            Rejoignez des milliers de clients satisfaits qui font confiance à Congo Food pour leurs repas quotidiens
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary" className="text-lg px-8">
               <Link to="/menu">
-                Order Now
+                Commander Maintenant
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 border-white text-white hover:bg-white hover:text-primary">
-              Download App
+              Télécharger l'App
             </Button>
           </div>
         </div>
