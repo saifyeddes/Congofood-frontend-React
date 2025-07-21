@@ -230,7 +230,7 @@ export default function Menu() {
               </Card>
 
               {/* Cart Summary */}
-              {getTotalItems() > 0 && (
+              {state.totalItems > 0 && (
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center">
@@ -242,11 +242,11 @@ export default function Menu() {
                     <div className="space-y-2">
                       <div className="flex justify-between">
                         <span>Items:</span>
-                        <span>{getTotalItems()}</span>
+                        <span>{state.totalItems}</span>
                       </div>
                       <div className="flex justify-between font-semibold">
                         <span>Total:</span>
-                        <span>${getTotalPrice().toFixed(2)}</span>
+                        <span>${state.totalPrice.toFixed(2)}</span>
                       </div>
                     </div>
                   </CardContent>
