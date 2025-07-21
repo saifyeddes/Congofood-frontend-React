@@ -259,7 +259,7 @@ export default function Menu() {
                   <CardContent>
                     <div className="space-y-2">
                       <div className="flex justify-between">
-                        <span>Items:</span>
+                        <span>Articles:</span>
                         <span>{state.totalItems}</span>
                       </div>
                       <div className="flex justify-between font-semibold">
