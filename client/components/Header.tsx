@@ -53,12 +53,12 @@ export default function Header() {
             <Button variant="outline" size="sm" className="relative">
               <ShoppingCart className="w-4 h-4 mr-2" />
               <span className="hidden lg:inline">Cart</span>
-              {cartItems > 0 && (
-                <Badge 
-                  variant="destructive" 
+              {state.totalItems > 0 && (
+                <Badge
+                  variant="destructive"
                   className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center text-xs p-0"
                 >
-                  {cartItems}
+                  {state.totalItems}
                 </Badge>
               )}
             </Button>
