@@ -215,7 +215,10 @@ export default function Index() {
                   </div>
                 </CardContent>
                 <CardFooter className="p-4 pt-0">
-                  <Button className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <Button
+                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                    onClick={() => addToCart(dish)}
+                  >
                     <Plus className="w-4 h-4 mr-2" />
                     Add to Cart
                   </Button>
