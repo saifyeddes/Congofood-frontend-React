@@ -368,7 +368,7 @@ export default function Menu() {
               {filteredItems.length === 0 && (
                 <div className="text-center py-12">
                   <p className="text-muted-foreground text-lg">
-                    No items found matching your search criteria.
+                    Aucun plat trouvé correspondant à vos critères de recherche.
                   </p>
                 </div>
               )}
