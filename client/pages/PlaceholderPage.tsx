@@ -26,18 +26,18 @@ export default function PlaceholderPage({ title, description }: PlaceholderPageP
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-muted-foreground">
-                This page is currently under development. Please check back soon or continue exploring our other features.
+                Cette page est actuellement en cours de développement. Revenez bientôt ou continuez à explorer nos autres fonctionnalités.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button asChild variant="default">
                   <Link to="/">
                     <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back to Home
+                    Retour à l'accueil
                   </Link>
                 </Button>
                 <Button asChild variant="outline">
                   <Link to="/menu">
-                    View Menu
+                    Voir le Menu
                   </Link>
                 </Button>
               </div>
