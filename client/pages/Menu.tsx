@@ -32,7 +32,7 @@ interface MenuItem {
 export default function Menu() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [cart, setCart] = useState<{[key: number]: number}>({});
+  const { state, dispatch } = useCart();
 
   const menuItems: MenuItem[] = [
     {
