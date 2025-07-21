@@ -3,8 +3,8 @@ import PlaceholderPage from "./PlaceholderPage";
 export default function About() {
   return (
     <PlaceholderPage
-      title="About FoodieExpress"
-      description="Learn more about our story, mission, and the team behind your favorite food delivery service."
+      title="À Propos de Congo Food"
+      description="Découvrez notre histoire, notre mission et l'équipe derrière votre service de livraison de cuisine congolaise préféré."
     />
   );
 }
