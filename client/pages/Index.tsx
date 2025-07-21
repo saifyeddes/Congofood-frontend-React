@@ -139,9 +139,9 @@ export default function Index() {
 
             <div className="relative">
               <div className="relative z-10">
-                <img 
-                  src="/api/placeholder/600/400" 
-                  alt="Delicious food" 
+                <img
+                  src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop&crop=center"
+                  alt="Delicious food"
                   className="rounded-2xl shadow-2xl"
                 />
               </div>
