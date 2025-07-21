@@ -35,44 +35,44 @@ export default function Index() {
 
   const featuredDishes = [
     {
-      id: 2,
-      name: "Lobster Ravioli",
-      description: "Handmade pasta filled with fresh lobster in creamy sage butter sauce",
-      price: 24.99,
-      image: "https://images.unsplash.com/photo-1563379091339-03246963d96c?w=300&h=200&fit=crop&crop=center",
+      id: 1,
+      name: "Moambé au Poulet",
+      description: "Poulet mijoté dans une sauce onctueuse aux noix de palme, servi avec du riz",
+      price: 15.99,
+      image: "https://images.unsplash.com/photo-1574484284002-952d92456975?w=300&h=200&fit=crop&crop=center",
       rating: 4.9,
+      category: "popular",
+      preparationTime: "25-30 min"
+    },
+    {
+      id: 2,
+      name: "Poisson à la Congolaise",
+      description: "Poisson frais grillé aux épices locales, accompagné de légumes sautés",
+      price: 18.99,
+      image: "https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=300&h=200&fit=crop&crop=center",
+      rating: 4.8,
       category: "popular",
       preparationTime: "20-25 min"
     },
     {
-      id: 1,
-      name: "Truffle Mushroom Burger",
-      description: "Juicy beef patty with truffle mayo, wild mushrooms, and arugula",
-      price: 18.99,
-      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&h=200&fit=crop&crop=center",
-      rating: 4.8,
+      id: 3,
+      name: "Saka-Saka aux Crevettes",
+      description: "Feuilles de manioc cuisinées avec des crevettes fraîches et arachides",
+      price: 16.99,
+      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300&h=200&fit=crop&crop=center",
+      rating: 4.7,
       category: "popular",
-      preparationTime: "15-20 min"
+      preparationTime: "30-35 min"
     },
     {
       id: 4,
-      name: "Margherita Pizza",
-      description: "Wood-fired pizza with fresh mozzarella, basil, and San Marzano tomatoes",
-      price: 14.99,
-      image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300&h=200&fit=crop&crop=center",
+      name: "Liboke de Porc",
+      description: "Porc mariné et cuit à la vapeur dans des feuilles de bananier",
+      price: 19.99,
+      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=300&h=200&fit=crop&crop=center",
       rating: 4.6,
       category: "popular",
-      preparationTime: "12-18 min"
-    },
-    {
-      id: 3,
-      name: "Korean BBQ Bowl",
-      description: "Marinated beef bulgogi with steamed rice and fresh vegetables",
-      price: 16.99,
-      image: "https://images.unsplash.com/photo-1512058556904-645dd1bb2de7?w=300&h=200&fit=crop&crop=center",
-      rating: 4.7,
-      category: "healthy",
-      preparationTime: "10-15 min"
+      preparationTime: "35-40 min"
     }
   ];
 
