@@ -54,7 +54,7 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
       <CardHeader className="text-center">
         <CardTitle className="text-2xl">Welcome Back</CardTitle>
         <CardDescription>
-          Sign in to your FoodieExpress account
+          Connectez-vous à votre compte Congo Food
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
