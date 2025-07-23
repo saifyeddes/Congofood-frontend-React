@@ -58,6 +58,8 @@ const App = () => (
             <Route path="/delivery/orders" element={<DeliveryOrders />} />
             <Route path="/delivery/map" element={<DeliveryMap />} />
             <Route path="/delivery/history" element={<DeliveryHistory />} />
+            <Route path="/delivery/profile" element={<DeliveryProfile />} />
+            <Route path="/delivery/settings" element={<DeliverySettings />} />
 
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
