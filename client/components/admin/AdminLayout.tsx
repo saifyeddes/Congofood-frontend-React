@@ -3,20 +3,23 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/contexts/AuthContext";
-import { 
-  LayoutDashboard, 
-  Package, 
-  ShoppingBag, 
-  Truck, 
-  Users, 
-  Settings, 
-  Menu, 
-  X, 
+import {
+  LayoutDashboard,
+  Package,
+  ShoppingBag,
+  Truck,
+  Users,
+  Settings,
+  Menu,
+  X,
   LogOut,
   Home,
   UserPlus,
   ChefHat,
-  MapPin
+  MapPin,
+  Shield,
+  Crown,
+  Activity
 } from "lucide-react";
 
 interface AdminLayoutProps {
