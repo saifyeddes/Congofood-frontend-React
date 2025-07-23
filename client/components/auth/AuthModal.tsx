@@ -26,7 +26,7 @@ export default function AuthModal({ isOpen, onClose, defaultMode = "signin" }: A
     onClose();
 
     // Redirect admin to admin dashboard
-    if (email === "admin") {
+    if (email === "admin@admin.com") {
       navigate("/admin");
     }
   };
