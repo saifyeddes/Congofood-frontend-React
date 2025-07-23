@@ -5,12 +5,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { 
-  Package, 
-  MapPin, 
-  Clock, 
-  DollarSign, 
-  TrendingUp, 
+import {
+  Package,
+  MapPin,
+  Clock,
+  DollarSign,
+  TrendingUp,
   Star,
   Navigation,
   Phone,
@@ -20,7 +20,9 @@ import {
   Target,
   Award,
   ArrowRight,
-  Activity
+  Activity,
+  User,
+  Settings
 } from "lucide-react";
 
 export default function DeliveryDashboard() {
