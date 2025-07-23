@@ -3,22 +3,24 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/contexts/AuthContext";
-import { 
-  LayoutDashboard, 
-  Package, 
-  MapPin, 
-  History, 
-  User, 
-  Settings, 
-  Menu, 
-  X, 
+import {
+  LayoutDashboard,
+  Package,
+  MapPin,
+  History,
+  User,
+  Settings,
+  Menu,
+  X,
   LogOut,
   Home,
   Truck,
   Navigation,
   Clock,
   Phone,
-  Star
+  Star,
+  Activity,
+  Zap
 } from "lucide-react";
 
 interface DeliveryLayoutProps {
