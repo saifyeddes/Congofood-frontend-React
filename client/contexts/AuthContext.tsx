@@ -146,7 +146,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         firstName: userData.firstName,
         lastName: userData.lastName,
         email: userData.email,
-        phone: userData.phone
+        phone: userData.phone,
+        role: "client"
       };
       
       localStorage.setItem("foodie_user", JSON.stringify(user));
