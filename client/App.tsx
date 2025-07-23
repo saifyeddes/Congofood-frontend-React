@@ -23,6 +23,8 @@ import DeliveryDashboard from "./pages/delivery/Dashboard";
 import DeliveryOrders from "./pages/delivery/Orders";
 import DeliveryMap from "./pages/delivery/Map";
 import DeliveryHistory from "./pages/delivery/History";
+import DeliveryProfile from "./pages/delivery/Profile";
+import DeliverySettings from "./pages/delivery/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
