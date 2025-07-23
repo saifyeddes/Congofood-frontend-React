@@ -201,17 +201,49 @@ export default function Menu() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white">
         {/* Header */}
-        <section className="bg-gradient-to-r from-primary/10 to-accent/10 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center space-y-4">
-              <h1 className="text-4xl lg:text-5xl font-bold text-foreground">
-              Notre Menu
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Découvrez nos plats congolais authentiques préparés avec les meilleurs ingrédients
-            </p>
+        <section className="relative bg-gradient-to-br from-emerald-50 via-blue-50 to-purple-50 py-24 overflow-hidden">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-300/30 to-pink-300/30 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-emerald-300/30 to-blue-300/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-orange-300/20 to-red-300/20 rounded-full blur-3xl animate-spin-slow"></div>
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center space-y-8 animate-in fade-in duration-1000">
+              <Badge className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white border-0 px-8 py-3 text-base font-bold">
+                <ChefHat className="mr-2 w-5 h-5" />
+                Cuisine Authentique Congolaise
+              </Badge>
+
+              <h1 className="text-5xl lg:text-7xl font-black text-gray-900 leading-tight">
+                <span className="bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-pulse">
+                  Notre Menu
+                </span>
+              </h1>
+
+              <p className="text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Découvrez notre collection de plats congolais authentiques,
+                préparés avec passion et les meilleurs ingrédients locaux
+              </p>
+
+              <div className="flex flex-wrap justify-center gap-8 pt-8">
+                {[
+                  { icon: Award, number: "50+", label: "Plats Authentiques" },
+                  { icon: Star, number: "4.9★", label: "Note Moyenne" },
+                  { icon: TrendingUp, number: "15K+", label: "Commandes Servies" }
+                ].map((stat, index) => (
+                  <div key={index} className="text-center group animate-in fade-in duration-1000" style={{ animationDelay: `${index * 200}ms` }}>
+                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                      <stat.icon className="w-8 h-8 text-emerald-600" />
+                    </div>
+                    <div className="text-3xl font-black text-gray-900 mb-1">{stat.number}</div>
+                    <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
