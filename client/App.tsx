@@ -19,6 +19,10 @@ import Orders from "./pages/admin/Orders";
 import Deliveries from "./pages/admin/Deliveries";
 import Drivers from "./pages/admin/Drivers";
 import Admins from "./pages/admin/Admins";
+import DeliveryDashboard from "./pages/delivery/Dashboard";
+import DeliveryOrders from "./pages/delivery/Orders";
+import DeliveryMap from "./pages/delivery/Map";
+import DeliveryHistory from "./pages/delivery/History";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
