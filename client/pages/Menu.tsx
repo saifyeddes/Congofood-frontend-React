@@ -248,39 +248,49 @@ export default function Menu() {
           </div>
         </section>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex flex-col lg:flex-row gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="flex flex-col lg:flex-row gap-12">
             {/* Sidebar */}
-            <div className="lg:w-80 space-y-6">
+            <div className="lg:w-80 space-y-8 animate-in slide-in-from-left duration-1000">
               {/* Search */}
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+              <div className="relative group">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 group-focus-within:text-emerald-500 transition-colors duration-300" />
                 <Input
-                  placeholder="Rechercher des plats..."
+                  placeholder="Rechercher des plats délicieux..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10"
+                  className="pl-12 pr-4 py-4 text-lg border-2 border-gray-200 rounded-2xl focus:border-emerald-500 focus:ring-emerald-500/20 transition-all duration-300 bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl"
                 />
               </div>
 
               {/* Categories */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <Filter className="w-5 h-5 mr-2" />
+              <Card className="border-0 shadow-2xl bg-white/80 backdrop-blur-sm overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white">
+                  <CardTitle className="flex items-center text-xl font-bold">
+                    <Filter className="w-6 h-6 mr-3" />
                     Catégories
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-2">
-                  {categories.map((category) => (
+                <CardContent className="p-6 space-y-3">
+                  {categories.map((category, index) => (
                     <Button
                       key={category.id}
-                      variant={selectedCategory === category.id ? "default" : "ghost"}
-                      className="w-full justify-between"
+                      variant="ghost"
+                      className={`w-full justify-between p-4 rounded-xl text-left transition-all duration-300 animate-in fade-in ${
+                        selectedCategory === category.id
+                          ? "bg-gradient-to-r from-emerald-500 to-blue-500 text-white shadow-lg transform scale-105"
+                          : "hover:bg-emerald-50 hover:scale-105"
+                      }`}
                       onClick={() => setSelectedCategory(category.id)}
+                      style={{ animationDelay: `${index * 100}ms` }}
                     >
-                      <span>{category.name}</span>
-                      <Badge variant="secondary">{category.count}</Badge>
+                      <span className="font-medium">{category.name}</span>
+                      <Badge
+                        variant="secondary"
+                        className={`${selectedCategory === category.id ? "bg-white/20 text-white" : "bg-emerald-100 text-emerald-700"}`}
+                      >
+                        {category.count}
+                      </Badge>
                     </Button>
                   ))}
                 </CardContent>
@@ -288,29 +298,33 @@ export default function Menu() {
 
               {/* Cart Summary */}
               {state.totalItems > 0 && (
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center">
-                    <ShoppingCart className="w-5 h-5 mr-2" />
-                    Résumé du Panier
-                  </CardTitle>
+                <Card className="border-0 shadow-2xl bg-gradient-to-br from-green-50 to-emerald-100 overflow-hidden animate-in slide-in-from-bottom duration-1000">
+                  <CardHeader className="bg-gradient-to-r from-green-500 to-emerald-500 text-white">
+                    <CardTitle className="flex items-center text-xl font-bold">
+                      <ShoppingCart className="w-6 h-6 mr-3 animate-bounce" />
+                      Résumé du Panier
+                    </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span>Articles:</span>
-                        <span>{state.totalItems}</span>
+                  <CardContent className="p-6">
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center p-3 bg-white/70 rounded-xl">
+                        <span className="font-medium text-gray-700">Articles:</span>
+                        <Badge className="bg-emerald-500 text-white px-3 py-1">{state.totalItems}</Badge>
                       </div>
-                      <div className="flex justify-between font-semibold">
+                      <div className="flex justify-between items-center p-4 bg-gradient-to-r from-emerald-500 to-green-500 text-white rounded-xl font-bold text-lg">
                         <span>Total:</span>
                         <span>${state.totalPrice.toFixed(2)}</span>
                       </div>
                     </div>
                   </CardContent>
-                  <CardFooter>
-                    <Button asChild className="w-full">
+                  <CardFooter className="p-6">
+                    <Button
+                      asChild
+                      className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold py-3 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+                    >
                       <Link to="/cart">
                         Voir le Panier
+                        <ShoppingCart className="ml-2 w-5 h-5" />
                       </Link>
                     </Button>
                   </CardFooter>
