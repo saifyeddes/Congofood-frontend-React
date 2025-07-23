@@ -94,12 +94,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Mock authentication - in real app, this would be an API call
-      if (email === "admin" && password === "admin") {
+      if (email === "admin@admin.com" && password === "admin@admin.com") {
         const user: User = {
           id: "admin",
           firstName: "Admin",
           lastName: "Congo Food",
-          email: "admin@congofood.com",
+          email: "admin@admin.com",
           phone: "+243 (0) 123-456-789",
           role: "admin"
         };
