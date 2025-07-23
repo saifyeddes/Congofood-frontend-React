@@ -55,6 +55,8 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
         <CardTitle className="text-2xl">Welcome Back</CardTitle>
         <CardDescription>
           Connectez-vous à votre compte Congo Food
+          <br />
+          <small className="text-muted-foreground">Admin: admin@admin.com / admin@admin.com</small>
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
