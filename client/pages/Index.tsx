@@ -97,62 +97,120 @@ export default function Index() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary/5 to-accent/5 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <Badge variant="secondary" className="text-primary bg-primary/10">
-                  🚀 Livraison en 30 minutes ou moins
+      <section className="relative min-h-screen bg-gradient-to-br from-emerald-50 via-blue-50 to-purple-50 overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-300/30 to-pink-300/30 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-emerald-300/30 to-blue-300/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-orange-300/20 to-red-300/20 rounded-full blur-3xl animate-spin-slow"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-10 animate-in slide-in-from-left duration-1000">
+              <div className="space-y-6">
+                <Badge className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white border-0 px-6 py-2 text-sm animate-bounce">
+                  <Sparkles className="mr-2 w-4 h-4" />
+                  Livraison Express en 30 minutes
                 </Badge>
-                <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-                  Saveurs du Congo
-                  <span className="text-primary block">Livrées Rapidement</span>
+
+                <h1 className="text-5xl lg:text-7xl font-black text-gray-900 leading-tight">
+                  <span className="bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-pulse">
+                    Saveurs du Congo
+                  </span>
+                  <br />
+                  <span className="text-gray-700 text-4xl lg:text-5xl font-light">
+                    à votre porte
+                  </span>
                 </h1>
-                <p className="text-xl text-muted-foreground max-w-lg">
-                  Découvrez l'excellence culinaire congolaise livrée à votre porte.
-                  Ingrédients frais, chefs experts, livraison rapide.
+
+                <p className="text-xl lg:text-2xl text-gray-600 max-w-xl leading-relaxed">
+                  Découvrez l'art culinaire congolais avec nos plats authentiques,
+                  préparés par des chefs passionnés et livrés avec amour.
                 </p>
               </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="text-lg px-8">
+
+              <div className="flex flex-col sm:flex-row gap-6">
+                <Button
+                  asChild
+                  size="lg"
+                  className="text-lg px-10 py-4 bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300"
+                >
                   <Link to="/menu">
+                    <ChefHat className="mr-2 w-6 h-6" />
                     Commander Maintenant
-                    <ArrowRight className="ml-2 w-5 h-5" />
+                    <ArrowRight className="ml-2 w-6 h-6" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8">
-                  <Phone className="mr-2 w-5 h-5" />
-                  Appeler (+243) 123-456-789
+
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="text-lg px-10 py-4 border-2 border-gray-300 hover:border-emerald-500 hover:bg-emerald-50 transition-all duration-300"
+                >
+                  <Phone className="mr-2 w-6 h-6" />
+                  (+243) 123-456-789
                 </Button>
               </div>
 
+              {/* Stats */}
               <div className="grid grid-cols-3 gap-8 pt-8">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-foreground">30</div>
-                  <div className="text-sm text-muted-foreground">Minutes Livraison</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-foreground">4.8★</div>
-                  <div className="text-sm text-muted-foreground">Note Clients</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-foreground">10K+</div>
-                  <div className="text-sm text-muted-foreground">Clients Satisfaits</div>
-                </div>
+                {[
+                  { number: "30", label: "Min. Livraison", icon: Clock },
+                  { number: "4.9", label: "Note Clients", icon: Star },
+                  { number: "15K+", label: "Clients Heureux", icon: Heart }
+                ].map((stat, index) => (
+                  <div key={index} className="text-center group animate-in fade-in duration-1000" style={{ animationDelay: `${index * 200}ms` }}>
+                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                      <stat.icon className="w-8 h-8 text-emerald-600" />
+                    </div>
+                    <div className="text-3xl font-black text-gray-900 mb-1">{stat.number}</div>
+                    <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="relative">
-              <div className="relative z-10">
-                <img
-                  src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop&crop=center"
-                  alt="Delicious food"
-                  className="rounded-2xl shadow-2xl"
-                />
+            {/* Hero Image */}
+            <div className="relative animate-in slide-in-from-right duration-1000 delay-300">
+              <div className="relative z-10 transform hover:scale-105 transition-transform duration-700">
+                <div className="rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-white to-gray-100 p-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop&crop=center"
+                    alt="Délicieux plats congolais"
+                    className="w-full h-80 lg:h-96 object-cover rounded-2xl"
+                  />
+                </div>
+
+                {/* Floating Cards */}
+                <div className="absolute -top-4 -left-4 bg-white rounded-2xl shadow-xl p-4 animate-float">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
+                      <Leaf className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-gray-900">100% Frais</div>
+                      <div className="text-xs text-gray-600">Ingrédients locaux</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl p-4 animate-float delay-1000">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center">
+                      <Award className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-gray-900">Chef Expert</div>
+                      <div className="text-xs text-gray-600">Cuisine authentique</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl transform rotate-3"></div>
+
+              {/* Background decoration */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-200/50 to-blue-200/50 rounded-3xl transform rotate-6 scale-105 -z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-tl from-purple-200/50 to-pink-200/50 rounded-3xl transform -rotate-3 scale-95 -z-20"></div>
             </div>
           </div>
         </div>
