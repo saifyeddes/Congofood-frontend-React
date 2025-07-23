@@ -48,9 +48,6 @@ export default function Header() {
             <Link to="/menu" className="text-foreground hover:text-primary transition-colors">
               Menu
             </Link>
-            <Link to="/about" className="text-foreground hover:text-primary transition-colors">
-              About
-            </Link>
             <Link to="/contact" className="text-foreground hover:text-primary transition-colors">
               Contact
             </Link>
