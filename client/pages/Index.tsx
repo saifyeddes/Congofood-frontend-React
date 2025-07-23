@@ -217,28 +217,46 @@ export default function Index() {
       </section>
 
       {/* Featured Dishes */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-              Plats Vedettes
+      <section className="py-24 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-br from-emerald-100/50 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-gradient-to-br from-blue-100/50 to-transparent rounded-full blur-3xl"></div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-6 mb-16 animate-in fade-in duration-1000">
+            <Badge className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white border-0 px-6 py-2">
+              <Sparkles className="mr-2 w-4 h-4" />
+              Nos Spécialités
+            </Badge>
+            <h2 className="text-4xl lg:text-6xl font-black text-gray-900">
+              <span className="bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
+                Plats Vedettes
+              </span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Sélection de nos spécialités congolaises, préparées avec amour et les meilleurs ingrédients
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Découvrez notre sélection de spécialités congolaises authentiques,
+              préparées avec passion par nos chefs experts
             </p>
           </div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {categories.map((category) => (
+          <div className="flex flex-wrap justify-center gap-3 mb-16 animate-in slide-in-from-bottom duration-1000 delay-300">
+            {categories.map((category, index) => (
               <Button
                 key={category.id}
                 variant={selectedCategory === category.id ? "default" : "outline"}
                 onClick={() => setSelectedCategory(category.id)}
-                className="rounded-full"
+                className={`rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 animate-in fade-in delay-${index * 100} ${
+                  selectedCategory === category.id
+                    ? "bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 shadow-lg transform hover:-translate-y-1"
+                    : "border-2 hover:border-emerald-500 hover:bg-emerald-50"
+                }`}
               >
                 {category.name}
-                <Badge variant="secondary" className="ml-2">
+                <Badge
+                  variant="secondary"
+                  className={`ml-2 ${selectedCategory === category.id ? "bg-white/20 text-white" : ""}`}
+                >
                   {category.count}
                 </Badge>
               </Button>
@@ -246,45 +264,62 @@ export default function Index() {
           </div>
 
           {/* Dishes Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {filteredDishes.map((dish) => (
-              <Card key={dish.id} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {filteredDishes.map((dish, index) => (
+              <Card
+                key={dish.id}
+                className="group hover:shadow-2xl transition-all duration-500 overflow-hidden border-0 bg-white/80 backdrop-blur-sm animate-in slide-in-from-bottom duration-1000"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
                 <CardHeader className="p-0">
                   <div className="relative overflow-hidden">
-                    <img 
-                      src={dish.image} 
+                    <img
+                      src={dish.image}
                       alt={dish.name}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <Badge className="absolute top-3 left-3 bg-white/90 text-foreground">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent group-hover:from-black/40 transition-all duration-300"></div>
+
+                    <Badge className="absolute top-4 left-4 bg-white/95 text-gray-900 border-0 shadow-lg">
                       <Clock className="w-3 h-3 mr-1" />
                       {dish.preparationTime}
                     </Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                      {dish.name}
-                    </CardTitle>
-                    <div className="flex items-center space-x-1">
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="text-sm font-medium">{dish.rating}</span>
+
+                    <div className="absolute top-4 right-4 w-12 h-12 bg-white/95 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <Heart className="w-5 h-5 text-gray-600 group-hover:text-red-500 transition-colors duration-300" />
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                </CardHeader>
+
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
+                      {dish.name}
+                    </CardTitle>
+                    <div className="flex items-center space-x-1 bg-yellow-50 px-2 py-1 rounded-full">
+                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <span className="text-sm font-bold text-yellow-600">{dish.rating}</span>
+                    </div>
+                  </div>
+
+                  <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed">
                     {dish.description}
                   </p>
+
                   <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold text-primary">${dish.price}</span>
+                    <span className="text-2xl font-black text-emerald-600">${dish.price}</span>
+                    <Badge variant="outline" className="text-xs font-medium">
+                      Authentique
+                    </Badge>
                   </div>
                 </CardContent>
-                <CardFooter className="p-4 pt-0">
+
+                <CardFooter className="p-6 pt-0">
                   <Button
-                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                    className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white font-semibold py-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
                     onClick={() => addToCart(dish)}
                   >
-                    <Plus className="w-4 h-4 mr-2" />
+                    <Plus className="w-5 h-5 mr-2" />
                     Ajouter au Panier
                   </Button>
                 </CardFooter>
@@ -292,11 +327,16 @@ export default function Index() {
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Button asChild variant="outline" size="lg">
+          <div className="text-center mt-16 animate-in fade-in duration-1000 delay-1000">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="px-8 py-4 text-lg border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1"
+            >
               <Link to="/menu">
                 Voir le Menu Complet
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-2 w-6 h-6" />
               </Link>
             </Button>
           </div>
