@@ -1,6 +1,13 @@
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
+
+// Déclaration TypeScript pour éviter les erreurs avec _reactRootContainer
+declare global {
+  interface Element {
+    _reactRootContainer?: any;
+  }
+}
 import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
