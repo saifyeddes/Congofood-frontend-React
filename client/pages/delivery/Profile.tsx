@@ -97,10 +97,11 @@ export default function DeliveryProfile() {
                   </Button>
                 </div>
                 <CardTitle className="text-xl">{driverData.firstName} {driverData.lastName}</CardTitle>
-                <CardDescription className="flex items-center justify-center space-x-2">
+                <CardDescription className="text-center">Livreur professionnel</CardDescription>
+                <div className="flex items-center justify-center space-x-2 mt-2">
                   <Badge className="bg-green-100 text-green-800">{driverData.availability}</Badge>
                   <Badge variant="outline">{driverData.badgeLevel}</Badge>
-                </CardDescription>
+                </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="text-center">
