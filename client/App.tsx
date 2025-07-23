@@ -67,11 +67,15 @@ const App = () => (
 
 const container = document.getElementById("root")!;
 
+// Variable globale pour éviter les doubles appels à createRoot
+let root: any;
+
 // Éviter les doubles appels à createRoot en développement
-if (!container._reactRootContainer) {
-  const root = createRoot(container);
-  container._reactRootContainer = root;
-  root.render(<App />);
+if (!window.__REACT_ROOT__) {
+  root = createRoot(container);
+  window.__REACT_ROOT__ = root;
 } else {
-  container._reactRootContainer.render(<App />);
+  root = window.__REACT_ROOT__;
 }
+
+root.render(<App />);
