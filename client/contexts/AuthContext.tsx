@@ -106,6 +106,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         localStorage.setItem("foodie_user", JSON.stringify(user));
         dispatch({ type: "SIGN_IN_SUCCESS", payload: user });
+      } else if (email === "driver" && password === "driver") {
+        const user: User = {
+          id: "driver1",
+          firstName: "Jacques",
+          lastName: "Tshisekedi",
+          email: "jacques.tshisekedi@congofood.com",
+          phone: "+243 (0) 111-222-333",
+          role: "driver"
+        };
+
+        localStorage.setItem("foodie_user", JSON.stringify(user));
+        dispatch({ type: "SIGN_IN_SUCCESS", payload: user });
       } else if (email === "demo@congofood.com" && password === "password") {
         const user: User = {
           id: "1",
