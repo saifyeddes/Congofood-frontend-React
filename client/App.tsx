@@ -13,6 +13,9 @@ import Menu from "./pages/Menu";
 import Cart from "./pages/Cart";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Dashboard from "./pages/admin/Dashboard";
+import Categories from "./pages/admin/Categories";
+import Dishes from "./pages/admin/Dishes";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
