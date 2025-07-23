@@ -247,28 +247,40 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Top Bar */}
-        <header className="bg-card border-b border-border px-6 py-4">
+        <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200/50 px-6 py-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setSidebarOpen(true)}
-              className="lg:hidden"
-            >
-              <Menu className="w-4 h-4" />
-            </Button>
-            
             <div className="flex items-center space-x-4">
-              <div className="text-sm text-muted-foreground">
-                Connecté en tant qu'administrateur
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setSidebarOpen(true)}
+                className="lg:hidden bg-white/50 hover:bg-white/80 border border-gray-200/50"
+              >
+                <Menu className="w-5 h-5" />
+              </Button>
+
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium text-gray-600">
+                  Tableau de bord administrateur actif
+                </span>
               </div>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <Badge className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white border-0 px-3 py-1">
+                <Activity className="w-3 h-3 mr-1" />
+                En ligne
+              </Badge>
             </div>
           </div>
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-6 overflow-auto">
-          {children}
+        <main className="flex-1 p-8 overflow-auto bg-gradient-to-br from-white via-gray-50/50 to-blue-50/30">
+          <div className="animate-in fade-in duration-1000">
+            {children}
+          </div>
         </main>
       </div>
     </div>
