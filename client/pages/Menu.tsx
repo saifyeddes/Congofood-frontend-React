@@ -13,7 +13,14 @@ import {
   Star,
   Plus,
   Minus,
-  ShoppingCart
+  ShoppingCart,
+  Sparkles,
+  Heart,
+  ChefHat,
+  Leaf,
+  Flame,
+  Award,
+  TrendingUp
 } from "lucide-react";
 
 interface MenuItem {
