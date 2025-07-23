@@ -19,10 +19,16 @@ interface AuthModalProps {
 export default function AuthModal({ isOpen, onClose, defaultMode = "signin" }: AuthModalProps) {
   const [mode, setMode] = useState<"signin" | "signup">(defaultMode);
   const { signIn, signUp, state } = useAuth();
+  const navigate = useNavigate();
 
   const handleSignIn = async (email: string, password: string) => {
     await signIn(email, password);
     onClose();
+
+    // Redirect admin to admin dashboard
+    if (email === "admin") {
+      navigate("/admin");
+    }
   };
 
   const handleSignUp = async (userData: {
