@@ -19,6 +19,7 @@ import Dishes from "./pages/admin/Dishes";
 import Orders from "./pages/admin/Orders";
 import Deliveries from "./pages/admin/Deliveries";
 import Drivers from "./pages/admin/Drivers";
+import Admins from "./pages/admin/Admins";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
