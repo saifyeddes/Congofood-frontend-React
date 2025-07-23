@@ -1,20 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { useCart } from "@/contexts/CartContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  ArrowRight, 
-  Clock, 
-  Star, 
-  Truck, 
-  Shield, 
+import {
+  ArrowRight,
+  Clock,
+  Star,
+  Truck,
+  Shield,
   Utensils,
   MapPin,
   Phone,
-  Plus
+  Plus,
+  Sparkles,
+  Heart,
+  Award,
+  Zap,
+  ChefHat,
+  Users,
+  Leaf
 } from "lucide-react";
 
 export default function Index() {
