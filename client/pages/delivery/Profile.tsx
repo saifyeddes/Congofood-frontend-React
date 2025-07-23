@@ -85,13 +85,11 @@ export default function DeliveryProfile() {
               <CardHeader className="text-center pb-2">
                 <div className="relative mx-auto">
                   <Avatar className="w-24 h-24 mx-auto mb-4">
-                    <AvatarContent>
-                      <div className="w-full h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-2xl">
-                          {driverData.firstName[0]}{driverData.lastName[0]}
-                        </span>
-                      </div>
-                    </AvatarContent>
+                    <div className="w-full h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-2xl">
+                        {driverData.firstName[0]}{driverData.lastName[0]}
+                      </span>
+                    </div>
                     <AvatarFallback>JT</AvatarFallback>
                   </Avatar>
                   <Button size="sm" className="absolute bottom-0 right-1/3 rounded-full">
