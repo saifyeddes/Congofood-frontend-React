@@ -56,7 +56,10 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
         <CardDescription>
           Connectez-vous à votre compte Congo Food
           <br />
-          <small className="text-muted-foreground">Admin: admin@admin.com / admin@admin.com</small>
+          <small className="text-muted-foreground">
+            Admin: admin@admin.com / admin@admin.com<br />
+            Livreur: driver / driver
+          </small>
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
