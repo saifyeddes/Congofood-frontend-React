@@ -35,11 +35,24 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   // Vérifier si l'utilisateur est admin
   if (state.user?.role !== "admin") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="text-center space-y-4">
-          <h1 className="text-2xl font-bold text-destructive">Accès Refusé</h1>
-          <p className="text-muted-foreground">Vous n'avez pas les permissions pour accéder à cette page.</p>
-          <Button onClick={() => navigate("/")}>Retour à l'accueil</Button>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
+        <div className="text-center space-y-8 max-w-md mx-auto p-8">
+          <div className="w-24 h-24 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto shadow-2xl">
+            <Shield className="w-12 h-12 text-white" />
+          </div>
+          <div className="space-y-4">
+            <h1 className="text-3xl font-black text-gray-900">Accès Refusé</h1>
+            <p className="text-gray-600 leading-relaxed">
+              Vous n'avez pas les permissions administrateur nécessaires pour accéder à cette zone sécurisée.
+            </p>
+          </div>
+          <Button
+            onClick={() => navigate("/")}
+            className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-8 py-3 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+          >
+            <Home className="w-5 h-5 mr-2" />
+            Retour à l'accueil
+          </Button>
         </div>
       </div>
     );
