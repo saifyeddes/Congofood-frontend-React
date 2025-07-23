@@ -575,27 +575,95 @@ export default function Index() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <h2 className="text-3xl lg:text-4xl font-bold">
-            Prêt à Découvrir une Cuisine Exceptionnelle?
-          </h2>
-          <p className="text-xl opacity-90 max-w-2xl mx-auto">
-            Rejoignez des milliers de clients satisfaits qui font confiance à Congo Food pour leurs repas quotidiens
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary" className="text-lg px-8">
+      <section className="relative py-24 bg-gradient-to-br from-gray-900 via-emerald-900 to-blue-900 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-emerald-600/20 to-blue-600/20"></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-spin-slow"></div>
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+          <div className="space-y-8 animate-in fade-in duration-1000">
+            <Badge className="bg-gradient-to-r from-emerald-400 to-blue-400 text-gray-900 border-0 px-8 py-3 text-base font-bold">
+              <Sparkles className="mr-2 w-5 h-5" />
+              Expérience Culinaire Premium
+            </Badge>
+
+            <h2 className="text-4xl lg:text-7xl font-black text-white leading-tight">
+              Prêt à Découvrir une
+              <br />
+              <span className="bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent animate-pulse">
+                Cuisine Exceptionnelle?
+              </span>
+            </h2>
+
+            <p className="text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Rejoignez plus de <span className="text-emerald-400 font-bold">15,000 clients satisfaits</span> qui font confiance à Congo Food
+              pour savourer l'authenticité congolaise au quotidien
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-in slide-in-from-bottom duration-1000 delay-500">
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-400 hover:to-blue-400 text-white px-10 py-4 text-xl font-bold shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300 group"
+            >
               <Link to="/menu">
+                <ChefHat className="mr-3 w-6 h-6 group-hover:animate-bounce" />
                 Commander Maintenant
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 border-white text-white hover:bg-white hover:text-primary">
-              Télécharger l'App
+
+            <Button
+              variant="outline"
+              size="lg"
+              className="text-xl px-10 py-4 border-2 border-white/30 text-white hover:bg-white hover:text-gray-900 backdrop-blur-sm bg-white/10 font-semibold shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
+            >
+              <Phone className="mr-3 w-6 h-6" />
+              (+243) 123-456-789
             </Button>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-16 animate-in fade-in duration-1000 delay-1000">
+            {[
+              { icon: Users, number: "15K+", label: "Clients Fidèles" },
+              { icon: Star, number: "4.9★", label: "Note Moyenne" },
+              { icon: Award, number: "99%", label: "Satisfaction Client" }
+            ].map((stat, index) => (
+              <div key={index} className="text-center group">
+                <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 border border-white/20">
+                  <stat.icon className="w-10 h-10 text-emerald-400" />
+                </div>
+                <div className="text-3xl font-black text-white mb-2">{stat.number}</div>
+                <div className="text-gray-300 font-medium">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* Add custom CSS for animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+        .animate-spin-slow {
+          animation: spin-slow 20s linear infinite;
+        }
+      `}</style>
     </Layout>
   );
 }
