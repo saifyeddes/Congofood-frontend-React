@@ -6,7 +6,7 @@ export interface User {
   lastName: string;
   email: string;
   phone: string;
-  role: "client" | "admin";
+  role: "client" | "admin" | "driver";
 }
 
 interface AuthState {
