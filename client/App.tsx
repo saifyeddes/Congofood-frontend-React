@@ -16,6 +16,9 @@ import Contact from "./pages/Contact";
 import Dashboard from "./pages/admin/Dashboard";
 import Categories from "./pages/admin/Categories";
 import Dishes from "./pages/admin/Dishes";
+import Orders from "./pages/admin/Orders";
+import Deliveries from "./pages/admin/Deliveries";
+import Drivers from "./pages/admin/Drivers";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
