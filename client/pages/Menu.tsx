@@ -333,83 +333,116 @@ export default function Menu() {
             </div>
 
             {/* Menu Items */}
-            <div className="flex-1">
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {filteredItems.map((item) => (
-                  <Card key={item.id} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
+            <div className="flex-1 animate-in slide-in-from-right duration-1000 delay-300">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                {filteredItems.map((item, index) => (
+                  <Card
+                    key={item.id}
+                    className="group hover:shadow-2xl transition-all duration-500 overflow-hidden border-0 bg-white/80 backdrop-blur-sm transform hover:-translate-y-2 hover:scale-105 animate-in slide-in-from-bottom duration-1000"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
                     <CardHeader className="p-0">
                       <div className="relative overflow-hidden">
-                        <img 
-                          src={item.image} 
+                        <img
+                          src={item.image}
                           alt={item.name}
-                          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
                         />
-                        <div className="absolute top-3 left-3 flex flex-wrap gap-1">
-                          <Badge className="bg-white/90 text-foreground">
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent group-hover:from-black/40 transition-all duration-300"></div>
+
+                        {/* Badges */}
+                        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                          <Badge className="bg-white/95 text-gray-900 border-0 shadow-lg">
                             <Clock className="w-3 h-3 mr-1" />
                             {item.preparationTime}
                           </Badge>
                           {item.isPopular && (
-                            <Badge variant="destructive">Popular</Badge>
+                            <Badge className="bg-gradient-to-r from-orange-400 to-red-500 text-white border-0 shadow-lg animate-pulse">
+                              <Sparkles className="w-3 h-3 mr-1" />
+                              Popular
+                            </Badge>
                           )}
                           {item.isVegetarian && (
-                            <Badge className="bg-green-500">Vegetarian</Badge>
+                            <Badge className="bg-gradient-to-r from-green-400 to-emerald-500 text-white border-0 shadow-lg">
+                              <Leaf className="w-3 h-3 mr-1" />
+                              Végétarien
+                            </Badge>
                           )}
                           {item.isSpicy && (
-                            <Badge className="bg-red-500">🌶️ Spicy</Badge>
+                            <Badge className="bg-gradient-to-r from-red-400 to-orange-500 text-white border-0 shadow-lg">
+                              <Flame className="w-3 h-3 mr-1" />
+                              Épicé
+                            </Badge>
                           )}
+                        </div>
+
+                        {/* Heart Icon */}
+                        <div className="absolute top-4 right-4 w-10 h-10 bg-white/95 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                          <Heart className="w-5 h-5 text-gray-600 group-hover:text-red-500 transition-colors duration-300" />
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <CardTitle className="text-lg group-hover:text-primary transition-colors">
+
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
                           {item.name}
                         </CardTitle>
-                        <div className="flex items-center space-x-1">
+                        <div className="flex items-center space-x-1 bg-yellow-50 px-3 py-1 rounded-full">
                           <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                          <span className="text-sm font-medium">{item.rating}</span>
+                          <span className="text-sm font-bold text-yellow-600">{item.rating}</span>
                         </div>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+
+                      <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed">
                         {item.description}
                       </p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-xl font-bold text-primary">${item.price}</span>
+
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-2xl font-black text-emerald-600">${item.price}</span>
+                        <Badge variant="outline" className="text-xs font-medium border-emerald-200 text-emerald-700">
+                          Authentique
+                        </Badge>
                       </div>
                     </CardContent>
-                    <CardFooter className="p-4 pt-0">
+
+                    <CardFooter className="p-6 pt-0">
                       {getItemQuantity(item.id) > 0 ? (
                         <div className="flex items-center justify-between w-full">
-                          <div className="flex items-center space-x-2">
+                          <div className="flex items-center space-x-3 bg-gray-50 rounded-2xl p-2">
                             <Button
                               size="sm"
                               variant="outline"
+                              className="w-10 h-10 rounded-xl border-2 hover:bg-red-50 hover:border-red-200"
                               onClick={() => removeFromCart(item.id)}
                             >
                               <Minus className="w-4 h-4" />
                             </Button>
-                            <span className="font-medium min-w-[2rem] text-center">
+                            <span className="font-bold text-lg min-w-[2rem] text-center text-gray-900">
                               {getItemQuantity(item.id)}
                             </span>
                             <Button
                               size="sm"
                               variant="outline"
+                              className="w-10 h-10 rounded-xl border-2 hover:bg-emerald-50 hover:border-emerald-200"
                               onClick={() => addToCart(item)}
                             >
                               <Plus className="w-4 h-4" />
                             </Button>
                           </div>
-                          <span className="text-sm font-medium text-muted-foreground">
-                            ${(item.price * getItemQuantity(item.id)).toFixed(2)}
-                          </span>
+                          <div className="text-right">
+                            <div className="text-sm text-gray-500">Total</div>
+                            <div className="text-lg font-bold text-emerald-600">
+                              ${(item.price * getItemQuantity(item.id)).toFixed(2)}
+                            </div>
+                          </div>
                         </div>
                       ) : (
                         <Button
-                          className="w-full"
+                          className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white font-semibold py-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
                           onClick={() => addToCart(item)}
                         >
-                          <Plus className="w-4 h-4 mr-2" />
+                          <Plus className="w-5 h-5 mr-2" />
                           Ajouter au Panier
                         </Button>
                       )}
@@ -419,9 +452,14 @@ export default function Menu() {
               </div>
 
               {filteredItems.length === 0 && (
-                <div className="text-center py-12">
-                  <p className="text-muted-foreground text-lg">
-                    Aucun plat trouvé correspondant à vos critères de recherche.
+                <div className="text-center py-20 animate-in fade-in duration-1000">
+                  <div className="w-24 h-24 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Search className="w-12 h-12 text-gray-400" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-700 mb-2">Aucun plat trouvé</h3>
+                  <p className="text-gray-500 text-lg max-w-md mx-auto">
+                    Aucun plat ne correspond à vos critères de recherche.
+                    Essayez avec d'autres mots-clés ou changez de catégorie.
                   </p>
                 </div>
               )}
