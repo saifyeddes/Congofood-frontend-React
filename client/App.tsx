@@ -2,10 +2,10 @@ import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
 
-// Déclaration TypeScript pour éviter les erreurs avec _reactRootContainer
+// Déclaration TypeScript pour éviter les erreurs
 declare global {
-  interface Element {
-    _reactRootContainer?: any;
+  interface Window {
+    __REACT_ROOT__?: any;
   }
 }
 import { createRoot } from "react-dom/client";
