@@ -22,12 +22,14 @@ export default function AuthModal({ isOpen, onClose, defaultMode = "signin" }: A
   const navigate = useNavigate();
 
   const handleSignIn = async (email: string, password: string) => {
-    await signIn(email, password);
+    const result = await signIn(email, password);
     onClose();
 
-    // Redirect admin to admin dashboard
+    // Redirect based on user role
     if (email === "admin@admin.com") {
       navigate("/admin");
+    } else if (email === "driver") {
+      navigate("/delivery");
     }
   };
 
