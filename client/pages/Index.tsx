@@ -344,53 +344,100 @@ export default function Index() {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
+      <section className="py-24 bg-gradient-to-br from-gray-900 to-gray-800 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-emerald-500/20 to-blue-500/20"></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-6 mb-20 animate-in fade-in duration-1000">
+            <Badge className="bg-gradient-to-r from-emerald-400 to-blue-400 text-gray-900 border-0 px-6 py-2 font-semibold">
+              <Zap className="mr-2 w-4 h-4" />
+              Processus Simple
+            </Badge>
+            <h2 className="text-4xl lg:text-6xl font-black text-white">
               Comment Ça Marche
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Trois étapes simples pour savourer nos délicieux plats à votre porte
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Trois étapes simples pour savourer l'authenticité congolaise depuis le confort de votre foyer
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto">
-                <Utensils className="w-8 h-8 text-white" />
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-xl font-bold text-foreground">1. Choisissez Votre Repas</h3>
-                <p className="text-muted-foreground">
-                  Parcourez notre menu et sélectionnez vos plats congolais préférés
-                </p>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              {
+                step: "01",
+                icon: Utensils,
+                title: "Explorez & Choisissez",
+                description: "Parcourez notre collection de plats authentiques congolais, chacun préparé selon les traditions ancestrales",
+                color: "from-emerald-400 to-green-500"
+              },
+              {
+                step: "02",
+                icon: MapPin,
+                title: "Commandez en Sécurité",
+                description: "Ajoutez vos favoris au panier, confirmez votre adresse et choisissez votre mode de paiement préféré",
+                color: "from-blue-400 to-indigo-500"
+              },
+              {
+                step: "03",
+                icon: Truck,
+                title: "Savourez Rapidement",
+                description: "Relaxez-vous pendant que nos chefs préparent votre commande et nos livreurs vous l'apportent en 30 minutes",
+                color: "from-purple-400 to-pink-500"
+              }
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="relative text-center space-y-6 group animate-in slide-in-from-bottom duration-1000"
+                style={{ animationDelay: `${index * 200}ms` }}
+              >
+                {/* Step Number */}
+                <div className="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-br from-white/20 to-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20">
+                  <span className="text-2xl font-black text-white">{item.step}</span>
+                </div>
 
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto">
-                <MapPin className="w-8 h-8 text-white" />
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-xl font-bold text-foreground">2. Passez Votre Commande</h3>
-                <p className="text-muted-foreground">
-                  Ajoutez au panier, entrez votre adresse et choisissez votre mode de paiement
-                </p>
-              </div>
-            </div>
+                {/* Icon Container */}
+                <div className="relative mx-auto w-24 h-24">
+                  <div className={`w-full h-full bg-gradient-to-br ${item.color} rounded-3xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-500 group-hover:rotate-6`}>
+                    <item.icon className="w-12 h-12 text-white" />
+                  </div>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.color} rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-500`}></div>
+                </div>
 
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto">
-                <Truck className="w-8 h-8 text-white" />
+                {/* Content */}
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold text-white group-hover:text-emerald-300 transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed max-w-sm mx-auto">
+                    {item.description}
+                  </p>
+                </div>
+
+                {/* Connection Line (except last item) */}
+                {index < 2 && (
+                  <div className="hidden md:block absolute top-12 left-full w-12 h-0.5 bg-gradient-to-r from-white/30 to-transparent transform translate-x-8"></div>
+                )}
               </div>
-              <div className="space-y-2">
-                <h3 className="text-xl font-bold text-foreground">3. Livraison Rapide</h3>
-                <p className="text-muted-foreground">
-                  Détendez-vous pendant que nous préparons et livrons votre commande en 30 minutes
-                </p>
-              </div>
-            </div>
+            ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-20 animate-in fade-in duration-1000 delay-1000">
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300"
+            >
+              <Link to="/menu">
+                Commencer Maintenant
+                <ArrowRight className="ml-2 w-6 h-6" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
