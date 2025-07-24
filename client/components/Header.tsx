@@ -76,41 +76,52 @@ export default function Header() {
             {authState.isAuthenticated ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm">
-                    <User className="w-4 h-4 mr-2" />
-                    <span className="hidden lg:inline">{authState.user?.firstName}</span>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 border border-blue-200/50 rounded-xl px-4 py-2 transition-all duration-300"
+                  >
+                    <User className="w-4 h-4 mr-2 text-blue-600" />
+                    <span className="hidden lg:inline font-medium text-gray-700">{authState.user?.firstName}</span>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuItem>
+                <DropdownMenuContent align="end" className="w-56 border-0 shadow-2xl bg-white/95 backdrop-blur-md rounded-2xl">
+                  <DropdownMenuItem className="rounded-xl m-1 hover:bg-emerald-50">
                     <User className="w-4 h-4 mr-2" />
-                    Profile
+                    Mon Profil
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem className="rounded-xl m-1 hover:bg-blue-50">
                     <Settings className="w-4 h-4 mr-2" />
-                    Settings
+                    Paramètres
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={signOut}>
+                  <DropdownMenuItem onClick={signOut} className="rounded-xl m-1 hover:bg-red-50 text-red-600">
                     <LogOut className="w-4 h-4 mr-2" />
-                    Sign Out
+                    Déconnexion
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Button variant="ghost" size="sm" onClick={handleSignInClick}>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleSignInClick}
+                className="bg-gradient-to-r from-emerald-50 to-blue-50 hover:from-emerald-100 hover:to-blue-100 border border-emerald-200/50 text-gray-700 rounded-xl px-4 py-2 transition-all duration-300"
+              >
                 <User className="w-4 h-4 mr-2" />
-                <span className="hidden lg:inline">Sign In</span>
+                <span className="hidden lg:inline font-medium">Connexion</span>
               </Button>
             )}
-            <Button asChild variant="outline" size="sm" className="relative">
+            <Button
+              asChild
+              className="relative bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white border-0 rounded-xl px-4 py-2 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+            >
               <Link to="/cart">
                 <ShoppingCart className="w-4 h-4 mr-2" />
-                <span className="hidden lg:inline">Panier</span>
+                <span className="hidden lg:inline font-medium">Panier</span>
                 {state.totalItems > 0 && (
                   <Badge
-                    variant="destructive"
-                    className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center text-xs p-0"
+                    className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center text-xs p-0 bg-red-500 text-white border-2 border-white rounded-full animate-pulse"
                   >
                     {state.totalItems}
                   </Badge>
