@@ -237,25 +237,36 @@ export default function Index() {
       </section>
 
       {/* Featured Dishes */}
-      <section className="py-24 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute top-0 left-1/4 w-72 h-72 bg-gradient-to-br from-emerald-100/50 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-gradient-to-br from-blue-100/50 to-transparent rounded-full blur-3xl"></div>
+      <section className="py-32 bg-gradient-to-b from-white via-emerald-50/30 to-white relative overflow-hidden">
+        {/* Enhanced Background decoration */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-emerald-200/40 to-transparent rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-200/40 to-transparent rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-purple-200/30 to-transparent rounded-full blur-2xl animate-spin-slow"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-6 mb-16 animate-in fade-in duration-1000">
-            <Badge className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white border-0 px-6 py-2">
-              <Sparkles className="mr-2 w-4 h-4" />
-              Nos Spécialités
-            </Badge>
-            <h2 className="text-4xl lg:text-6xl font-black text-gray-900">
-              <span className="bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
+          <div className="text-center space-y-8 mb-20 animate-in fade-in duration-1000">
+            <div className="flex items-center justify-center space-x-4">
+              <div className="w-16 h-1 bg-gradient-to-r from-transparent via-emerald-500 to-transparent rounded-full"></div>
+              <Badge className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white border-0 px-8 py-3 text-lg font-bold rounded-full shadow-xl">
+                <Sparkles className="mr-3 w-5 h-5 animate-pulse" />
+                Nos Spécialités Congolaises
+              </Badge>
+              <div className="w-16 h-1 bg-gradient-to-r from-transparent via-emerald-500 to-transparent rounded-full"></div>
+            </div>
+
+            <h2 className="text-5xl lg:text-7xl font-black text-gray-900 leading-tight">
+              <span className="bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Plats Vedettes
               </span>
+              <br />
+              <span className="text-3xl lg:text-4xl font-light text-gray-700">
+                préparés avec passion
+              </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Découvrez notre sélection de spécialités congolaises authentiques,
-              préparées avec passion par nos chefs experts
+
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Découvrez notre sélection exclusive de spécialités congolaises authentiques,
+              chaque plat raconte une histoire de tradition et d'excellence culinaire
             </p>
           </div>
 
