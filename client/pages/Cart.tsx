@@ -61,26 +61,41 @@ export default function Cart() {
   if (state.items.length === 0) {
     return (
       <Layout>
-        <div className="min-h-[60vh] flex items-center justify-center bg-background">
-          <div className="text-center space-y-6 max-w-md mx-auto px-4">
-            <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto">
-              <ShoppingCart className="w-12 h-12 text-muted-foreground" />
+        <div className="min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-white via-emerald-50/30 to-white">
+          <div className="text-center space-y-8 max-w-lg mx-auto px-6 animate-in fade-in duration-1000">
+            <div className="relative">
+              <div className="w-32 h-32 bg-gradient-to-br from-emerald-100 to-blue-100 rounded-full flex items-center justify-center mx-auto shadow-2xl">
+                <ShoppingCart className="w-16 h-16 text-emerald-500" />
+              </div>
+              <div className="absolute -top-2 -right-2 w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center animate-bounce">
+                <Sparkles className="w-6 h-6 text-white" />
+              </div>
             </div>
-            <div className="space-y-3">
-              <h2 className="text-2xl font-bold text-foreground">Votre panier est vide</h2>
-              <p className="text-muted-foreground">
-                Ajoutez quelques délicieux plats congolais à votre panier pour commencer.
+            <div className="space-y-4">
+              <h2 className="text-4xl font-black text-gray-900">Votre panier est vide</h2>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Découvrez nos délicieux plats congolais authentiques et ajoutez-les à votre panier pour commencer votre expérience culinaire.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button asChild>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                asChild
+                size="lg"
+                className="bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              >
                 <Link to="/menu">
-                  Voir le Menu
+                  <Gift className="w-5 h-5 mr-2" />
+                  Découvrir le Menu
                 </Link>
               </Button>
-              <Button asChild variant="outline">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50 px-8 py-4 text-lg font-semibold transition-all duration-300"
+              >
                 <Link to="/">
-                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  <ArrowLeft className="w-5 h-5 mr-2" />
                   Retour à l'accueil
                 </Link>
               </Button>
