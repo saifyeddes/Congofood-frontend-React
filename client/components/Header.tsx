@@ -160,53 +160,73 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <nav className="flex flex-col space-y-4">
-              <Link
-                to="/"
-                className="text-foreground hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                to="/menu"
-                className="text-foreground hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Menu
-              </Link>
-              <Link
-                to="/contact"
-                className="text-foreground hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </Link>
-              <div className="pt-4 border-t border-border">
-                <Button variant="ghost" size="sm" className="w-full justify-start mb-2">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Call Now
+          <div className="md:hidden py-6 border-t border-gray-200/50 bg-gradient-to-b from-white to-gray-50/50 animate-in slide-in-from-top duration-300">
+            <nav className="flex flex-col space-y-2 px-2">
+              {[
+                { to: "/", label: "Accueil" },
+                { to: "/menu", label: "Menu" },
+                { to: "/contact", label: "Contact" }
+              ].map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={`px-4 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                    location.pathname === link.to
+                      ? "bg-gradient-to-r from-emerald-500 to-blue-500 text-white shadow-lg"
+                      : "text-gray-700 hover:bg-emerald-50 hover:text-emerald-600"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+
+              <div className="pt-4 mt-4 border-t border-gray-200/50 space-y-3">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="w-full justify-start bg-gradient-to-r from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100 text-gray-700 rounded-xl py-3"
+                >
+                  <Phone className="w-4 h-4 mr-3" />
+                  +243 123 456 789
                 </Button>
+
                 {authState.isAuthenticated ? (
                   <>
-                    <Button variant="ghost" size="sm" className="w-full justify-start mb-2">
-                      <User className="w-4 h-4 mr-2" />
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="w-full justify-start bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 text-gray-700 rounded-xl py-3"
+                    >
+                      <User className="w-4 h-4 mr-3" />
                       {authState.user?.firstName} {authState.user?.lastName}
                     </Button>
-                    <Button variant="ghost" size="sm" className="w-full justify-start" onClick={signOut}>
-                      <LogOut className="w-4 h-4 mr-2" />
-                      Sign Out
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="w-full justify-start bg-gradient-to-r from-red-50 to-pink-50 hover:from-red-100 hover:to-pink-100 text-red-600 rounded-xl py-3"
+                      onClick={signOut}
+                    >
+                      <LogOut className="w-4 h-4 mr-3" />
+                      Déconnexion
                     </Button>
                   </>
                 ) : (
                   <>
-                    <Button variant="ghost" size="sm" className="w-full justify-start mb-2" onClick={handleSignInClick}>
-                      <User className="w-4 h-4 mr-2" />
-                      Sign In
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="w-full justify-start bg-gradient-to-r from-emerald-50 to-blue-50 hover:from-emerald-100 hover:to-blue-100 text-gray-700 rounded-xl py-3"
+                      onClick={handleSignInClick}
+                    >
+                      <User className="w-4 h-4 mr-3" />
+                      Connexion
                     </Button>
-                    <Button variant="outline" size="sm" className="w-full justify-start" onClick={handleSignUpClick}>
-                      Sign Up
+                    <Button
+                      className="w-full justify-start bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white rounded-xl py-3 shadow-lg"
+                      onClick={handleSignUpClick}
+                    >
+                      Créer un compte
                     </Button>
                   </>
                 )}
