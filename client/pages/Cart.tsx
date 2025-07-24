@@ -237,132 +237,139 @@ export default function Cart() {
               </Card>
 
               {/* Delivery Information */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <Truck className="w-5 h-5 mr-2" />
+              <Card className="border-0 shadow-2xl bg-white/90 backdrop-blur-sm overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+                  <CardTitle className="text-2xl font-bold flex items-center">
+                    <Truck className="w-6 h-6 mr-3" />
                     Informations de Livraison
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="address">Adresse de livraison</Label>
+                <CardContent className="p-8 space-y-6">
+                  <div className="space-y-3">
+                    <Label htmlFor="address" className="text-gray-700 font-semibold text-lg">
+                      Adresse de livraison
+                    </Label>
                     <div className="relative">
-                      <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                      <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-emerald-500 w-5 h-5" />
                       <Input
                         id="address"
-                        placeholder="Entrez votre adresse complète"
+                        placeholder="Entrez votre adresse complète..."
                         value={deliveryAddress}
                         onChange={(e) => setDeliveryAddress(e.target.value)}
-                        className="pl-10"
+                        className="pl-12 pr-4 py-4 text-lg border-2 border-gray-200 rounded-2xl focus:border-emerald-500 focus:ring-emerald-500/20 transition-all duration-300"
                       />
                     </div>
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Numéro de téléphone</Label>
+                  <div className="space-y-3">
+                    <Label htmlFor="phone" className="text-gray-700 font-semibold text-lg">
+                      Numéro de téléphone
+                    </Label>
                     <Input
                       id="phone"
-                      placeholder="Votre numéro de téléphone"
+                      placeholder="+243 123 456 789"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
+                      className="py-4 text-lg border-2 border-gray-200 rounded-2xl focus:border-emerald-500 focus:ring-emerald-500/20 transition-all duration-300"
                     />
                   </div>
-                  <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                    <Clock className="w-4 h-4" />
-                    <span>Temps de livraison estimé: 30-45 minutes</span>
+                  <div className="flex items-center space-x-3 bg-gradient-to-r from-emerald-50 to-blue-50 p-4 rounded-2xl border border-emerald-200">
+                    <Clock className="w-5 h-5 text-emerald-600" />
+                    <span className="text-gray-700 font-medium">Livraison express: 30-45 minutes</span>
                   </div>
                 </CardContent>
               </Card>
             </div>
 
             {/* Order Summary */}
-            <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Résumé de la Commande</CardTitle>
+            <div className="space-y-8 animate-in slide-in-from-right duration-1000">
+              <Card className="border-0 shadow-2xl bg-gradient-to-br from-emerald-50 to-blue-50 overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white">
+                  <CardTitle className="text-2xl font-bold">Résumé de la Commande</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex justify-between">
-                    <span>Sous-total</span>
-                    <span>${state.totalPrice.toFixed(2)}</span>
+                <CardContent className="p-8 space-y-6">
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-3 bg-white/70 rounded-xl">
+                      <span className="font-medium text-gray-700">Sous-total</span>
+                      <span className="font-bold text-gray-900">${state.totalPrice.toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-white/70 rounded-xl">
+                      <span className="font-medium text-gray-700">Frais de livraison</span>
+                      <span>
+                        {deliveryFee === 0 ? (
+                          <Badge className="bg-green-500 text-white animate-pulse">Gratuit !</Badge>
+                        ) : (
+                          <span className="font-bold text-gray-900">${deliveryFee.toFixed(2)}</span>
+                        )}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-white/70 rounded-xl">
+                      <span className="font-medium text-gray-700">Taxes (10%)</span>
+                      <span className="font-bold text-gray-900">${tax.toFixed(2)}</span>
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span>Frais de livraison</span>
-                    <span>
-                      {deliveryFee === 0 ? (
-                        <Badge variant="secondary">Gratuit</Badge>
-                      ) : (
-                        `$${deliveryFee.toFixed(2)}`
-                      )}
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Taxes (10%)</span>
-                    <span>${tax.toFixed(2)}</span>
-                  </div>
-                  <Separator />
-                  <div className="flex justify-between font-semibold text-lg">
+                  <Separator className="bg-gradient-to-r from-emerald-500 to-blue-500 h-0.5" />
+                  <div className="flex justify-between items-center p-4 bg-gradient-to-r from-emerald-500 to-blue-500 text-white rounded-2xl font-bold text-2xl">
                     <span>Total</span>
                     <span>${finalTotal.toFixed(2)}</span>
                   </div>
                   {deliveryFee > 0 && (
-                    <p className="text-sm text-muted-foreground">
-                      Livraison gratuite pour les commandes de $20+
-                    </p>
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+                      <p className="text-sm text-yellow-700 font-medium flex items-center">
+                        <Gift className="w-4 h-4 mr-2" />
+                        Livraison gratuite pour les commandes de $20+
+                      </p>
+                    </div>
                   )}
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <CreditCard className="w-5 h-5 mr-2" />
+              <Card className="border-0 shadow-2xl bg-white/90 backdrop-blur-sm overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-purple-500 to-pink-500 text-white">
+                  <CardTitle className="text-2xl font-bold flex items-center">
+                    <CreditCard className="w-6 h-6 mr-3" />
                     Mode de Paiement
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="space-y-2">
-                    <label className="flex items-center space-x-2 cursor-pointer">
+                <CardContent className="p-8 space-y-4">
+                  {[
+                    { value: "cash", label: "Paiement à la livraison (Espèces)", icon: "💰" },
+                    { value: "mobile", label: "Mobile Money", icon: "📱" },
+                    { value: "card", label: "Carte de crédit", icon: "💳" }
+                  ].map((payment) => (
+                    <label
+                      key={payment.value}
+                      className={`flex items-center space-x-4 p-4 rounded-2xl border-2 cursor-pointer transition-all duration-300 ${
+                        paymentMethod === payment.value
+                          ? "border-emerald-500 bg-emerald-50"
+                          : "border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/50"
+                      }`}
+                    >
                       <input
                         type="radio"
                         name="payment"
-                        value="cash"
-                        checked={paymentMethod === "cash"}
+                        value={payment.value}
+                        checked={paymentMethod === payment.value}
                         onChange={(e) => setPaymentMethod(e.target.value)}
+                        className="hidden"
                       />
-                      <span>Paiement à la livraison (Espèces)</span>
+                      <div className="text-2xl">{payment.icon}</div>
+                      <span className="font-medium text-gray-700 flex-1">{payment.label}</span>
+                      {paymentMethod === payment.value && (
+                        <CheckCircle className="w-5 h-5 text-emerald-500" />
+                      )}
                     </label>
-                    <label className="flex items-center space-x-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="payment"
-                        value="mobile"
-                        checked={paymentMethod === "mobile"}
-                        onChange={(e) => setPaymentMethod(e.target.value)}
-                      />
-                      <span>Mobile Money</span>
-                    </label>
-                    <label className="flex items-center space-x-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="payment"
-                        value="card"
-                        checked={paymentMethod === "card"}
-                        onChange={(e) => setPaymentMethod(e.target.value)}
-                      />
-                      <span>Carte de crédit</span>
-                    </label>
-                  </div>
+                  ))}
                 </CardContent>
               </Card>
 
-              <Button 
+              <Button
                 onClick={handleCheckout}
-                className="w-full"
+                className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white py-4 text-xl font-bold shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 rounded-2xl"
                 size="lg"
                 disabled={!deliveryAddress || !phoneNumber}
               >
-                Passer la Commande
+                <Shield className="w-6 h-6 mr-3" />
+                Finaliser la Commande
               </Button>
             </div>
           </div>
