@@ -108,24 +108,44 @@ export default function Cart() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gradient-to-b from-white via-emerald-50/30 to-white">
         {/* Header */}
-        <section className="bg-gradient-to-r from-primary/10 to-accent/10 py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center space-x-4">
-              <Button asChild variant="ghost" size="sm">
+        <section className="relative bg-gradient-to-br from-emerald-50 via-blue-50 to-purple-50 py-20 overflow-hidden">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-300/30 to-pink-300/30 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-emerald-300/30 to-blue-300/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          </div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between mb-8 animate-in slide-in-from-left duration-1000">
+              <Button
+                asChild
+                variant="outline"
+                className="bg-white/80 backdrop-blur-sm border-emerald-200 hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-300 px-6 py-3"
+              >
                 <Link to="/menu">
-                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  <ArrowLeft className="w-5 h-5 mr-2" />
                   Continuer les achats
                 </Link>
               </Button>
             </div>
-            <div className="text-center space-y-4 mt-6">
-              <h1 className="text-3xl lg:text-4xl font-bold text-foreground">
-                Votre Panier
+
+            <div className="text-center space-y-6 animate-in fade-in duration-1000 delay-300">
+              <Badge className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white border-0 px-6 py-2 text-base font-bold">
+                <ShoppingCart className="mr-2 w-5 h-5" />
+                Votre Commande
+              </Badge>
+
+              <h1 className="text-5xl lg:text-6xl font-black text-gray-900 leading-tight">
+                <span className="bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Panier d'Achat
+                </span>
               </h1>
-              <p className="text-lg text-muted-foreground">
-                {state.totalItems} article{state.totalItems > 1 ? 's' : ''} dans votre panier
+
+              <p className="text-xl text-gray-600 leading-relaxed">
+                {state.totalItems} article{state.totalItems > 1 ? 's' : ''} sélectionné{state.totalItems > 1 ? 's' : ''} •
+                Total: <span className="font-bold text-emerald-600">${state.totalPrice.toFixed(2)}</span>
               </p>
             </div>
           </div>
