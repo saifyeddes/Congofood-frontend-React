@@ -9,16 +9,20 @@ import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/CartContext";
 import { useAuth } from "@/contexts/AuthContext";
-import { 
-  ShoppingCart, 
-  Plus, 
-  Minus, 
-  Trash2, 
+import {
+  ShoppingCart,
+  Plus,
+  Minus,
+  Trash2,
   ArrowLeft,
   CreditCard,
   Truck,
   MapPin,
-  Clock
+  Clock,
+  Sparkles,
+  Gift,
+  Shield,
+  CheckCircle
 } from "lucide-react";
 
 export default function Cart() {
