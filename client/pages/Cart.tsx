@@ -151,61 +151,82 @@ export default function Cart() {
           </div>
         </section>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Cart Items */}
-            <div className="lg:col-span-2 space-y-6">
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <CardTitle>Articles Commandés</CardTitle>
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    onClick={clearCart}
-                    className="text-destructive hover:text-destructive"
-                  >
-                    <Trash2 className="w-4 h-4 mr-2" />
-                    Vider le panier
-                  </Button>
+            <div className="lg:col-span-2 space-y-8 animate-in slide-in-from-left duration-1000">
+              <Card className="border-0 shadow-2xl bg-white/90 backdrop-blur-sm overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white">
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-2xl font-bold flex items-center">
+                      <Gift className="w-6 h-6 mr-3" />
+                      Articles Sélectionnés
+                    </CardTitle>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={clearCart}
+                      className="text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300"
+                    >
+                      <Trash2 className="w-4 h-4 mr-2" />
+                      Vider
+                    </Button>
+                  </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  {state.items.map((item) => (
-                    <div key={item.id} className="flex items-center space-x-4 p-4 border rounded-lg">
-                      <img 
-                        src={item.image} 
-                        alt={item.name}
-                        className="w-16 h-16 object-cover rounded-lg"
-                      />
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-foreground">{item.name}</h3>
-                        <p className="text-sm text-muted-foreground">${item.price.toFixed(2)} chacun</p>
+                <CardContent className="p-8 space-y-6">
+                  {state.items.map((item, index) => (
+                    <div
+                      key={item.id}
+                      className="flex items-center space-x-6 p-6 bg-gradient-to-r from-gray-50 to-emerald-50/50 rounded-2xl border border-emerald-100 hover:shadow-lg transition-all duration-300 animate-in slide-in-from-bottom duration-1000"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <div className="relative">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="w-20 h-20 object-cover rounded-2xl shadow-lg"
+                        />
+                        <div className="absolute -top-2 -right-2 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
+                          <CheckCircle className="w-4 h-4 text-white" />
+                        </div>
                       </div>
-                      <div className="flex items-center space-x-2">
+
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-gray-900 mb-1">{item.name}</h3>
+                        <p className="text-emerald-600 font-semibold">${item.price.toFixed(2)} chacun</p>
+                      </div>
+
+                      <div className="flex items-center space-x-3 bg-white rounded-2xl p-2 shadow-inner">
                         <Button
                           size="sm"
                           variant="outline"
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          className="w-10 h-10 rounded-xl border-2 hover:bg-red-50 hover:border-red-200"
                         >
                           <Minus className="w-4 h-4" />
                         </Button>
-                        <span className="font-medium min-w-[2rem] text-center">
+                        <span className="font-bold text-lg min-w-[3rem] text-center text-gray-900">
                           {item.quantity}
                         </span>
                         <Button
                           size="sm"
                           variant="outline"
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          className="w-10 h-10 rounded-xl border-2 hover:bg-emerald-50 hover:border-emerald-200"
                         >
                           <Plus className="w-4 h-4" />
                         </Button>
                       </div>
+
                       <div className="text-right">
-                        <p className="font-semibold">${(item.price * item.quantity).toFixed(2)}</p>
+                        <p className="text-2xl font-black text-emerald-600 mb-2">
+                          ${(item.price * item.quantity).toFixed(2)}
+                        </p>
                         <Button
                           size="sm"
                           variant="ghost"
                           onClick={() => removeItem(item.id)}
-                          className="text-destructive hover:text-destructive p-1"
+                          className="text-red-500 hover:text-red-700 hover:bg-red-50 rounded-xl p-2"
                         >
                           <Trash2 className="w-4 h-4" />
                         </Button>
