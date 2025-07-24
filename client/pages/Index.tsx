@@ -294,63 +294,73 @@ export default function Index() {
             ))}
           </div>
 
-          {/* Dishes Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Enhanced Dishes Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {filteredDishes.map((dish, index) => (
               <Card
                 key={dish.id}
-                className="group hover:shadow-2xl transition-all duration-500 overflow-hidden border-0 bg-white/80 backdrop-blur-sm animate-in slide-in-from-bottom duration-1000"
+                className="group hover:shadow-2xl transition-all duration-700 overflow-hidden border-0 bg-white backdrop-blur-sm hover:-translate-y-4 hover:scale-105 animate-in slide-in-from-bottom duration-1000 rounded-3xl"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <CardHeader className="p-0">
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden rounded-t-3xl">
                     <img
                       src={dish.image}
                       alt={dish.name}
-                      className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent group-hover:from-black/40 transition-all duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10 group-hover:from-black/50 transition-all duration-500"></div>
 
-                    <Badge className="absolute top-4 left-4 bg-white/95 text-gray-900 border-0 shadow-lg">
-                      <Clock className="w-3 h-3 mr-1" />
+                    {/* Enhanced Time Badge */}
+                    <Badge className="absolute top-6 left-6 bg-white/95 text-gray-900 border-0 shadow-xl rounded-2xl px-4 py-2 font-bold">
+                      <Clock className="w-4 h-4 mr-2 text-emerald-600" />
                       {dish.preparationTime}
                     </Badge>
 
-                    <div className="absolute top-4 right-4 w-12 h-12 bg-white/95 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <Heart className="w-5 h-5 text-gray-600 group-hover:text-red-500 transition-colors duration-300" />
+                    {/* Enhanced Heart Button */}
+                    <div className="absolute top-6 right-6 w-14 h-14 bg-white/95 rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 cursor-pointer">
+                      <Heart className="w-6 h-6 text-gray-600 group-hover:text-red-500 group-hover:fill-red-500 transition-all duration-300" />
                     </div>
+
+                    {/* Popular Badge */}
+                    {dish.isPopular && (
+                      <Badge className="absolute bottom-4 left-6 bg-gradient-to-r from-orange-500 to-red-500 text-white border-0 shadow-lg rounded-full px-4 py-2 animate-pulse">
+                        <Sparkles className="w-3 h-3 mr-1" />
+                        Populaire
+                      </Badge>
+                    )}
                   </div>
                 </CardHeader>
 
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
+                <CardContent className="p-8">
+                  <div className="flex items-start justify-between mb-4">
+                    <CardTitle className="text-2xl font-black text-gray-900 group-hover:text-emerald-600 transition-colors duration-300 flex-1">
                       {dish.name}
                     </CardTitle>
-                    <div className="flex items-center space-x-1 bg-yellow-50 px-2 py-1 rounded-full">
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="text-sm font-bold text-yellow-600">{dish.rating}</span>
+                    <div className="flex items-center space-x-2 bg-gradient-to-r from-yellow-50 to-orange-50 px-3 py-2 rounded-2xl ml-4">
+                      <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      <span className="text-lg font-black text-yellow-600">{dish.rating}</span>
                     </div>
                   </div>
 
-                  <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed">
+                  <p className="text-gray-600 mb-6 line-clamp-3 leading-relaxed text-base">
                     {dish.description}
                   </p>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-black text-emerald-600">${dish.price}</span>
-                    <Badge variant="outline" className="text-xs font-medium">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-3xl font-black text-emerald-600">${dish.price}</span>
+                    <Badge className="bg-gradient-to-r from-emerald-100 to-blue-100 text-emerald-700 border border-emerald-200 px-4 py-1 rounded-full font-bold">
                       Authentique
                     </Badge>
                   </div>
                 </CardContent>
 
-                <CardFooter className="p-6 pt-0">
+                <CardFooter className="p-8 pt-0">
                   <Button
-                    className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white font-semibold py-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+                    className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white font-bold py-4 text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 rounded-2xl"
                     onClick={() => addToCart(dish)}
                   >
-                    <Plus className="w-5 h-5 mr-2" />
+                    <Plus className="w-6 h-6 mr-3" />
                     Ajouter au Panier
                   </Button>
                 </CardFooter>
