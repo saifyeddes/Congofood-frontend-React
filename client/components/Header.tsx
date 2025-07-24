@@ -43,23 +43,35 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-foreground hover:text-primary transition-colors">
-              Home
-            </Link>
-            <Link to="/menu" className="text-foreground hover:text-primary transition-colors">
-              Menu
-            </Link>
-            <Link to="/contact" className="text-foreground hover:text-primary transition-colors">
-              Contact
-            </Link>
+          <nav className="hidden md:flex items-center space-x-2">
+            {[
+              { to: "/", label: "Accueil" },
+              { to: "/menu", label: "Menu" },
+              { to: "/contact", label: "Contact" }
+            ].map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`px-4 py-2 rounded-xl font-semibold transition-all duration-300 ${
+                  location.pathname === link.to
+                    ? "bg-gradient-to-r from-emerald-500 to-blue-500 text-white shadow-lg"
+                    : "text-gray-700 hover:bg-emerald-50 hover:text-emerald-600"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" size="sm" className="text-foreground">
+          <div className="hidden md:flex items-center space-x-3">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-all duration-300 rounded-xl px-4 py-2"
+            >
               <Phone className="w-4 h-4 mr-2" />
-              <span className="hidden lg:inline">Call Now</span>
+              <span className="hidden lg:inline font-medium">+243 123 456 789</span>
             </Button>
             {authState.isAuthenticated ? (
               <DropdownMenu>
