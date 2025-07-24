@@ -26,17 +26,19 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white shadow-sm border-b border-border sticky top-0 z-50">
+    <header className="bg-white/95 backdrop-blur-md shadow-xl border-b border-gray-200/50 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg">C</span>
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <span className="text-white font-black text-xl">C</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-foreground">Congo Food</h1>
-              <p className="text-xs text-muted-foreground">Saveurs Authentiques • Livraison Rapide</p>
+              <h1 className="text-2xl font-black bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
+                Congo Food
+              </h1>
+              <p className="text-sm text-gray-600 font-medium">Saveurs Authentiques • Livraison Express</p>
             </div>
           </Link>
 
