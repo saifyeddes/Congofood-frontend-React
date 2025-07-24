@@ -131,14 +131,16 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-2">
-            <Button asChild variant="outline" size="sm" className="relative">
+          <div className="md:hidden flex items-center space-x-3">
+            <Button
+              asChild
+              className="relative bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white border-0 rounded-xl p-2 shadow-lg"
+            >
               <Link to="/cart">
-                <ShoppingCart className="w-4 h-4" />
+                <ShoppingCart className="w-5 h-5" />
                 {state.totalItems > 0 && (
                   <Badge
-                    variant="destructive"
-                    className="absolute -top-2 -right-2 w-4 h-4 flex items-center justify-center text-xs p-0"
+                    className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center text-xs p-0 bg-red-500 text-white border-2 border-white rounded-full animate-pulse"
                   >
                     {state.totalItems}
                   </Badge>
@@ -149,6 +151,7 @@ export default function Header() {
               variant="ghost"
               size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-xl p-2 transition-all duration-300"
             >
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>
