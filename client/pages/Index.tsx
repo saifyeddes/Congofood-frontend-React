@@ -100,33 +100,41 @@ export default function Index() {
       <section className="relative min-h-screen bg-gradient-to-br from-emerald-50 via-blue-50 to-purple-50 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-300/30 to-pink-300/30 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-emerald-300/30 to-blue-300/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-orange-300/20 to-red-300/20 rounded-full blur-3xl animate-spin-slow"></div>
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-purple-300/20 to-pink-300/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-emerald-300/20 to-blue-300/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/3 left-1/3 w-64 h-64 bg-gradient-to-br from-orange-300/15 to-red-300/15 rounded-full blur-2xl animate-spin-slow"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-48 h-48 bg-gradient-to-br from-cyan-300/15 to-blue-300/15 rounded-full blur-2xl animate-spin-slow delay-500"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-10 animate-in slide-in-from-left duration-1000">
-              <div className="space-y-6">
-                <Badge className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white border-0 px-6 py-2 text-sm animate-bounce">
-                  <Sparkles className="mr-2 w-4 h-4" />
-                  Livraison Express en 30 minutes
-                </Badge>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center min-h-[80vh]">
+            <div className="space-y-12 animate-in slide-in-from-left duration-1000">
+              <div className="space-y-8">
+                <div className="flex items-center space-x-4">
+                  <Badge className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white border-0 px-8 py-3 text-base font-bold rounded-full shadow-lg animate-bounce">
+                    <Sparkles className="mr-3 w-5 h-5" />
+                    Livraison Express • 30 minutes
+                  </Badge>
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                </div>
 
-                <h1 className="text-5xl lg:text-7xl font-black text-gray-900 leading-tight">
-                  <span className="bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-pulse">
-                    Saveurs du Congo
+                <h1 className="text-6xl lg:text-8xl font-black text-gray-900 leading-[0.9]">
+                  <span className="bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    Saveurs
                   </span>
                   <br />
-                  <span className="text-gray-700 text-4xl lg:text-5xl font-light">
+                  <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    du Congo
+                  </span>
+                  <br />
+                  <span className="text-gray-700 text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-transparent">
                     à votre porte
                   </span>
                 </h1>
 
-                <p className="text-xl lg:text-2xl text-gray-600 max-w-xl leading-relaxed">
-                  Découvrez l'art culinaire congolais avec nos plats authentiques,
-                  préparés par des chefs passionnés et livrés avec amour.
+                <p className="text-2xl lg:text-3xl text-gray-600 max-w-2xl leading-relaxed font-light">
+                  Découvrez l'art culinaire congolais authentique avec nos plats préparés par des
+                  <span className="font-bold text-emerald-600"> chefs passionnés</span> et livrés avec amour.
                 </p>
               </div>
 
@@ -134,83 +142,95 @@ export default function Index() {
                 <Button
                   asChild
                   size="lg"
-                  className="text-lg px-10 py-4 bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300"
+                  className="text-xl px-12 py-6 bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-500 rounded-2xl font-bold"
                 >
                   <Link to="/menu">
-                    <ChefHat className="mr-2 w-6 h-6" />
+                    <ChefHat className="mr-3 w-7 h-7" />
                     Commander Maintenant
-                    <ArrowRight className="ml-2 w-6 h-6" />
+                    <ArrowRight className="ml-3 w-7 h-7" />
                   </Link>
                 </Button>
 
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-lg px-10 py-4 border-2 border-gray-300 hover:border-emerald-500 hover:bg-emerald-50 transition-all duration-300"
+                  className="text-xl px-12 py-6 border-3 border-emerald-500 text-emerald-600 hover:bg-emerald-50 hover:scale-105 transition-all duration-300 rounded-2xl font-bold"
                 >
-                  <Phone className="mr-2 w-6 h-6" />
+                  <Phone className="mr-3 w-7 h-7" />
                   (+243) 123-456-789
                 </Button>
               </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-8 pt-8">
+              {/* Enhanced Stats */}
+              <div className="grid grid-cols-3 gap-8 pt-12">
                 {[
-                  { number: "30", label: "Min. Livraison", icon: Clock },
-                  { number: "4.9", label: "Note Clients", icon: Star },
-                  { number: "15K+", label: "Clients Heureux", icon: Heart }
+                  { number: "30", suffix: "min", label: "Livraison", icon: Clock, color: "from-emerald-500 to-green-500" },
+                  { number: "4.9", suffix: "★", label: "Note Clients", icon: Star, color: "from-yellow-500 to-orange-500" },
+                  { number: "15K", suffix: "+", label: "Clients Heureux", icon: Heart, color: "from-pink-500 to-red-500" }
                 ].map((stat, index) => (
                   <div key={index} className="text-center group animate-in fade-in duration-1000" style={{ animationDelay: `${index * 200}ms` }}>
-                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
-                      <stat.icon className="w-8 h-8 text-emerald-600" />
+                    <div className={`w-20 h-20 bg-gradient-to-br ${stat.color} rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl`}>
+                      <stat.icon className="w-10 h-10 text-white" />
                     </div>
-                    <div className="text-3xl font-black text-gray-900 mb-1">{stat.number}</div>
-                    <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                    <div className="text-4xl font-black text-gray-900 mb-2">
+                      {stat.number}<span className="text-2xl">{stat.suffix}</span>
+                    </div>
+                    <div className="text-sm text-gray-600 font-bold uppercase tracking-wider">{stat.label}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Hero Image */}
+            {/* Enhanced Hero Image */}
             <div className="relative animate-in slide-in-from-right duration-1000 delay-300">
               <div className="relative z-10 transform hover:scale-105 transition-transform duration-700">
-                <div className="rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-white to-gray-100 p-4">
+                {/* Main Image Container */}
+                <div className="rounded-[2rem] overflow-hidden shadow-2xl bg-gradient-to-br from-white to-gray-100 p-6">
                   <img
-                    src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop&crop=center"
-                    alt="Délicieux plats congolais"
-                    className="w-full h-80 lg:h-96 object-cover rounded-2xl"
+                    src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&h=500&fit=crop&crop=center"
+                    alt="Délicieux plats congolais authentiques"
+                    className="w-full h-96 lg:h-[28rem] object-cover rounded-2xl"
                   />
                 </div>
 
-                {/* Floating Cards */}
-                <div className="absolute -top-4 -left-4 bg-white rounded-2xl shadow-xl p-4 animate-float">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center">
-                      <Leaf className="w-6 h-6 text-white" />
+                {/* Enhanced Floating Cards */}
+                <div className="absolute -top-6 -left-6 bg-white rounded-3xl shadow-2xl p-6 animate-float border border-green-100">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center shadow-lg">
+                      <Leaf className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-gray-900">100% Frais</div>
-                      <div className="text-xs text-gray-600">Ingrédients locaux</div>
+                      <div className="text-lg font-black text-gray-900">100% Frais</div>
+                      <div className="text-sm text-gray-600 font-medium">Ingrédients locaux premium</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl p-4 animate-float delay-1000">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center">
-                      <Award className="w-6 h-6 text-white" />
+                <div className="absolute -bottom-6 -right-6 bg-white rounded-3xl shadow-2xl p-6 animate-float delay-1000 border border-orange-100">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-500 rounded-2xl flex items-center justify-center shadow-lg">
+                      <Award className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-gray-900">Chef Expert</div>
-                      <div className="text-xs text-gray-600">Cuisine authentique</div>
+                      <div className="text-lg font-black text-gray-900">Chef Expert</div>
+                      <div className="text-sm text-gray-600 font-medium">Cuisine authentique</div>
                     </div>
+                  </div>
+                </div>
+
+                {/* Additional floating element */}
+                <div className="absolute top-1/2 -right-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl shadow-xl p-4 animate-float delay-500">
+                  <div className="text-center text-white">
+                    <div className="text-2xl font-black">30min</div>
+                    <div className="text-xs font-bold">GARANTI</div>
                   </div>
                 </div>
               </div>
 
-              {/* Background decoration */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-200/50 to-blue-200/50 rounded-3xl transform rotate-6 scale-105 -z-10"></div>
-              <div className="absolute inset-0 bg-gradient-to-tl from-purple-200/50 to-pink-200/50 rounded-3xl transform -rotate-3 scale-95 -z-20"></div>
+              {/* Enhanced Background decorations */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-200/30 to-blue-200/30 rounded-[2.5rem] transform rotate-6 scale-105 -z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-tl from-purple-200/30 to-pink-200/30 rounded-[2.5rem] transform -rotate-3 scale-95 -z-20"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-200/20 to-yellow-200/20 rounded-[2.5rem] transform rotate-2 scale-110 -z-30"></div>
             </div>
           </div>
         </div>
