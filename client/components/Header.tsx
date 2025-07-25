@@ -89,11 +89,25 @@ export default function Header() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56 border-0 shadow-2xl bg-white/95 backdrop-blur-md rounded-2xl">
-                  <DropdownMenuItem className="rounded-xl m-1 hover:bg-emerald-50">
-                    <User className="w-4 h-4 mr-2" />
-                    Mon Profil
+                  <DropdownMenuItem asChild className="rounded-xl m-1 hover:bg-emerald-50">
+                    <Link to="/profile">
+                      <User className="w-4 h-4 mr-2" />
+                      Mon Profil
+                    </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="rounded-xl m-1 hover:bg-blue-50">
+                  <DropdownMenuItem asChild className="rounded-xl m-1 hover:bg-blue-50">
+                    <Link to="/order-history">
+                      <Receipt className="w-4 h-4 mr-2" />
+                      Mes Commandes
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild className="rounded-xl m-1 hover:bg-purple-50">
+                    <Link to="/order-tracking">
+                      <Clock className="w-4 h-4 mr-2" />
+                      Suivi Commande
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="rounded-xl m-1 hover:bg-gray-50">
                     <Settings className="w-4 h-4 mr-2" />
                     Paramètres
                   </DropdownMenuItem>
