@@ -346,11 +346,16 @@ export default function Menu() {
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <CardHeader className="p-0">
-                      <div className="relative overflow-hidden">
+                      <div className="relative overflow-hidden bg-gray-100">
                         <img
                           src={item.image}
                           alt={item.name}
                           className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23f3f4f6'/%3E%3Ctext x='150' y='100' text-anchor='middle' dy='0.3em' font-family='Arial, sans-serif' font-size='14' fill='%236b7280'%3E${item.name}%3C/text%3E%3C/svg%3E`;
+                          }}
+                          loading="lazy"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent group-hover:from-black/40 transition-all duration-300"></div>
 
