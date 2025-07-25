@@ -213,12 +213,37 @@ export default function Header() {
                 {authState.isAuthenticated ? (
                   <>
                     <Button
+                      asChild
                       variant="ghost"
                       size="sm"
                       className="w-full justify-start bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 text-gray-700 rounded-xl py-3"
                     >
-                      <User className="w-4 h-4 mr-3" />
-                      {authState.user?.firstName} {authState.user?.lastName}
+                      <Link to="/profile" onClick={() => setIsMenuOpen(false)}>
+                        <User className="w-4 h-4 mr-3" />
+                        {authState.user?.firstName} {authState.user?.lastName}
+                      </Link>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="ghost"
+                      size="sm"
+                      className="w-full justify-start bg-gradient-to-r from-emerald-50 to-green-50 hover:from-emerald-100 hover:to-green-100 text-gray-700 rounded-xl py-3"
+                    >
+                      <Link to="/order-history" onClick={() => setIsMenuOpen(false)}>
+                        <Receipt className="w-4 h-4 mr-3" />
+                        Mes Commandes
+                      </Link>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="ghost"
+                      size="sm"
+                      className="w-full justify-start bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 text-gray-700 rounded-xl py-3"
+                    >
+                      <Link to="/order-tracking" onClick={() => setIsMenuOpen(false)}>
+                        <Clock className="w-4 h-4 mr-3" />
+                        Suivi Commande
+                      </Link>
                     </Button>
                     <Button
                       variant="ghost"
