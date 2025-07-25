@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
-import { ShoppingCart, Menu, X, Phone, User, LogOut, Settings } from "lucide-react";
+import { ShoppingCart, Menu, X, Phone, User, LogOut, Settings, Search, Calendar, Clock, Receipt } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useAuth } from "@/contexts/AuthContext";
 import AuthModal from "./auth/AuthModal";
