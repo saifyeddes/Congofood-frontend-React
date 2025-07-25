@@ -13,8 +13,8 @@ interface SignInFormProps {
 }
 
 export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false }: SignInFormProps) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("client@client.com");
+  const [password, setPassword] = useState("client@client.com");
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<{email?: string; password?: string; general?: string}>({});
 
