@@ -13,14 +13,14 @@ interface ProtectedRouteProps {
   redirectTo?: string;
 }
 
-export default function ProtectedRoute({ 
-  children, 
+export default function ProtectedRoute({
+  children,
   fallback,
-  redirectTo 
+  redirectTo
 }: ProtectedRouteProps) {
   const { state } = useAuth();
   const location = useLocation();
-  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(true);
 
   if (!state.isAuthenticated) {
     if (redirectTo) {
