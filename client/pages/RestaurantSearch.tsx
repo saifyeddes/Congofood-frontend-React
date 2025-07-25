@@ -531,6 +531,96 @@ export default function RestaurantSearch() {
                   </Button>
                 </div>
 
+                {/* Géolocalisation */}
+                <div className="mt-6 pt-6 border-t border-white/20">
+                  <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
+                    <Navigation className="w-5 h-5 mr-2" />
+                    Recherche par Localisation
+                  </h3>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    {/* Géolocalisation automatique */}
+                    <div className="space-y-3">
+                      <Button
+                        onClick={getCurrentLocation}
+                        disabled={isGettingLocation}
+                        className="w-full bg-emerald-500 hover:bg-emerald-600 text-white py-3"
+                      >
+                        {isGettingLocation ? (
+                          <>
+                            <RefreshCw className="w-5 h-5 mr-2 animate-spin" />
+                            Localisation...
+                          </>
+                        ) : (
+                          <>
+                            <Target className="w-5 h-5 mr-2" />
+                            Ma Position Actuelle
+                          </>
+                        )}
+                      </Button>
+                      {userLocation && (
+                        <div className="text-xs text-emerald-200 text-center">
+                          Position: {userLocation.lat.toFixed(4)}, {userLocation.lng.toFixed(4)}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Recherche manuelle */}
+                    <div className="space-y-3">
+                      <div className="flex space-x-2">
+                        <div className="relative flex-1">
+                          <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white w-4 h-4" />
+                          <Input
+                            placeholder="Ville (ex: Kinshasa, Lubumbashi...)"
+                            value={locationCity}
+                            onChange={(e) => setLocationCity(e.target.value)}
+                            className="pl-10 bg-white/20 border-white/30 text-white placeholder:text-white/70"
+                          />
+                        </div>
+                        <Button
+                          onClick={searchByCity}
+                          variant="outline"
+                          className="bg-white/20 border-white/30 text-white hover:bg-white/30"
+                        >
+                          <Search className="w-4 h-4" />
+                        </Button>
+                      </div>
+
+                      <Select value={locationCountry} onValueChange={setLocationCountry}>
+                        <SelectTrigger className="bg-white/20 border-white/30 text-white">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {countries.map(country => (
+                            <SelectItem key={country} value={country}>
+                              {country}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
+                  {/* Options de tri */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <label className="flex items-center space-x-2 text-white">
+                        <input
+                          type="checkbox"
+                          checked={sortByDistance}
+                          onChange={(e) => setSortByDistance(e.target.checked)}
+                          className="rounded"
+                        />
+                        <span className="text-sm">Trier par distance</span>
+                      </label>
+                    </div>
+
+                    <div className="text-xs text-emerald-200">
+                      {filteredRestaurants.length} restaurant{filteredRestaurants.length > 1 ? 's' : ''} trouvé{filteredRestaurants.length > 1 ? 's' : ''}
+                    </div>
+                  </div>
+                </div>
+
                 {/* Advanced Search */}
                 {showAdvancedSearch && (
                   <div className="mt-6 pt-6 border-t border-white/20">
