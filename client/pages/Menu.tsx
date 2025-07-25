@@ -139,7 +139,7 @@ export default function Menu() {
       name: "Fufu na Ndakala",
       description: "Fufu traditionnel accompagné de sauce aux petits poissons séchés",
       price: 12.99,
-      image: "https://images.unsplash.com/photo-1574484284002-952d92456975?w=300&h=200&fit=crop&crop=center",
+      image: "https://picsum.photos/300/200?random=9",
       rating: 4.6,
       category: "plats",
       preparationTime: "25-30 min"
@@ -149,7 +149,7 @@ export default function Menu() {
       name: "Bili na Madesu",
       description: "Riz parfumé aux haricots rouges et épices congolaises",
       price: 10.99,
-      image: "https://images.unsplash.com/photo-1512058556904-645dd1bb2de7?w=300&h=200&fit=crop&crop=center",
+      image: "https://picsum.photos/300/200?random=10",
       rating: 4.4,
       category: "accompagnements",
       preparationTime: "20-25 min",
