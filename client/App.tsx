@@ -56,6 +56,7 @@ const App = () => (
             <Route path="/reservations" element={<TableReservation />} />
             <Route path="/order-history" element={<OrderHistory />} />
             <Route path="/order-tracking" element={<OrderTracking />} />
+            <Route path="/profile" element={<Profile />} />
 
             {/* Admin Routes */}
             <Route path="/admin" element={<Dashboard />} />
