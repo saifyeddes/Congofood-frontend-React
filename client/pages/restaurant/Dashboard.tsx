@@ -26,7 +26,8 @@ import {
   Star,
   Activity,
   Target,
-  Utensils
+  Utensils,
+  BarChart3
 } from "lucide-react";
 
 export default function RestaurantDashboard() {
