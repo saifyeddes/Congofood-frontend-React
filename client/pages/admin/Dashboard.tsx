@@ -166,60 +166,70 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Commandes Totales</CardTitle>
-              <ShoppingBag className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stats.totalOrders}</div>
-              <p className="text-xs text-muted-foreground">
-                +{stats.ordersToday} aujourd'hui
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Livraisons Actives</CardTitle>
-              <Truck className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stats.activeDeliveries}</div>
-              <p className="text-xs text-muted-foreground">
-                {stats.availableDrivers} livreurs disponibles
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Clients Total</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{stats.totalCustomers}</div>
-              <p className="text-xs text-muted-foreground">
-                +12% ce mois
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Chiffre d'Affaires</CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">${stats.revenue.toFixed(2)}</div>
-              <p className="text-xs text-muted-foreground">
-                <TrendingUp className="inline w-3 h-3 mr-1" />
-                +8.2% ce mois
-              </p>
-            </CardContent>
-          </Card>
+        {/* Enhanced Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            {
+              title: "Commandes Totales",
+              value: stats.totalOrders,
+              change: `+${stats.ordersToday} aujourd'hui`,
+              icon: ShoppingBag,
+              color: "from-blue-500 to-indigo-500",
+              bgColor: "from-blue-50 to-indigo-50",
+              textColor: "text-blue-600"
+            },
+            {
+              title: "Livraisons Actives",
+              value: stats.activeDeliveries,
+              change: `${stats.availableDrivers} livreurs disponibles`,
+              icon: Truck,
+              color: "from-emerald-500 to-green-500",
+              bgColor: "from-emerald-50 to-green-50",
+              textColor: "text-emerald-600"
+            },
+            {
+              title: "Clients Total",
+              value: stats.totalCustomers.toLocaleString(),
+              change: "+12% ce mois",
+              icon: Users,
+              color: "from-purple-500 to-pink-500",
+              bgColor: "from-purple-50 to-pink-50",
+              textColor: "text-purple-600"
+            },
+            {
+              title: "Chiffre d'Affaires",
+              value: `$${stats.revenue.toFixed(2)}`,
+              change: "+8.2% ce mois",
+              icon: DollarSign,
+              color: "from-orange-500 to-red-500",
+              bgColor: "from-orange-50 to-red-50",
+              textColor: "text-orange-600"
+            }
+          ].map((stat, index) => (
+            <Card
+              key={index}
+              className="border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 overflow-hidden bg-white animate-in slide-in-from-bottom duration-1000"
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
+              <CardContent className="p-8">
+                <div className={`bg-gradient-to-br ${stat.bgColor} rounded-2xl p-6 mb-6`}>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center shadow-lg`}>
+                      <stat.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <div className="text-right">
+                      <div className="text-sm font-medium text-gray-600 mb-1">{stat.title}</div>
+                      <div className="text-3xl font-black text-gray-900">{stat.value}</div>
+                    </div>
+                  </div>
+                  <div className={`flex items-center space-x-2 ${stat.textColor} font-semibold`}>
+                    <TrendingUp className="w-4 h-4" />
+                    <span className="text-sm">{stat.change}</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
         {/* Quick Stats */}
