@@ -42,7 +42,9 @@ interface MenuItem {
 export default function Menu() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [showAuthModal, setShowAuthModal] = useState(false);
   const { state, dispatch } = useCart();
+  const { state: authState } = useAuth();
 
   const menuItems: MenuItem[] = [
     {
