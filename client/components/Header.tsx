@@ -14,6 +14,7 @@ export default function Header() {
   const [authMode, setAuthMode] = useState<"signin" | "signup">("signin");
   const { state } = useCart();
   const { state: authState, signOut } = useAuth();
+  const location = useLocation();
 
   const handleSignInClick = () => {
     setAuthMode("signin");
