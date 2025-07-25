@@ -63,55 +63,22 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       icon: LayoutDashboard,
       label: "Dashboard",
       href: "/admin",
-      badge: null
-    },
-    {
-      icon: Package,
-      label: "Catégories",
-      href: "/admin/categories",
-      badge: null
-    },
-    {
-      icon: ChefHat,
-      label: "Plats",
-      href: "/admin/dishes",
-      badge: null
-    },
-    {
-      icon: ShoppingBag,
-      label: "Commandes",
-      href: "/admin/orders",
-      badge: "12"
-    },
-    {
-      icon: Truck,
-      label: "Livraisons",
-      href: "/admin/deliveries",
-      badge: "5"
-    },
-    {
-      icon: MapPin,
-      label: "Livreurs",
-      href: "/admin/drivers",
-      badge: null
+      badge: null,
+      description: "Vue d'ensemble"
     },
     {
       icon: Users,
-      label: "Clients",
-      href: "/admin/customers",
-      badge: null
+      label: "Gestion Clients",
+      href: "/admin/clients",
+      badge: "1,234",
+      description: "CRUD + Blocage/Déblocage"
     },
     {
-      icon: UserPlus,
-      label: "Administrateurs",
-      href: "/admin/admins",
-      badge: null
-    },
-    {
-      icon: Settings,
-      label: "Paramètres",
-      href: "/admin/settings",
-      badge: null
+      icon: ChefHat,
+      label: "Gestion Restaurateurs",
+      href: "/admin/restaurateurs",
+      badge: "56",
+      description: "CRUD + Blocage/Déblocage"
     }
   ];
 
