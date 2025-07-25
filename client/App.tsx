@@ -67,6 +67,16 @@ const App = () => (
             <Route path="/delivery/profile" element={<DeliveryProfile />} />
             <Route path="/delivery/settings" element={<DeliverySettings />} />
 
+            {/* Restaurant Routes */}
+            <Route path="/resto" element={<RestaurantLayout />}>
+              <Route index element={<RestaurantDashboard />} />
+              <Route path="reservations" element={<RestaurantDashboard />} />
+              <Route path="orders" element={<RestaurantDashboard />} />
+              <Route path="menu" element={<RestaurantDashboard />} />
+              <Route path="tracking" element={<RestaurantDashboard />} />
+              <Route path="analytics" element={<RestaurantDashboard />} />
+            </Route>
+
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
             </Routes>
