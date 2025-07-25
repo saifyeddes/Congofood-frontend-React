@@ -51,6 +51,13 @@ export default function RestaurantSearch() {
   const [selectedRating, setSelectedRating] = useState("all");
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
 
+  // Géolocalisation
+  const [userLocation, setUserLocation] = useState<{lat: number, lng: number} | null>(null);
+  const [locationCity, setLocationCity] = useState("");
+  const [locationCountry, setLocationCountry] = useState("Congo (RDC)");
+  const [isGettingLocation, setIsGettingLocation] = useState(false);
+  const [sortByDistance, setSortByDistance] = useState(false);
+
   // Mock data for restaurants
   const restaurants = [
     {
