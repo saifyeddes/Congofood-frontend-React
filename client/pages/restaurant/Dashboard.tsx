@@ -27,7 +27,7 @@ import {
   Activity,
   Target,
   Utensils,
-  BarChart3
+  BarChart3,
 } from "lucide-react";
 
 export default function RestaurantDashboard() {
@@ -39,10 +39,10 @@ export default function RestaurantDashboard() {
     pendingReservations: 8,
     totalOrders: 156,
     pendingOrders: 12,
-    revenue: 8540.50,
+    revenue: 8540.5,
     avgRating: 4.8,
     menuItems: 48,
-    tablesOccupied: 18
+    tablesOccupied: 18,
   };
 
   const reservations = [
@@ -55,10 +55,10 @@ export default function RestaurantDashboard() {
       time: "19:30",
       guests: 4,
       status: "confirmed",
-      notes: "Anniversaire - Demande gâteau"
+      notes: "Anniversaire - Demande gâteau",
     },
     {
-      id: "RES-002", 
+      id: "RES-002",
       customerName: "Marie Kabila",
       phone: "+243 987 654 321",
       table: "Table 12",
@@ -66,7 +66,7 @@ export default function RestaurantDashboard() {
       time: "20:00",
       guests: 2,
       status: "pending",
-      notes: "Dîner romantique"
+      notes: "Dîner romantique",
     },
     {
       id: "RES-003",
@@ -77,8 +77,8 @@ export default function RestaurantDashboard() {
       time: "18:45",
       guests: 6,
       status: "pending",
-      notes: "Réunion d'affaires"
-    }
+      notes: "Réunion d'affaires",
+    },
   ];
 
   const orders = [
@@ -89,16 +89,16 @@ export default function RestaurantDashboard() {
       total: 28.98,
       status: "preparing",
       time: "14:30",
-      table: "Table 3"
+      table: "Table 3",
     },
     {
       id: "ORD-002",
       customerName: "Samuel Tshisekedi",
       items: ["Saka-Saka aux Crevettes", "Liboke de Porc"],
-      total: 35.50,
+      total: 35.5,
       status: "ready",
       time: "14:25",
-      table: "Table 7"
+      table: "Table 7",
     },
     {
       id: "ORD-003",
@@ -107,8 +107,8 @@ export default function RestaurantDashboard() {
       total: 18.99,
       status: "served",
       time: "13:45",
-      table: "Table 15"
-    }
+      table: "Table 15",
+    },
   ];
 
   const menuItems = [
@@ -119,16 +119,16 @@ export default function RestaurantDashboard() {
       price: 15.99,
       status: "available",
       rating: 4.9,
-      orders: 24
+      orders: 24,
     },
     {
       id: "MENU-002",
-      name: "Saka-Saka aux Crevettes", 
+      name: "Saka-Saka aux Crevettes",
       category: "Plats Principaux",
       price: 18.99,
       status: "available",
       rating: 4.7,
-      orders: 18
+      orders: 18,
     },
     {
       id: "MENU-003",
@@ -137,8 +137,8 @@ export default function RestaurantDashboard() {
       price: 8.99,
       status: "unavailable",
       rating: 4.6,
-      orders: 15
-    }
+      orders: 15,
+    },
   ];
 
   const getReservationStatusBadge = (status: string) => {
@@ -208,7 +208,7 @@ export default function RestaurantDashboard() {
             change: `+${stats.pendingReservations} en attente`,
             icon: Calendar,
             color: "from-blue-500 to-indigo-500",
-            bgColor: "from-blue-50 to-indigo-50"
+            bgColor: "from-blue-50 to-indigo-50",
           },
           {
             title: "Commandes",
@@ -216,7 +216,7 @@ export default function RestaurantDashboard() {
             change: `${stats.pendingOrders} en cours`,
             icon: ShoppingBag,
             color: "from-orange-500 to-amber-500",
-            bgColor: "from-orange-50 to-amber-50"
+            bgColor: "from-orange-50 to-amber-50",
           },
           {
             title: "Chiffre d'Affaires",
@@ -224,7 +224,7 @@ export default function RestaurantDashboard() {
             change: "+12% ce mois",
             icon: DollarSign,
             color: "from-green-500 to-emerald-500",
-            bgColor: "from-green-50 to-emerald-50"
+            bgColor: "from-green-50 to-emerald-50",
           },
           {
             title: "Note Moyenne",
@@ -232,19 +232,30 @@ export default function RestaurantDashboard() {
             change: `${stats.menuItems} plats au menu`,
             icon: Star,
             color: "from-purple-500 to-pink-500",
-            bgColor: "from-purple-50 to-pink-50"
-          }
+            bgColor: "from-purple-50 to-pink-50",
+          },
         ].map((stat, index) => (
-          <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+          <Card
+            key={index}
+            className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+          >
             <CardContent className="p-6">
-              <div className={`bg-gradient-to-br ${stat.bgColor} rounded-2xl p-4 mb-4`}>
+              <div
+                className={`bg-gradient-to-br ${stat.bgColor} rounded-2xl p-4 mb-4`}
+              >
                 <div className="flex items-center justify-between mb-3">
-                  <div className={`w-12 h-12 bg-gradient-to-br ${stat.color} rounded-xl flex items-center justify-center`}>
+                  <div
+                    className={`w-12 h-12 bg-gradient-to-br ${stat.color} rounded-xl flex items-center justify-center`}
+                  >
                     <stat.icon className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-right">
-                    <div className="text-2xl font-black text-gray-900">{stat.value}</div>
-                    <div className="text-sm font-medium text-gray-600">{stat.title}</div>
+                    <div className="text-2xl font-black text-gray-900">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm font-medium text-gray-600">
+                      {stat.title}
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2 text-green-600 font-semibold">
@@ -260,10 +271,30 @@ export default function RestaurantDashboard() {
       {/* Quick Actions */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { title: "Nouvelle Réservation", icon: Plus, color: "bg-blue-500", action: "reservations" },
-          { title: "Voir Commandes", icon: Eye, color: "bg-orange-500", action: "orders" },
-          { title: "Gérer Menu", icon: UtensilsCrossed, color: "bg-green-500", action: "menu" },
-          { title: "Localiser Client", icon: MapPin, color: "bg-purple-500", action: "tracking" }
+          {
+            title: "Nouvelle Réservation",
+            icon: Plus,
+            color: "bg-blue-500",
+            action: "reservations",
+          },
+          {
+            title: "Voir Commandes",
+            icon: Eye,
+            color: "bg-orange-500",
+            action: "orders",
+          },
+          {
+            title: "Gérer Menu",
+            icon: UtensilsCrossed,
+            color: "bg-green-500",
+            action: "menu",
+          },
+          {
+            title: "Localiser Client",
+            icon: MapPin,
+            color: "bg-purple-500",
+            action: "tracking",
+          },
         ].map((action, index) => (
           <Button
             key={index}
@@ -281,7 +312,9 @@ export default function RestaurantDashboard() {
   const renderReservations = () => (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">Gestion des Réservations</h2>
+        <h2 className="text-2xl font-bold text-gray-900">
+          Gestion des Réservations
+        </h2>
         <Button className="bg-blue-500 hover:bg-blue-600 text-white">
           <Plus className="w-4 h-4 mr-2" />
           Nouvelle Réservation
@@ -291,7 +324,10 @@ export default function RestaurantDashboard() {
       <div className="flex items-center space-x-4 mb-6">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-          <Input placeholder="Rechercher une réservation..." className="pl-10" />
+          <Input
+            placeholder="Rechercher une réservation..."
+            className="pl-10"
+          />
         </div>
         <Button variant="outline">
           <Filter className="w-4 h-4 mr-2" />
@@ -301,7 +337,10 @@ export default function RestaurantDashboard() {
 
       <div className="grid gap-6">
         {reservations.map((reservation) => (
-          <Card key={reservation.id} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+          <Card
+            key={reservation.id}
+            className="border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+          >
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-4">
@@ -309,7 +348,9 @@ export default function RestaurantDashboard() {
                     {reservation.id.slice(-2)}
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">{reservation.customerName}</h3>
+                    <h3 className="font-bold text-gray-900">
+                      {reservation.customerName}
+                    </h3>
                     <p className="text-sm text-gray-600">{reservation.id}</p>
                   </div>
                 </div>
@@ -319,11 +360,15 @@ export default function RestaurantDashboard() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                 <div className="flex items-center space-x-2">
                   <Calendar className="w-4 h-4 text-blue-500" />
-                  <span className="text-sm">{reservation.date} à {reservation.time}</span>
+                  <span className="text-sm">
+                    {reservation.date} à {reservation.time}
+                  </span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Users className="w-4 h-4 text-green-500" />
-                  <span className="text-sm">{reservation.guests} personnes</span>
+                  <span className="text-sm">
+                    {reservation.guests} personnes
+                  </span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Utensils className="w-4 h-4 text-orange-500" />
@@ -342,7 +387,10 @@ export default function RestaurantDashboard() {
               )}
 
               <div className="flex space-x-2">
-                <Button size="sm" className="bg-green-500 hover:bg-green-600 text-white">
+                <Button
+                  size="sm"
+                  className="bg-green-500 hover:bg-green-600 text-white"
+                >
                   <CheckCircle className="w-4 h-4 mr-2" />
                   Valider
                 </Button>
@@ -350,7 +398,11 @@ export default function RestaurantDashboard() {
                   <Edit className="w-4 h-4 mr-2" />
                   Modifier
                 </Button>
-                <Button size="sm" variant="outline" className="text-red-600 hover:bg-red-50">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="text-red-600 hover:bg-red-50"
+                >
                   <XCircle className="w-4 h-4 mr-2" />
                   Annuler
                 </Button>
@@ -365,20 +417,26 @@ export default function RestaurantDashboard() {
   const renderOrders = () => (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">Gestion des Commandes</h2>
+        <h2 className="text-2xl font-bold text-gray-900">
+          Gestion des Commandes
+        </h2>
         <div className="flex space-x-2">
           <Badge className="bg-orange-500 text-white">
-            {orders.filter(o => o.status === 'preparing').length} En Préparation
+            {orders.filter((o) => o.status === "preparing").length} En
+            Préparation
           </Badge>
           <Badge className="bg-blue-500 text-white">
-            {orders.filter(o => o.status === 'ready').length} Prêtes
+            {orders.filter((o) => o.status === "ready").length} Prêtes
           </Badge>
         </div>
       </div>
 
       <div className="grid gap-6">
         {orders.map((order) => (
-          <Card key={order.id} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+          <Card
+            key={order.id}
+            className="border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+          >
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-4">
@@ -386,22 +444,35 @@ export default function RestaurantDashboard() {
                     {order.id.slice(-2)}
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">{order.customerName}</h3>
-                    <p className="text-sm text-gray-600">{order.table} • {order.time}</p>
+                    <h3 className="font-bold text-gray-900">
+                      {order.customerName}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {order.table} • {order.time}
+                    </p>
                   </div>
                 </div>
                 {getOrderStatusBadge(order.status)}
               </div>
 
               <div className="bg-gray-50 rounded-xl p-4 mb-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Articles commandés:</h4>
-                <p className="text-sm text-gray-700">{order.items.join(" • ")}</p>
+                <h4 className="font-semibold text-gray-900 mb-2">
+                  Articles commandés:
+                </h4>
+                <p className="text-sm text-gray-700">
+                  {order.items.join(" • ")}
+                </p>
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-2xl font-black text-green-600">${order.total}</span>
+                <span className="text-2xl font-black text-green-600">
+                  ${order.total}
+                </span>
                 <div className="flex space-x-2">
-                  <Button size="sm" className="bg-green-500 hover:bg-green-600 text-white">
+                  <Button
+                    size="sm"
+                    className="bg-green-500 hover:bg-green-600 text-white"
+                  >
                     <CheckCircle className="w-4 h-4 mr-2" />
                     Valider
                   </Button>
@@ -409,7 +480,11 @@ export default function RestaurantDashboard() {
                     <Eye className="w-4 h-4 mr-2" />
                     Suivre
                   </Button>
-                  <Button size="sm" variant="outline" className="text-red-600 hover:bg-red-50">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="text-red-600 hover:bg-red-50"
+                  >
                     <XCircle className="w-4 h-4 mr-2" />
                     Annuler
                   </Button>
@@ -434,7 +509,10 @@ export default function RestaurantDashboard() {
 
       <div className="grid gap-6">
         {menuItems.map((item) => (
-          <Card key={item.id} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+          <Card
+            key={item.id}
+            className="border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+          >
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-4">
@@ -446,8 +524,14 @@ export default function RestaurantDashboard() {
                     <p className="text-sm text-gray-600">{item.category}</p>
                   </div>
                 </div>
-                <Badge className={item.status === 'available' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}>
-                  {item.status === 'available' ? 'Disponible' : 'Indisponible'}
+                <Badge
+                  className={
+                    item.status === "available"
+                      ? "bg-green-500 text-white"
+                      : "bg-red-500 text-white"
+                  }
+                >
+                  {item.status === "available" ? "Disponible" : "Indisponible"}
                 </Badge>
               </div>
 
@@ -471,7 +555,11 @@ export default function RestaurantDashboard() {
                   <Edit className="w-4 h-4 mr-2" />
                   Modifier
                 </Button>
-                <Button size="sm" variant="outline" className="text-red-600 hover:bg-red-50">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="text-red-600 hover:bg-red-50"
+                >
                   <Trash2 className="w-4 h-4 mr-2" />
                   Supprimer
                 </Button>
@@ -490,14 +578,18 @@ export default function RestaurantDashboard() {
   const renderTracking = () => (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-gray-900">Localisation Clients</h2>
-      
+
       <Card className="border-0 shadow-lg">
         <CardContent className="p-6">
           <div className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-xl h-96 flex items-center justify-center">
             <div className="text-center">
               <MapPin className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-gray-600 mb-2">Carte Interactive</h3>
-              <p className="text-gray-500">Visualisez la localisation de vos clients en temps réel</p>
+              <h3 className="text-xl font-bold text-gray-600 mb-2">
+                Carte Interactive
+              </h3>
+              <p className="text-gray-500">
+                Visualisez la localisation de vos clients en temps réel
+              </p>
             </div>
           </div>
         </CardContent>
@@ -507,8 +599,10 @@ export default function RestaurantDashboard() {
 
   const renderAnalytics = () => (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900">Statistiques Détaillées</h2>
-      
+      <h2 className="text-2xl font-bold text-gray-900">
+        Statistiques Détaillées
+      </h2>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card className="border-0 shadow-lg">
           <CardHeader>
@@ -569,7 +663,7 @@ export default function RestaurantDashboard() {
     { id: "orders", label: "Commandes", content: renderOrders },
     { id: "menu", label: "Menu", content: renderMenu },
     { id: "tracking", label: "Localisation", content: renderTracking },
-    { id: "analytics", label: "Statistiques", content: renderAnalytics }
+    { id: "analytics", label: "Statistiques", content: renderAnalytics },
   ];
 
   return (
@@ -594,9 +688,7 @@ export default function RestaurantDashboard() {
       </div>
 
       {/* Tab Content */}
-      <div>
-        {tabs.find(tab => tab.id === activeTab)?.content()}
-      </div>
+      <div>{tabs.find((tab) => tab.id === activeTab)?.content()}</div>
     </div>
   );
 }

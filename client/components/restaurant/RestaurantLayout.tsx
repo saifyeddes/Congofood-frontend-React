@@ -20,7 +20,7 @@ import {
   BookOpen,
   TrendingUp,
   Target,
-  Home
+  Home,
 } from "lucide-react";
 
 export default function RestaurantLayout() {
@@ -33,43 +33,43 @@ export default function RestaurantLayout() {
       href: "/resto",
       icon: Home,
       description: "Vue d'ensemble et statistiques",
-      badge: null
+      badge: null,
     },
     {
       title: "Réservations",
       href: "/resto/reservations",
       icon: Calendar,
       description: "Gérer les réservations de tables",
-      badge: "3 en attente"
+      badge: "3 en attente",
     },
     {
       title: "Commandes",
       href: "/resto/orders",
       icon: ShoppingBag,
       description: "Suivi et gestion des commandes",
-      badge: "5 actives"
+      badge: "5 actives",
     },
     {
       title: "Menu & Catalogue",
       href: "/resto/menu",
       icon: UtensilsCrossed,
       description: "Gérer le menu et catalogue",
-      badge: null
+      badge: null,
     },
     {
       title: "Localisation Client",
       href: "/resto/tracking",
       icon: MapPin,
       description: "Localiser les clients",
-      badge: null
+      badge: null,
     },
     {
       title: "Statistiques",
       href: "/resto/analytics",
       icon: BarChart3,
       description: "Analytics détaillées",
-      badge: null
-    }
+      badge: null,
+    },
   ];
 
   return (
@@ -86,7 +86,7 @@ export default function RestaurantLayout() {
       <div
         className={cn(
           "fixed inset-y-0 left-0 z-50 w-80 bg-white/95 backdrop-blur-xl border-r border-orange-200 transform transition-transform duration-300 ease-in-out lg:translate-x-0 shadow-2xl",
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          sidebarOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
         {/* Header */}
@@ -97,7 +97,9 @@ export default function RestaurantLayout() {
             </div>
             <div>
               <h1 className="text-xl font-bold">Congo Food</h1>
-              <p className="text-orange-100 text-sm font-medium">Interface Restaurant</p>
+              <p className="text-orange-100 text-sm font-medium">
+                Interface Restaurant
+              </p>
             </div>
           </div>
           <Button
@@ -113,7 +115,9 @@ export default function RestaurantLayout() {
         {/* Navigation Header */}
         <div className="p-6 border-b border-orange-100">
           <div className="space-y-2">
-            <h2 className="text-lg font-bold text-gray-900">Gestion Restaurant</h2>
+            <h2 className="text-lg font-bold text-gray-900">
+              Gestion Restaurant
+            </h2>
             <p className="text-sm text-gray-600">
               Gérez vos réservations, commandes et menu
             </p>
@@ -133,7 +137,7 @@ export default function RestaurantLayout() {
                   "block w-full p-4 rounded-2xl transition-all duration-300 group hover:scale-105 transform",
                   isActive
                     ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg"
-                    : "hover:bg-gradient-to-r hover:from-orange-50 hover:to-amber-50 text-gray-700 hover:text-orange-700"
+                    : "hover:bg-gradient-to-r hover:from-orange-50 hover:to-amber-50 text-gray-700 hover:text-orange-700",
                 )}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
@@ -144,7 +148,7 @@ export default function RestaurantLayout() {
                         "w-10 h-10 rounded-xl flex items-center justify-center transition-colors",
                         isActive
                           ? "bg-white/20 text-white"
-                          : "bg-orange-100 text-orange-600 group-hover:bg-orange-200"
+                          : "bg-orange-100 text-orange-600 group-hover:bg-orange-200",
                       )}
                     >
                       <item.icon className="w-5 h-5" />
@@ -157,7 +161,7 @@ export default function RestaurantLayout() {
                         "text-xs font-bold",
                         isActive
                           ? "bg-white/20 text-white"
-                          : "bg-orange-500 text-white"
+                          : "bg-orange-500 text-white",
                       )}
                     >
                       {item.badge}
@@ -167,7 +171,7 @@ export default function RestaurantLayout() {
                 <p
                   className={cn(
                     "text-sm ml-13",
-                    isActive ? "text-orange-100" : "text-gray-500"
+                    isActive ? "text-orange-100" : "text-gray-500",
                   )}
                 >
                   {item.description}
@@ -187,7 +191,10 @@ export default function RestaurantLayout() {
             <p className="text-sm text-gray-600 mb-3">
               Optimisez vos opérations restaurant
             </p>
-            <Button size="sm" className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white">
+            <Button
+              size="sm"
+              className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white"
+            >
               <Settings className="w-4 h-4 mr-2" />
               Paramètres
             </Button>
@@ -209,13 +216,15 @@ export default function RestaurantLayout() {
               <MenuIcon className="w-5 h-5" />
             </Button>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Restaurant Dashboard</h1>
+              <h1 className="text-2xl font-bold text-gray-900">
+                Restaurant Dashboard
+              </h1>
               <p className="text-sm text-gray-600">
-                {new Date().toLocaleDateString('fr-FR', {
-                  weekday: 'long',
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric'
+                {new Date().toLocaleDateString("fr-FR", {
+                  weekday: "long",
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
                 })}
               </p>
             </div>

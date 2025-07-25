@@ -42,7 +42,7 @@ import {
   RotateCcw,
   AlertCircle,
   Award,
-  TrendingUp
+  TrendingUp,
 } from "lucide-react";
 
 export default function OrderHistory() {
@@ -61,7 +61,7 @@ export default function OrderHistory() {
       items: [
         { name: "Moambé au Poulet", quantity: 2, price: 15.99 },
         { name: "Fufu na Ndakala", quantity: 1, price: 8.99 },
-        { name: "Saka-Saka aux Crevettes", quantity: 1, price: 12.99 }
+        { name: "Saka-Saka aux Crevettes", quantity: 1, price: 12.99 },
       ],
       total: 53.96,
       status: "delivered",
@@ -72,7 +72,7 @@ export default function OrderHistory() {
       driverName: "Jacques Tshisekedi",
       driverPhone: "+243 123 456 789",
       trackingId: "TRK-789123",
-      orderNote: "Très bonne qualité, livraison rapide!"
+      orderNote: "Très bonne qualité, livraison rapide!",
     },
     {
       id: "ORD-2024-002",
@@ -80,8 +80,8 @@ export default function OrderHistory() {
       time: "19:45",
       restaurant: "Le Jardin Tropical",
       items: [
-        { name: "Salade Fusion", quantity: 1, price: 14.50 },
-        { name: "Grillades Mixtes", quantity: 1, price: 22.99 }
+        { name: "Salade Fusion", quantity: 1, price: 14.5 },
+        { name: "Grillades Mixtes", quantity: 1, price: 22.99 },
       ],
       total: 37.49,
       status: "delivered",
@@ -92,7 +92,7 @@ export default function OrderHistory() {
       driverName: "Marie Kabongo",
       driverPhone: "+243 987 654 321",
       trackingId: "TRK-456789",
-      orderNote: "Plats délicieux, mais un peu lent"
+      orderNote: "Plats délicieux, mais un peu lent",
     },
     {
       id: "ORD-2024-003",
@@ -101,7 +101,7 @@ export default function OrderHistory() {
       restaurant: "Saveurs d'Afrique",
       items: [
         { name: "Thieboudienne", quantity: 2, price: 16.99 },
-        { name: "Attiéké", quantity: 1, price: 9.99 }
+        { name: "Attiéké", quantity: 1, price: 9.99 },
       ],
       total: 43.97,
       status: "cancelled",
@@ -112,7 +112,7 @@ export default function OrderHistory() {
       driverName: null,
       driverPhone: null,
       trackingId: "TRK-123456",
-      orderNote: "Commande annulée par le restaurant"
+      orderNote: "Commande annulée par le restaurant",
     },
     {
       id: "ORD-2024-004",
@@ -121,8 +121,8 @@ export default function OrderHistory() {
       restaurant: "Fast Congo",
       items: [
         { name: "Burger Congo", quantity: 3, price: 8.99 },
-        { name: "Frites Maison", quantity: 2, price: 4.50 },
-        { name: "Coca-Cola", quantity: 3, price: 2.50 }
+        { name: "Frites Maison", quantity: 2, price: 4.5 },
+        { name: "Coca-Cola", quantity: 3, price: 2.5 },
       ],
       total: 43.47,
       status: "delivered",
@@ -133,7 +133,7 @@ export default function OrderHistory() {
       driverName: "Pierre Mukendi",
       driverPhone: "+243 555 123 456",
       trackingId: "TRK-987654",
-      orderNote: "Correct mais pourrait être amélioré"
+      orderNote: "Correct mais pourrait être amélioré",
     },
     {
       id: "ORD-2024-005",
@@ -142,7 +142,7 @@ export default function OrderHistory() {
       restaurant: "Chez Mama Congo",
       items: [
         { name: "Liboke de Poisson", quantity: 1, price: 18.99 },
-        { name: "Bili na Madesu", quantity: 1, price: 10.99 }
+        { name: "Bili na Madesu", quantity: 1, price: 10.99 },
       ],
       total: 29.98,
       status: "delivered",
@@ -153,8 +153,8 @@ export default function OrderHistory() {
       driverName: "Fatou Konate",
       driverPhone: "+243 777 888 999",
       trackingId: "TRK-654321",
-      orderNote: "Excellent comme toujours!"
-    }
+      orderNote: "Excellent comme toujours!",
+    },
   ];
 
   const statusOptions = [
@@ -162,7 +162,7 @@ export default function OrderHistory() {
     { value: "delivered", label: "Livrées" },
     { value: "cancelled", label: "Annulées" },
     { value: "processing", label: "En cours" },
-    { value: "pending", label: "En attente" }
+    { value: "pending", label: "En attente" },
   ];
 
   const dateOptions = [
@@ -170,7 +170,7 @@ export default function OrderHistory() {
     { value: "today", label: "Aujourd'hui" },
     { value: "week", label: "Cette semaine" },
     { value: "month", label: "Ce mois" },
-    { value: "quarter", label: "Ce trimestre" }
+    { value: "quarter", label: "Ce trimestre" },
   ];
 
   const getStatusBadge = (status: string) => {
@@ -209,17 +209,16 @@ export default function OrderHistory() {
   };
 
   const getRatingStars = (rating: number | null) => {
-    if (!rating) return <span className="text-gray-400 text-sm">Non évalué</span>;
-    
+    if (!rating)
+      return <span className="text-gray-400 text-sm">Non évalué</span>;
+
     return (
       <div className="flex items-center space-x-1">
         {Array.from({ length: 5 }, (_, i) => (
           <Star
             key={i}
             className={`w-4 h-4 ${
-              i < rating 
-                ? "text-yellow-400 fill-current" 
-                : "text-gray-300"
+              i < rating ? "text-yellow-400 fill-current" : "text-gray-300"
             }`}
           />
         ))}
@@ -228,26 +227,31 @@ export default function OrderHistory() {
     );
   };
 
-  const filteredOrders = orders.filter(order => {
-    const matchesSearch = order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         order.restaurant.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         order.items.some(item => 
-                           item.name.toLowerCase().includes(searchTerm.toLowerCase()));
-    
-    const matchesStatus = statusFilter === "all" || order.status === statusFilter;
-    
+  const filteredOrders = orders.filter((order) => {
+    const matchesSearch =
+      order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      order.restaurant.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      order.items.some((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase()),
+      );
+
+    const matchesStatus =
+      statusFilter === "all" || order.status === statusFilter;
+
     // Simple date filtering (in real app, would be more sophisticated)
     const matchesDate = dateFilter === "all" || true; // Simplified for demo
-    
+
     return matchesSearch && matchesStatus && matchesDate;
   });
 
   const totalSpent = orders
-    .filter(order => order.status === "delivered")
+    .filter((order) => order.status === "delivered")
     .reduce((sum, order) => sum + order.total, 0);
 
   const totalOrders = orders.length;
-  const deliveredOrders = orders.filter(order => order.status === "delivered").length;
+  const deliveredOrders = orders.filter(
+    (order) => order.status === "delivered",
+  ).length;
 
   const OrderCard = ({ order }: { order: any }) => (
     <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden bg-white">
@@ -257,14 +261,18 @@ export default function OrderHistory() {
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-lg font-bold text-gray-900">{order.id}</h3>
-              <p className="text-sm text-gray-600">{order.date} à {order.time}</p>
+              <p className="text-sm text-gray-600">
+                {order.date} à {order.time}
+              </p>
             </div>
             {getStatusBadge(order.status)}
           </div>
 
           {/* Restaurant */}
           <div className="bg-gray-50 rounded-lg p-3">
-            <h4 className="font-semibold text-gray-900 mb-1">{order.restaurant}</h4>
+            <h4 className="font-semibold text-gray-900 mb-1">
+              {order.restaurant}
+            </h4>
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <MapPin className="w-3 h-3" />
               <span>{order.deliveryAddress}</span>
@@ -273,12 +281,18 @@ export default function OrderHistory() {
 
           {/* Items */}
           <div>
-            <h5 className="font-medium text-gray-900 mb-2">Articles commandés:</h5>
+            <h5 className="font-medium text-gray-900 mb-2">
+              Articles commandés:
+            </h5>
             <div className="space-y-1">
               {order.items.map((item: any, index: number) => (
                 <div key={index} className="flex justify-between text-sm">
-                  <span className="text-gray-700">{item.quantity}x {item.name}</span>
-                  <span className="font-medium">${(item.price * item.quantity).toFixed(2)}</span>
+                  <span className="text-gray-700">
+                    {item.quantity}x {item.name}
+                  </span>
+                  <span className="font-medium">
+                    ${(item.price * item.quantity).toFixed(2)}
+                  </span>
                 </div>
               ))}
             </div>
@@ -288,15 +302,21 @@ export default function OrderHistory() {
           <div className="flex items-center justify-between pt-3 border-t border-gray-200">
             <div className="flex items-center space-x-2">
               <CreditCard className="w-4 h-4 text-blue-500" />
-              <span className="text-sm text-gray-600">{order.paymentMethod}</span>
+              <span className="text-sm text-gray-600">
+                {order.paymentMethod}
+              </span>
             </div>
-            <span className="text-xl font-black text-emerald-600">${order.total.toFixed(2)}</span>
+            <span className="text-xl font-black text-emerald-600">
+              ${order.total.toFixed(2)}
+            </span>
           </div>
 
           {/* Rating */}
           {order.status === "delivered" && (
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-700">Votre évaluation:</span>
+              <span className="text-sm font-medium text-gray-700">
+                Votre évaluation:
+              </span>
               {getRatingStars(order.rating)}
             </div>
           )}
@@ -305,9 +325,9 @@ export default function OrderHistory() {
           <div className="flex space-x-2 pt-3 border-t border-gray-200">
             <Dialog>
               <DialogTrigger asChild>
-                <Button 
-                  size="sm" 
-                  variant="outline" 
+                <Button
+                  size="sm"
+                  variant="outline"
                   className="flex-1"
                   onClick={() => setSelectedOrder(order)}
                 >
@@ -324,23 +344,51 @@ export default function OrderHistory() {
                     {/* Order Info */}
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-2">Informations générales</h4>
+                        <h4 className="font-semibold text-gray-900 mb-2">
+                          Informations générales
+                        </h4>
                         <div className="space-y-2 text-sm">
-                          <div><strong>Restaurant:</strong> {selectedOrder.restaurant}</div>
-                          <div><strong>Date:</strong> {selectedOrder.date} à {selectedOrder.time}</div>
-                          <div><strong>Statut:</strong> {getStatusBadge(selectedOrder.status)}</div>
-                          <div><strong>ID de suivi:</strong> {selectedOrder.trackingId}</div>
+                          <div>
+                            <strong>Restaurant:</strong>{" "}
+                            {selectedOrder.restaurant}
+                          </div>
+                          <div>
+                            <strong>Date:</strong> {selectedOrder.date} à{" "}
+                            {selectedOrder.time}
+                          </div>
+                          <div>
+                            <strong>Statut:</strong>{" "}
+                            {getStatusBadge(selectedOrder.status)}
+                          </div>
+                          <div>
+                            <strong>ID de suivi:</strong>{" "}
+                            {selectedOrder.trackingId}
+                          </div>
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-2">Livraison</h4>
+                        <h4 className="font-semibold text-gray-900 mb-2">
+                          Livraison
+                        </h4>
                         <div className="space-y-2 text-sm">
-                          <div><strong>Adresse:</strong> {selectedOrder.deliveryAddress}</div>
-                          <div><strong>Temps de livraison:</strong> {selectedOrder.deliveryTime}</div>
+                          <div>
+                            <strong>Adresse:</strong>{" "}
+                            {selectedOrder.deliveryAddress}
+                          </div>
+                          <div>
+                            <strong>Temps de livraison:</strong>{" "}
+                            {selectedOrder.deliveryTime}
+                          </div>
                           {selectedOrder.driverName && (
                             <>
-                              <div><strong>Livreur:</strong> {selectedOrder.driverName}</div>
-                              <div><strong>Téléphone:</strong> {selectedOrder.driverPhone}</div>
+                              <div>
+                                <strong>Livreur:</strong>{" "}
+                                {selectedOrder.driverName}
+                              </div>
+                              <div>
+                                <strong>Téléphone:</strong>{" "}
+                                {selectedOrder.driverPhone}
+                              </div>
                             </>
                           )}
                         </div>
@@ -349,20 +397,33 @@ export default function OrderHistory() {
 
                     {/* Items Detail */}
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-3">Articles commandés</h4>
+                      <h4 className="font-semibold text-gray-900 mb-3">
+                        Articles commandés
+                      </h4>
                       <div className="space-y-2">
                         {selectedOrder.items.map((item: any, index: number) => (
-                          <div key={index} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                          <div
+                            key={index}
+                            className="flex justify-between items-center p-3 bg-gray-50 rounded-lg"
+                          >
                             <div>
                               <span className="font-medium">{item.name}</span>
-                              <span className="text-gray-600 ml-2">x{item.quantity}</span>
+                              <span className="text-gray-600 ml-2">
+                                x{item.quantity}
+                              </span>
                             </div>
-                            <span className="font-bold">${(item.price * item.quantity).toFixed(2)}</span>
+                            <span className="font-bold">
+                              ${(item.price * item.quantity).toFixed(2)}
+                            </span>
                           </div>
                         ))}
                         <div className="flex justify-between items-center p-3 bg-emerald-50 rounded-lg border-2 border-emerald-200">
-                          <span className="font-bold text-emerald-800">Total</span>
-                          <span className="text-xl font-black text-emerald-600">${selectedOrder.total.toFixed(2)}</span>
+                          <span className="font-bold text-emerald-800">
+                            Total
+                          </span>
+                          <span className="text-xl font-black text-emerald-600">
+                            ${selectedOrder.total.toFixed(2)}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -370,8 +431,12 @@ export default function OrderHistory() {
                     {/* Order Note */}
                     {selectedOrder.orderNote && (
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-2">Note de commande</h4>
-                        <p className="text-sm text-gray-700 bg-blue-50 p-3 rounded-lg">{selectedOrder.orderNote}</p>
+                        <h4 className="font-semibold text-gray-900 mb-2">
+                          Note de commande
+                        </h4>
+                        <p className="text-sm text-gray-700 bg-blue-50 p-3 rounded-lg">
+                          {selectedOrder.orderNote}
+                        </p>
                       </div>
                     )}
 
@@ -413,132 +478,143 @@ export default function OrderHistory() {
   return (
     <Layout>
       <ProtectedRoute>
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-blue-50 to-purple-50">
-        {/* Hero Section */}
-        <div className="bg-gradient-to-r from-emerald-600 to-blue-600 text-white py-16">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-8">
-              <h1 className="text-5xl font-black mb-4">Historique des Commandes</h1>
-              <p className="text-xl text-emerald-100">
-                Retrouvez toutes vos commandes passées et suivez vos préférences
-              </p>
-            </div>
+        <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-blue-50 to-purple-50">
+          {/* Hero Section */}
+          <div className="bg-gradient-to-r from-emerald-600 to-blue-600 text-white py-16">
+            <div className="container mx-auto px-6">
+              <div className="text-center mb-8">
+                <h1 className="text-5xl font-black mb-4">
+                  Historique des Commandes
+                </h1>
+                <p className="text-xl text-emerald-100">
+                  Retrouvez toutes vos commandes passées et suivez vos
+                  préférences
+                </p>
+              </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <ShoppingBag className="w-6 h-6" />
+              {/* Stats */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center">
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <ShoppingBag className="w-6 h-6" />
+                  </div>
+                  <div className="text-3xl font-black mb-1">{totalOrders}</div>
+                  <div className="text-emerald-100">Commandes totales</div>
                 </div>
-                <div className="text-3xl font-black mb-1">{totalOrders}</div>
-                <div className="text-emerald-100">Commandes totales</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <CheckCircle className="w-6 h-6" />
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center">
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <CheckCircle className="w-6 h-6" />
+                  </div>
+                  <div className="text-3xl font-black mb-1">
+                    {deliveredOrders}
+                  </div>
+                  <div className="text-emerald-100">Commandes livrées</div>
                 </div>
-                <div className="text-3xl font-black mb-1">{deliveredOrders}</div>
-                <div className="text-emerald-100">Commandes livrées</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <TrendingUp className="w-6 h-6" />
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center">
+                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                    <TrendingUp className="w-6 h-6" />
+                  </div>
+                  <div className="text-3xl font-black mb-1">
+                    ${totalSpent.toFixed(0)}
+                  </div>
+                  <div className="text-emerald-100">Total dépensé</div>
                 </div>
-                <div className="text-3xl font-black mb-1">${totalSpent.toFixed(0)}</div>
-                <div className="text-emerald-100">Total dépensé</div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Filters */}
-        <div className="container mx-auto px-6 py-8">
-          <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <Input
-                  placeholder="Rechercher par numéro de commande, restaurant..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10"
-                />
-              </div>
-              <Select value={statusFilter} onValueChange={setStatusFilter}>
-                <SelectTrigger className="w-full md:w-48">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {statusOptions.map(status => (
-                    <SelectItem key={status.value} value={status.value}>
-                      {status.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <Select value={dateFilter} onValueChange={setDateFilter}>
-                <SelectTrigger className="w-full md:w-48">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {dateOptions.map(date => (
-                    <SelectItem key={date.value} value={date.value}>
-                      {date.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
             </div>
           </div>
 
-          {/* Results */}
-          <div className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">
-              {filteredOrders.length} commande{filteredOrders.length > 1 ? 's' : ''} trouvée{filteredOrders.length > 1 ? 's' : ''}
-            </h2>
-            {searchTerm && (
-              <p className="text-gray-600 mt-1">Résultats pour "{searchTerm}"</p>
+          {/* Filters */}
+          <div className="container mx-auto px-6 py-8">
+            <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="relative flex-1">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <Input
+                    placeholder="Rechercher par numéro de commande, restaurant..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="pl-10"
+                  />
+                </div>
+                <Select value={statusFilter} onValueChange={setStatusFilter}>
+                  <SelectTrigger className="w-full md:w-48">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {statusOptions.map((status) => (
+                      <SelectItem key={status.value} value={status.value}>
+                        {status.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <Select value={dateFilter} onValueChange={setDateFilter}>
+                  <SelectTrigger className="w-full md:w-48">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {dateOptions.map((date) => (
+                      <SelectItem key={date.value} value={date.value}>
+                        {date.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            {/* Results */}
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold text-gray-900">
+                {filteredOrders.length} commande
+                {filteredOrders.length > 1 ? "s" : ""} trouvée
+                {filteredOrders.length > 1 ? "s" : ""}
+              </h2>
+              {searchTerm && (
+                <p className="text-gray-600 mt-1">
+                  Résultats pour "{searchTerm}"
+                </p>
+              )}
+            </div>
+
+            {/* Orders Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredOrders.map((order, index) => (
+                <div
+                  key={order.id}
+                  className="animate-in slide-in-from-bottom duration-1000"
+                  style={{ animationDelay: `${index * 150}ms` }}
+                >
+                  <OrderCard order={order} />
+                </div>
+              ))}
+            </div>
+
+            {filteredOrders.length === 0 && (
+              <div className="text-center py-16">
+                <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Receipt className="w-12 h-12 text-gray-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Aucune commande trouvée
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Essayez de modifier vos critères de recherche
+                </p>
+                <Button
+                  onClick={() => {
+                    setSearchTerm("");
+                    setStatusFilter("all");
+                    setDateFilter("all");
+                  }}
+                  className="bg-emerald-500 hover:bg-emerald-600 text-white"
+                >
+                  Réinitialiser les filtres
+                </Button>
+              </div>
             )}
           </div>
-
-          {/* Orders Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredOrders.map((order, index) => (
-              <div
-                key={order.id}
-                className="animate-in slide-in-from-bottom duration-1000"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <OrderCard order={order} />
-              </div>
-            ))}
-          </div>
-
-          {filteredOrders.length === 0 && (
-            <div className="text-center py-16">
-              <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Receipt className="w-12 h-12 text-gray-400" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Aucune commande trouvée
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Essayez de modifier vos critères de recherche
-              </p>
-              <Button 
-                onClick={() => {
-                  setSearchTerm("");
-                  setStatusFilter("all");
-                  setDateFilter("all");
-                }}
-                className="bg-emerald-500 hover:bg-emerald-600 text-white"
-              >
-                Réinitialiser les filtres
-              </Button>
-            </div>
-          )}
         </div>
-      </div>
       </ProtectedRoute>
     </Layout>
   );

@@ -22,7 +22,7 @@ import {
   Sparkles,
   Gift,
   Shield,
-  CheckCircle
+  CheckCircle,
 } from "lucide-react";
 
 export default function Cart() {
@@ -48,7 +48,7 @@ export default function Cart() {
     dispatch({ type: "CLEAR_CART" });
   };
 
-  const deliveryFee = state.totalPrice > 20 ? 0 : 2.50;
+  const deliveryFee = state.totalPrice > 20 ? 0 : 2.5;
   const tax = state.totalPrice * 0.1; // 10% tax
   const finalTotal = state.totalPrice + deliveryFee + tax;
 
@@ -76,9 +76,13 @@ export default function Cart() {
               </div>
             </div>
             <div className="space-y-4">
-              <h2 className="text-4xl font-black text-gray-900">Votre panier est vide</h2>
+              <h2 className="text-4xl font-black text-gray-900">
+                Votre panier est vide
+              </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
-                Découvrez nos délicieux plats congolais authentiques et ajoutez-les à votre panier pour commencer votre expérience culinaire.
+                Découvrez nos délicieux plats congolais authentiques et
+                ajoutez-les à votre panier pour commencer votre expérience
+                culinaire.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -148,8 +152,11 @@ export default function Cart() {
               </h1>
 
               <p className="text-xl text-gray-600 leading-relaxed">
-                {state.totalItems} article{state.totalItems > 1 ? 's' : ''} sélectionné{state.totalItems > 1 ? 's' : ''} •
-                Total: <span className="font-bold text-emerald-600">${state.totalPrice.toFixed(2)}</span>
+                {state.totalItems} article{state.totalItems > 1 ? "s" : ""}{" "}
+                sélectionné{state.totalItems > 1 ? "s" : ""} • Total:{" "}
+                <span className="font-bold text-emerald-600">
+                  ${state.totalPrice.toFixed(2)}
+                </span>
               </p>
             </div>
           </div>
@@ -196,15 +203,21 @@ export default function Cart() {
                       </div>
 
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-gray-900 mb-1">{item.name}</h3>
-                        <p className="text-emerald-600 font-semibold">${item.price.toFixed(2)} chacun</p>
+                        <h3 className="text-xl font-bold text-gray-900 mb-1">
+                          {item.name}
+                        </h3>
+                        <p className="text-emerald-600 font-semibold">
+                          ${item.price.toFixed(2)} chacun
+                        </p>
                       </div>
 
                       <div className="flex items-center space-x-3 bg-white rounded-2xl p-2 shadow-inner">
                         <Button
                           size="sm"
                           variant="outline"
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity - 1)
+                          }
                           className="w-10 h-10 rounded-xl border-2 hover:bg-red-50 hover:border-red-200"
                         >
                           <Minus className="w-4 h-4" />
@@ -215,7 +228,9 @@ export default function Cart() {
                         <Button
                           size="sm"
                           variant="outline"
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          onClick={() =>
+                            updateQuantity(item.id, item.quantity + 1)
+                          }
                           className="w-10 h-10 rounded-xl border-2 hover:bg-emerald-50 hover:border-emerald-200"
                         >
                           <Plus className="w-4 h-4" />
@@ -250,7 +265,10 @@ export default function Cart() {
                 </CardHeader>
                 <CardContent className="p-8 space-y-6">
                   <div className="space-y-3">
-                    <Label htmlFor="address" className="text-gray-700 font-semibold text-lg">
+                    <Label
+                      htmlFor="address"
+                      className="text-gray-700 font-semibold text-lg"
+                    >
                       Adresse de livraison
                     </Label>
                     <div className="relative">
@@ -265,7 +283,10 @@ export default function Cart() {
                     </div>
                   </div>
                   <div className="space-y-3">
-                    <Label htmlFor="phone" className="text-gray-700 font-semibold text-lg">
+                    <Label
+                      htmlFor="phone"
+                      className="text-gray-700 font-semibold text-lg"
+                    >
                       Numéro de téléphone
                     </Label>
                     <Input
@@ -278,7 +299,9 @@ export default function Cart() {
                   </div>
                   <div className="flex items-center space-x-3 bg-gradient-to-r from-emerald-50 to-blue-50 p-4 rounded-2xl border border-emerald-200">
                     <Clock className="w-5 h-5 text-emerald-600" />
-                    <span className="text-gray-700 font-medium">Livraison express: 30-45 minutes</span>
+                    <span className="text-gray-700 font-medium">
+                      Livraison express: 30-45 minutes
+                    </span>
                   </div>
                 </CardContent>
               </Card>
@@ -288,27 +311,43 @@ export default function Cart() {
             <div className="space-y-8 animate-in slide-in-from-right duration-1000">
               <Card className="border-0 shadow-2xl bg-gradient-to-br from-emerald-50 to-blue-50 overflow-hidden">
                 <CardHeader className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white">
-                  <CardTitle className="text-2xl font-bold">Résumé de la Commande</CardTitle>
+                  <CardTitle className="text-2xl font-bold">
+                    Résumé de la Commande
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="p-8 space-y-6">
                   <div className="space-y-4">
                     <div className="flex justify-between items-center p-3 bg-white/70 rounded-xl">
-                      <span className="font-medium text-gray-700">Sous-total</span>
-                      <span className="font-bold text-gray-900">${state.totalPrice.toFixed(2)}</span>
+                      <span className="font-medium text-gray-700">
+                        Sous-total
+                      </span>
+                      <span className="font-bold text-gray-900">
+                        ${state.totalPrice.toFixed(2)}
+                      </span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-white/70 rounded-xl">
-                      <span className="font-medium text-gray-700">Frais de livraison</span>
+                      <span className="font-medium text-gray-700">
+                        Frais de livraison
+                      </span>
                       <span>
                         {deliveryFee === 0 ? (
-                          <Badge className="bg-green-500 text-white animate-pulse">Gratuit !</Badge>
+                          <Badge className="bg-green-500 text-white animate-pulse">
+                            Gratuit !
+                          </Badge>
                         ) : (
-                          <span className="font-bold text-gray-900">${deliveryFee.toFixed(2)}</span>
+                          <span className="font-bold text-gray-900">
+                            ${deliveryFee.toFixed(2)}
+                          </span>
                         )}
                       </span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-white/70 rounded-xl">
-                      <span className="font-medium text-gray-700">Taxes (10%)</span>
-                      <span className="font-bold text-gray-900">${tax.toFixed(2)}</span>
+                      <span className="font-medium text-gray-700">
+                        Taxes (10%)
+                      </span>
+                      <span className="font-bold text-gray-900">
+                        ${tax.toFixed(2)}
+                      </span>
                     </div>
                   </div>
                   <Separator className="bg-gradient-to-r from-emerald-500 to-blue-500 h-0.5" />
@@ -341,36 +380,36 @@ export default function Cart() {
                       label: "Paiement à la livraison (Espèces)",
                       icon: "💰",
                       description: "Payez en espèces lors de la livraison",
-                      secure: true
+                      secure: true,
                     },
                     {
                       value: "mobile",
                       label: "Mobile Money (M-Pesa, Orange Money)",
                       icon: "📱",
                       description: "Paiement mobile sécurisé instantané",
-                      secure: true
+                      secure: true,
                     },
                     {
                       value: "card",
                       label: "Carte de crédit/débit",
                       icon: "💳",
                       description: "Visa, Mastercard - Paiement sécurisé SSL",
-                      secure: true
+                      secure: true,
                     },
                     {
                       value: "bank",
                       label: "Virement bancaire",
                       icon: "🏦",
                       description: "Virement direct depuis votre banque",
-                      secure: true
+                      secure: true,
                     },
                     {
                       value: "wallet",
                       label: "Portefeuille numérique",
                       icon: "💼",
                       description: "PayPal, Skrill ou autres",
-                      secure: true
-                    }
+                      secure: true,
+                    },
                   ].map((payment) => (
                     <label
                       key={payment.value}
@@ -392,16 +431,22 @@ export default function Cart() {
                         <div className="text-2xl">{payment.icon}</div>
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
-                            <span className="font-bold text-gray-900">{payment.label}</span>
+                            <span className="font-bold text-gray-900">
+                              {payment.label}
+                            </span>
                             {paymentMethod === payment.value && (
                               <CheckCircle className="w-5 h-5 text-emerald-500" />
                             )}
                           </div>
-                          <p className="text-sm text-gray-600 mt-1">{payment.description}</p>
+                          <p className="text-sm text-gray-600 mt-1">
+                            {payment.description}
+                          </p>
                           {payment.secure && (
                             <div className="flex items-center space-x-1 mt-2">
                               <Shield className="w-3 h-3 text-green-500" />
-                              <span className="text-xs text-green-600 font-medium">Paiement sécurisé</span>
+                              <span className="text-xs text-green-600 font-medium">
+                                Paiement sécurisé
+                              </span>
                             </div>
                           )}
                         </div>
@@ -419,10 +464,15 @@ export default function Cart() {
                     : "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white"
                 }`}
                 size="lg"
-                disabled={authState.isAuthenticated && (!deliveryAddress || !phoneNumber)}
+                disabled={
+                  authState.isAuthenticated &&
+                  (!deliveryAddress || !phoneNumber)
+                }
               >
                 <Shield className="w-6 h-6 mr-3" />
-                {authState.isAuthenticated ? "Finaliser la Commande" : "Se connecter pour commander"}
+                {authState.isAuthenticated
+                  ? "Finaliser la Commande"
+                  : "Se connecter pour commander"}
               </Button>
             </div>
           </div>

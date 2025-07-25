@@ -1,17 +1,23 @@
 import { useState } from "react";
 import AdminLayout from "@/components/admin/AdminLayout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { 
-  Users, 
-  Search, 
-  Plus, 
-  Edit, 
-  Trash2, 
-  Shield, 
+import {
+  Users,
+  Search,
+  Plus,
+  Edit,
+  Trash2,
+  Shield,
   ShieldOff,
   Mail,
   Phone,
@@ -21,7 +27,7 @@ import {
   UserX,
   Filter,
   Eye,
-  MoreVertical
+  MoreVertical,
 } from "lucide-react";
 
 interface Client {
@@ -39,7 +45,9 @@ interface Client {
 
 export default function Clients() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedStatus, setSelectedStatus] = useState<"tous" | "actif" | "bloque">("tous");
+  const [selectedStatus, setSelectedStatus] = useState<
+    "tous" | "actif" | "bloque"
+  >("tous");
   const [showAddModal, setShowAddModal] = useState(false);
 
   // Mock data
@@ -54,10 +62,10 @@ export default function Clients() {
       dateInscription: "2024-01-15",
       statut: "actif",
       totalCommandes: 24,
-      montantDepense: 456.78
+      montantDepense: 456.78,
     },
     {
-      id: "CLI-002", 
+      id: "CLI-002",
       nom: "Kabila",
       prenom: "Marie",
       email: "marie.kabila@email.com",
@@ -66,55 +74,56 @@ export default function Clients() {
       dateInscription: "2024-02-10",
       statut: "actif",
       totalCommandes: 18,
-      montantDepense: 324.50
+      montantDepense: 324.5,
     },
     {
       id: "CLI-003",
       nom: "Tshisekedi",
       prenom: "Paul",
-      email: "paul.tshisekedi@email.com", 
+      email: "paul.tshisekedi@email.com",
       telephone: "+243 555 444 333",
       adresse: "Commune de Limete, Kinshasa",
       dateInscription: "2023-12-05",
       statut: "bloque",
       totalCommandes: 8,
-      montantDepense: 142.30
+      montantDepense: 142.3,
     },
     {
       id: "CLI-004",
       nom: "Mbuyi",
       prenom: "Fatou",
       email: "fatou.mbuyi@email.com",
-      telephone: "+243 777 888 999", 
+      telephone: "+243 777 888 999",
       adresse: "Av. de la Liberation, Kinshasa",
       dateInscription: "2024-03-01",
       statut: "actif",
       totalCommandes: 15,
-      montantDepense: 278.90
-    }
+      montantDepense: 278.9,
+    },
   ];
 
-  const filteredClients = clients.filter(client => {
-    const matchesSearch = 
+  const filteredClients = clients.filter((client) => {
+    const matchesSearch =
       client.nom.toLowerCase().includes(searchQuery.toLowerCase()) ||
       client.prenom.toLowerCase().includes(searchQuery.toLowerCase()) ||
       client.email.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    const matchesStatus = selectedStatus === "tous" || client.statut === selectedStatus;
-    
+
+    const matchesStatus =
+      selectedStatus === "tous" || client.statut === selectedStatus;
+
     return matchesSearch && matchesStatus;
   });
 
   const stats = {
     total: clients.length,
-    actifs: clients.filter(c => c.statut === "actif").length,
-    bloques: clients.filter(c => c.statut === "bloque").length,
-    nouveaux: clients.filter(c => {
+    actifs: clients.filter((c) => c.statut === "actif").length,
+    bloques: clients.filter((c) => c.statut === "bloque").length,
+    nouveaux: clients.filter((c) => {
       const inscriptionDate = new Date(c.dateInscription);
       const thirtyDaysAgo = new Date();
       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
       return inscriptionDate > thirtyDaysAgo;
-    }).length
+    }).length,
   };
 
   const toggleClientStatus = (clientId: string) => {
@@ -145,7 +154,7 @@ export default function Clients() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full blur-2xl"></div>
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full blur-2xl"></div>
           </div>
-          
+
           <div className="relative z-10 flex items-center justify-between">
             <div className="space-y-4">
               <div className="flex items-center space-x-4">
@@ -153,23 +162,25 @@ export default function Clients() {
                   <Users className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-4xl font-black text-gray-900">Gestion des Clients</h1>
+                  <h1 className="text-4xl font-black text-gray-900">
+                    Gestion des Clients
+                  </h1>
                   <p className="text-gray-600 font-medium">
                     Administration complète des utilisateurs clients
                   </p>
                 </div>
               </div>
             </div>
-            
+
             <div className="flex space-x-4">
-              <Button 
+              <Button
                 variant="outline"
                 className="bg-white/80 backdrop-blur-sm border-blue-200 hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 px-6 py-3 font-semibold"
               >
                 <Filter className="w-5 h-5 mr-2" />
                 Filtres Avancés
               </Button>
-              <Button 
+              <Button
                 onClick={() => setShowAddModal(true)}
                 className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-6 py-3 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
               >
@@ -188,40 +199,51 @@ export default function Clients() {
               value: stats.total,
               icon: Users,
               color: "from-blue-500 to-indigo-500",
-              bgColor: "from-blue-50 to-indigo-50"
+              bgColor: "from-blue-50 to-indigo-50",
             },
             {
-              title: "Clients Actifs", 
+              title: "Clients Actifs",
               value: stats.actifs,
               icon: UserCheck,
               color: "from-green-500 to-emerald-500",
-              bgColor: "from-green-50 to-emerald-50"
+              bgColor: "from-green-50 to-emerald-50",
             },
             {
               title: "Clients Bloqués",
               value: stats.bloques,
               icon: UserX,
               color: "from-red-500 to-pink-500",
-              bgColor: "from-red-50 to-pink-50"
+              bgColor: "from-red-50 to-pink-50",
             },
             {
               title: "Nouveaux (30j)",
               value: stats.nouveaux,
               icon: Plus,
               color: "from-purple-500 to-violet-500",
-              bgColor: "from-purple-50 to-violet-50"
-            }
+              bgColor: "from-purple-50 to-violet-50",
+            },
           ].map((stat, index) => (
-            <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden bg-white">
+            <Card
+              key={index}
+              className="border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden bg-white"
+            >
               <CardContent className="p-6">
-                <div className={`bg-gradient-to-br ${stat.bgColor} rounded-2xl p-4 mb-4`}>
+                <div
+                  className={`bg-gradient-to-br ${stat.bgColor} rounded-2xl p-4 mb-4`}
+                >
                   <div className="flex items-center justify-between">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center shadow-lg`}>
+                    <div
+                      className={`w-12 h-12 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center shadow-lg`}
+                    >
                       <stat.icon className="w-6 h-6 text-white" />
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-black text-gray-900">{stat.value}</div>
-                      <div className="text-sm font-medium text-gray-600">{stat.title}</div>
+                      <div className="text-2xl font-black text-gray-900">
+                        {stat.value}
+                      </div>
+                      <div className="text-sm font-medium text-gray-600">
+                        {stat.title}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -247,11 +269,13 @@ export default function Clients() {
                 {[
                   { value: "tous", label: "Tous", count: stats.total },
                   { value: "actif", label: "Actifs", count: stats.actifs },
-                  { value: "bloque", label: "Bloqués", count: stats.bloques }
+                  { value: "bloque", label: "Bloqués", count: stats.bloques },
                 ].map((status) => (
                   <Button
                     key={status.value}
-                    variant={selectedStatus === status.value ? "default" : "outline"}
+                    variant={
+                      selectedStatus === status.value ? "default" : "outline"
+                    }
                     onClick={() => setSelectedStatus(status.value as any)}
                     className={`px-4 py-2 rounded-2xl font-semibold transition-all duration-300 ${
                       selectedStatus === status.value
@@ -293,18 +317,25 @@ export default function Clients() {
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center space-x-4">
                         <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                          {client.prenom[0]}{client.nom[0]}
+                          {client.prenom[0]}
+                          {client.nom[0]}
                         </div>
                         <div>
                           <h3 className="text-xl font-bold text-gray-900">
                             {client.prenom} {client.nom}
                           </h3>
-                          <p className="text-blue-600 font-medium">{client.id}</p>
+                          <p className="text-blue-600 font-medium">
+                            {client.id}
+                          </p>
                         </div>
                       </div>
                       <div className="flex items-center space-x-3">
                         {getStatusBadge(client.statut)}
-                        <Button size="sm" variant="outline" className="rounded-xl">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="rounded-xl"
+                        >
                           <MoreVertical className="w-4 h-4" />
                         </Button>
                       </div>
@@ -313,20 +344,28 @@ export default function Clients() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                       <div className="flex items-center space-x-2">
                         <Mail className="w-4 h-4 text-blue-500" />
-                        <span className="text-sm text-gray-600">{client.email}</span>
+                        <span className="text-sm text-gray-600">
+                          {client.email}
+                        </span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Phone className="w-4 h-4 text-emerald-500" />
-                        <span className="text-sm text-gray-600">{client.telephone}</span>
+                        <span className="text-sm text-gray-600">
+                          {client.telephone}
+                        </span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <MapPin className="w-4 h-4 text-purple-500" />
-                        <span className="text-sm text-gray-600">{client.adresse}</span>
+                        <span className="text-sm text-gray-600">
+                          {client.adresse}
+                        </span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <Calendar className="w-4 h-4 text-orange-500" />
                         <span className="text-sm text-gray-600">
-                          {new Date(client.dateInscription).toLocaleDateString('fr-FR')}
+                          {new Date(client.dateInscription).toLocaleDateString(
+                            "fr-FR",
+                          )}
                         </span>
                       </div>
                     </div>
@@ -334,21 +373,33 @@ export default function Clients() {
                     <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                       <div className="flex space-x-6">
                         <div className="text-center">
-                          <div className="text-2xl font-black text-blue-600">{client.totalCommandes}</div>
+                          <div className="text-2xl font-black text-blue-600">
+                            {client.totalCommandes}
+                          </div>
                           <div className="text-xs text-gray-500">Commandes</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-2xl font-black text-emerald-600">${client.montantDepense}</div>
+                          <div className="text-2xl font-black text-emerald-600">
+                            ${client.montantDepense}
+                          </div>
                           <div className="text-xs text-gray-500">Dépensé</div>
                         </div>
                       </div>
-                      
+
                       <div className="flex space-x-2">
-                        <Button size="sm" variant="outline" className="rounded-xl">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="rounded-xl"
+                        >
                           <Eye className="w-4 h-4 mr-2" />
                           Voir
                         </Button>
-                        <Button size="sm" variant="outline" className="rounded-xl">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="rounded-xl"
+                        >
                           <Edit className="w-4 h-4 mr-2" />
                           Modifier
                         </Button>
@@ -373,7 +424,11 @@ export default function Clients() {
                             </>
                           )}
                         </Button>
-                        <Button size="sm" variant="outline" className="rounded-xl text-red-600 hover:bg-red-50">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="rounded-xl text-red-600 hover:bg-red-50"
+                        >
                           <Trash2 className="w-4 h-4" />
                         </Button>
                       </div>

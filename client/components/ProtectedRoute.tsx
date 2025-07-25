@@ -16,7 +16,7 @@ interface ProtectedRouteProps {
 export default function ProtectedRoute({
   children,
   fallback,
-  redirectTo
+  redirectTo,
 }: ProtectedRouteProps) {
   const { state } = useAuth();
   const location = useLocation();
@@ -39,7 +39,9 @@ export default function ProtectedRoute({
             <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <Lock className="w-8 h-8 text-white" />
             </div>
-            <CardTitle className="text-2xl font-bold">Connexion Requise</CardTitle>
+            <CardTitle className="text-2xl font-bold">
+              Connexion Requise
+            </CardTitle>
           </CardHeader>
           <CardContent className="p-8 text-center space-y-6">
             <div className="space-y-3">
@@ -50,8 +52,9 @@ export default function ProtectedRoute({
                 Accès Protégé
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Cette fonctionnalité nécessite une connexion à votre compte Congo Food.
-                Connectez-vous pour accéder à vos commandes, réservations et bien plus.
+                Cette fonctionnalité nécessite une connexion à votre compte
+                Congo Food. Connectez-vous pour accéder à vos commandes,
+                réservations et bien plus.
               </p>
             </div>
 

@@ -2,7 +2,14 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 
@@ -12,14 +19,22 @@ interface SignInFormProps {
   loading?: boolean;
 }
 
-export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false }: SignInFormProps) {
+export default function SignInForm({
+  onSignIn,
+  onSwitchToSignUp,
+  loading = false,
+}: SignInFormProps) {
   const [email, setEmail] = useState("client@client.com");
   const [password, setPassword] = useState("client@client.com");
   const [showPassword, setShowPassword] = useState(false);
-  const [errors, setErrors] = useState<{email?: string; password?: string; general?: string}>({});
+  const [errors, setErrors] = useState<{
+    email?: string;
+    password?: string;
+    general?: string;
+  }>({});
 
   const validateForm = () => {
-    const newErrors: {email?: string; password?: string} = {};
+    const newErrors: { email?: string; password?: string } = {};
 
     if (!email.trim()) {
       newErrors.email = "Email is required";
@@ -39,13 +54,15 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     try {
       await onSignIn(email, password);
     } catch (error) {
-      setErrors({ general: error instanceof Error ? error.message : "Sign in failed" });
+      setErrors({
+        general: error instanceof Error ? error.message : "Sign in failed",
+      });
     }
   };
 
@@ -57,7 +74,10 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
           Connectez-vous à votre compte Congo Food
         </CardDescription>
       </CardHeader>
-      <form onSubmit={handleSubmit} className="flex flex-col flex-1 overflow-hidden">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col flex-1 overflow-hidden"
+      >
         <CardContent className="space-y-6 overflow-y-auto flex-1 px-6">
           {errors.general && (
             <Alert variant="destructive">
@@ -67,7 +87,9 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
 
           {/* Section Connexion */}
           <div className="bg-blue-50 rounded-lg p-4">
-            <h3 className="text-lg font-semibold text-blue-800 mb-4">Informations de Connexion</h3>
+            <h3 className="text-lg font-semibold text-blue-800 mb-4">
+              Informations de Connexion
+            </h3>
 
             <div className="space-y-4">
               <div className="space-y-2">
@@ -80,7 +102,7 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
                     placeholder="votre@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className={`pl-10 ${errors.email ? 'border-destructive' : ''}`}
+                    className={`pl-10 ${errors.email ? "border-destructive" : ""}`}
                     disabled={loading}
                   />
                 </div>
@@ -99,7 +121,7 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
                     placeholder="Votre mot de passe"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className={`pl-10 pr-10 ${errors.password ? 'border-destructive' : ''}`}
+                    className={`pl-10 pr-10 ${errors.password ? "border-destructive" : ""}`}
                     disabled={loading}
                   />
                   <Button
@@ -110,7 +132,11 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
                     onClick={() => setShowPassword(!showPassword)}
                     disabled={loading}
                   >
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    {showPassword ? (
+                      <EyeOff className="w-4 h-4" />
+                    ) : (
+                      <Eye className="w-4 h-4" />
+                    )}
                   </Button>
                 </div>
                 {errors.password && (
@@ -119,7 +145,10 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
               </div>
 
               <div className="text-right">
-                <Button variant="link" className="text-sm p-0 h-auto text-blue-600 hover:text-blue-700">
+                <Button
+                  variant="link"
+                  className="text-sm p-0 h-auto text-blue-600 hover:text-blue-700"
+                >
                   Mot de passe oublié ?
                 </Button>
               </div>
@@ -128,9 +157,12 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
 
           {/* Section Aide */}
           <div className="bg-emerald-50 rounded-lg p-4 border border-emerald-200">
-            <h4 className="font-semibold text-emerald-800 mb-2">Besoin d'aide ?</h4>
+            <h4 className="font-semibold text-emerald-800 mb-2">
+              Besoin d'aide ?
+            </h4>
             <p className="text-sm text-emerald-700 mb-3">
-              Si vous n'avez pas encore de compte, vous pouvez en créer un gratuitement.
+              Si vous n'avez pas encore de compte, vous pouvez en créer un
+              gratuitement.
             </p>
             <div className="space-y-2 text-xs text-emerald-600">
               <p>• Accès à toutes vos commandes et réservations</p>

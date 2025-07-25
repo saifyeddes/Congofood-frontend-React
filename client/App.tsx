@@ -48,47 +48,47 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/restaurants" element={<RestaurantSearch />} />
-            <Route path="/reservations" element={<TableReservation />} />
-            <Route path="/order-history" element={<OrderHistory />} />
-            <Route path="/order-tracking" element={<OrderTracking />} />
-            <Route path="/profile" element={<Profile />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/restaurants" element={<RestaurantSearch />} />
+              <Route path="/reservations" element={<TableReservation />} />
+              <Route path="/order-history" element={<OrderHistory />} />
+              <Route path="/order-tracking" element={<OrderTracking />} />
+              <Route path="/profile" element={<Profile />} />
 
-            {/* Admin Routes */}
-            <Route path="/admin" element={<Dashboard />} />
-            <Route path="/admin/clients" element={<Clients />} />
-            <Route path="/admin/restaurateurs" element={<Restaurateurs />} />
-            <Route path="/admin/categories" element={<Categories />} />
-            <Route path="/admin/dishes" element={<Dishes />} />
-            <Route path="/admin/orders" element={<Orders />} />
-            <Route path="/admin/deliveries" element={<Deliveries />} />
-            <Route path="/admin/drivers" element={<Drivers />} />
-            <Route path="/admin/admins" element={<Admins />} />
+              {/* Admin Routes */}
+              <Route path="/admin" element={<Dashboard />} />
+              <Route path="/admin/clients" element={<Clients />} />
+              <Route path="/admin/restaurateurs" element={<Restaurateurs />} />
+              <Route path="/admin/categories" element={<Categories />} />
+              <Route path="/admin/dishes" element={<Dishes />} />
+              <Route path="/admin/orders" element={<Orders />} />
+              <Route path="/admin/deliveries" element={<Deliveries />} />
+              <Route path="/admin/drivers" element={<Drivers />} />
+              <Route path="/admin/admins" element={<Admins />} />
 
-            {/* Delivery Routes */}
-            <Route path="/delivery" element={<DeliveryDashboard />} />
-            <Route path="/delivery/orders" element={<DeliveryOrders />} />
-            <Route path="/delivery/map" element={<DeliveryMap />} />
-            <Route path="/delivery/history" element={<DeliveryHistory />} />
-            <Route path="/delivery/profile" element={<DeliveryProfile />} />
-            <Route path="/delivery/settings" element={<DeliverySettings />} />
+              {/* Delivery Routes */}
+              <Route path="/delivery" element={<DeliveryDashboard />} />
+              <Route path="/delivery/orders" element={<DeliveryOrders />} />
+              <Route path="/delivery/map" element={<DeliveryMap />} />
+              <Route path="/delivery/history" element={<DeliveryHistory />} />
+              <Route path="/delivery/profile" element={<DeliveryProfile />} />
+              <Route path="/delivery/settings" element={<DeliverySettings />} />
 
-            {/* Restaurant Routes */}
-            <Route path="/resto" element={<RestaurantLayout />}>
-              <Route index element={<RestaurantDashboard />} />
-              <Route path="reservations" element={<RestaurantDashboard />} />
-              <Route path="orders" element={<RestaurantDashboard />} />
-              <Route path="menu" element={<RestaurantDashboard />} />
-              <Route path="tracking" element={<RestaurantDashboard />} />
-              <Route path="analytics" element={<RestaurantDashboard />} />
-            </Route>
+              {/* Restaurant Routes */}
+              <Route path="/resto" element={<RestaurantLayout />}>
+                <Route index element={<RestaurantDashboard />} />
+                <Route path="reservations" element={<RestaurantDashboard />} />
+                <Route path="orders" element={<RestaurantDashboard />} />
+                <Route path="menu" element={<RestaurantDashboard />} />
+                <Route path="tracking" element={<RestaurantDashboard />} />
+                <Route path="analytics" element={<RestaurantDashboard />} />
+              </Route>
 
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>

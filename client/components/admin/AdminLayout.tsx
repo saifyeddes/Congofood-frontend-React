@@ -19,7 +19,7 @@ import {
   MapPin,
   Shield,
   Crown,
-  Activity
+  Activity,
 } from "lucide-react";
 
 interface AdminLayoutProps {
@@ -43,7 +43,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           <div className="space-y-4">
             <h1 className="text-3xl font-black text-gray-900">Accès Refusé</h1>
             <p className="text-gray-600 leading-relaxed">
-              Vous n'avez pas les permissions administrateur nécessaires pour accéder à cette zone sécurisée.
+              Vous n'avez pas les permissions administrateur nécessaires pour
+              accéder à cette zone sécurisée.
             </p>
           </div>
           <Button
@@ -64,22 +65,22 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       label: "Dashboard",
       href: "/admin",
       badge: null,
-      description: "Vue d'ensemble"
+      description: "Vue d'ensemble",
     },
     {
       icon: Users,
       label: "Gestion Clients",
       href: "/admin/clients",
       badge: "1,234",
-      description: "CRUD + Blocage/Déblocage"
+      description: "CRUD + Blocage/Déblocage",
     },
     {
       icon: ChefHat,
       label: "Gestion Restaurateurs",
       href: "/admin/restaurateurs",
       badge: "56",
-      description: "CRUD + Blocage/Déblocage"
-    }
+      description: "CRUD + Blocage/Déblocage",
+    },
   ];
 
   const handleSignOut = () => {
@@ -98,10 +99,12 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       )}
 
       {/* Sidebar */}
-      <div className={`
+      <div
+        className={`
         fixed lg:static inset-y-0 left-0 z-50 w-72 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 shadow-2xl transform transition-all duration-500 ease-out
-        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-      `}>
+        ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
+      `}
+      >
         <div className="flex flex-col h-full relative overflow-hidden">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
@@ -119,7 +122,9 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                 <h1 className="text-xl font-black text-white">Congo Food</h1>
                 <div className="flex items-center space-x-2">
                   <Crown className="w-3 h-3 text-yellow-400" />
-                  <p className="text-xs text-gray-300 font-medium">Administration</p>
+                  <p className="text-xs text-gray-300 font-medium">
+                    Administration
+                  </p>
                 </div>
               </div>
             </div>
@@ -156,7 +161,9 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           {/* Enhanced Navigation */}
           <nav className="relative z-10 flex-1 p-6 overflow-y-auto">
             <div className="space-y-4">
-              <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider px-2 mb-6">Menu Principal</h4>
+              <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider px-2 mb-6">
+                Menu Principal
+              </h4>
               {menuItems.map((item, index) => {
                 const isActive = location.pathname === item.href;
                 return (
@@ -165,9 +172,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                     to={item.href}
                     className={`
                       group block w-full p-5 rounded-2xl font-medium transition-all duration-500 animate-in slide-in-from-left hover:shadow-xl
-                      ${isActive
-                        ? 'bg-gradient-to-br from-emerald-500 via-blue-500 to-purple-500 text-white shadow-2xl transform scale-105'
-                        : 'text-gray-300 hover:text-white bg-white/5 hover:bg-gradient-to-br hover:from-white/10 hover:to-white/5 hover:transform hover:scale-105'
+                      ${
+                        isActive
+                          ? "bg-gradient-to-br from-emerald-500 via-blue-500 to-purple-500 text-white shadow-2xl transform scale-105"
+                          : "text-gray-300 hover:text-white bg-white/5 hover:bg-gradient-to-br hover:from-white/10 hover:to-white/5 hover:transform hover:scale-105"
                       }
                     `}
                     onClick={() => setSidebarOpen(false)}
@@ -175,32 +183,46 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                   >
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center space-x-4">
-                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${
-                          isActive
-                            ? 'bg-white/20 shadow-lg'
-                            : 'bg-white/10 group-hover:bg-white/20'
-                        }`}>
-                          <item.icon className={`w-6 h-6 ${isActive ? 'text-white animate-pulse' : 'text-gray-300 group-hover:text-white'}`} />
+                        <div
+                          className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${
+                            isActive
+                              ? "bg-white/20 shadow-lg"
+                              : "bg-white/10 group-hover:bg-white/20"
+                          }`}
+                        >
+                          <item.icon
+                            className={`w-6 h-6 ${isActive ? "text-white animate-pulse" : "text-gray-300 group-hover:text-white"}`}
+                          />
                         </div>
                         <div>
-                          <div className={`font-black text-lg ${
-                            isActive ? 'text-white' : 'text-gray-200 group-hover:text-white'
-                          }`}>
+                          <div
+                            className={`font-black text-lg ${
+                              isActive
+                                ? "text-white"
+                                : "text-gray-200 group-hover:text-white"
+                            }`}
+                          >
                             {item.label}
                           </div>
-                          <div className={`text-xs font-medium ${
-                            isActive ? 'text-white/80' : 'text-gray-400 group-hover:text-gray-200'
-                          }`}>
+                          <div
+                            className={`text-xs font-medium ${
+                              isActive
+                                ? "text-white/80"
+                                : "text-gray-400 group-hover:text-gray-200"
+                            }`}
+                          >
                             {item.description}
                           </div>
                         </div>
                       </div>
                       {item.badge && (
-                        <Badge className={`text-xs font-bold px-3 py-1.5 ${
-                          isActive
-                            ? 'bg-white/25 text-white border-white/30'
-                            : 'bg-gradient-to-r from-emerald-500 to-green-500 text-white border-0 shadow-lg animate-pulse'
-                        }`}>
+                        <Badge
+                          className={`text-xs font-bold px-3 py-1.5 ${
+                            isActive
+                              ? "bg-white/25 text-white border-white/30"
+                              : "bg-gradient-to-r from-emerald-500 to-green-500 text-white border-0 shadow-lg animate-pulse"
+                          }`}
+                        >
                           {item.badge}
                         </Badge>
                       )}
@@ -276,9 +298,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
         {/* Page Content */}
         <main className="flex-1 p-8 overflow-auto bg-gradient-to-br from-white via-gray-50/50 to-blue-50/30">
-          <div className="animate-in fade-in duration-1000">
-            {children}
-          </div>
+          <div className="animate-in fade-in duration-1000">{children}</div>
         </main>
       </div>
     </div>

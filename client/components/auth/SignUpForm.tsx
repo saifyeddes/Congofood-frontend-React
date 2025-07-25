@@ -3,11 +3,34 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Eye, EyeOff, Mail, Lock, User, Phone, MapPin, Calendar, Heart } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Eye,
+  EyeOff,
+  Mail,
+  Lock,
+  User,
+  Phone,
+  MapPin,
+  Calendar,
+  Heart,
+} from "lucide-react";
 
 interface SignUpFormProps {
   onSignUp: (userData: {
@@ -27,7 +50,11 @@ interface SignUpFormProps {
   loading?: boolean;
 }
 
-export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false }: SignUpFormProps) {
+export default function SignUpForm({
+  onSignUp,
+  onSwitchToSignIn,
+  loading = false,
+}: SignUpFormProps) {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -40,15 +67,15 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
     gender: "",
     preferences: "",
     emergencyContact: "",
-    emergencyPhone: ""
+    emergencyPhone: "",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
-  const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const validateForm = () => {
-    const newErrors: {[key: string]: string} = {};
+    const newErrors: { [key: string]: string } = {};
 
     if (!formData.firstName.trim()) {
       newErrors.firstName = "Prénom requis";
@@ -109,12 +136,12 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
   };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     try {
@@ -129,10 +156,12 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
         gender: formData.gender,
         preferences: formData.preferences,
         emergencyContact: formData.emergencyContact,
-        emergencyPhone: formData.emergencyPhone
+        emergencyPhone: formData.emergencyPhone,
       });
     } catch (error) {
-      setErrors({ general: error instanceof Error ? error.message : "Inscription échouée" });
+      setErrors({
+        general: error instanceof Error ? error.message : "Inscription échouée",
+      });
     }
   };
 
@@ -144,7 +173,10 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
           Rejoignez Congo Food pour commander plus rapidement
         </CardDescription>
       </CardHeader>
-      <form onSubmit={handleSubmit} className="flex flex-col flex-1 overflow-hidden">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col flex-1 overflow-hidden"
+      >
         <CardContent className="space-y-4 overflow-y-auto flex-1 px-6">
           {errors.general && (
             <Alert variant="destructive">
@@ -154,7 +186,9 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
 
           {/* Section 1: Informations personnelles */}
           <div className="bg-emerald-50 rounded-lg p-4">
-            <h3 className="text-lg font-semibold text-emerald-800 mb-4">Informations Personnelles</h3>
+            <h3 className="text-lg font-semibold text-emerald-800 mb-4">
+              Informations Personnelles
+            </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -165,8 +199,10 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
                     id="firstName"
                     placeholder="Votre prénom"
                     value={formData.firstName}
-                    onChange={(e) => handleInputChange("firstName", e.target.value)}
-                    className={`pl-10 ${errors.firstName ? 'border-destructive' : ''}`}
+                    onChange={(e) =>
+                      handleInputChange("firstName", e.target.value)
+                    }
+                    className={`pl-10 ${errors.firstName ? "border-destructive" : ""}`}
                     disabled={loading}
                   />
                 </div>
@@ -181,8 +217,10 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
                   id="lastName"
                   placeholder="Votre nom de famille"
                   value={formData.lastName}
-                  onChange={(e) => handleInputChange("lastName", e.target.value)}
-                  className={errors.lastName ? 'border-destructive' : ''}
+                  onChange={(e) =>
+                    handleInputChange("lastName", e.target.value)
+                  }
+                  className={errors.lastName ? "border-destructive" : ""}
                   disabled={loading}
                 />
                 {errors.lastName && (
@@ -200,20 +238,29 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
                     id="dateOfBirth"
                     type="date"
                     value={formData.dateOfBirth}
-                    onChange={(e) => handleInputChange("dateOfBirth", e.target.value)}
-                    className={`pl-10 ${errors.dateOfBirth ? 'border-destructive' : ''}`}
+                    onChange={(e) =>
+                      handleInputChange("dateOfBirth", e.target.value)
+                    }
+                    className={`pl-10 ${errors.dateOfBirth ? "border-destructive" : ""}`}
                     disabled={loading}
                   />
                 </div>
                 {errors.dateOfBirth && (
-                  <p className="text-sm text-destructive">{errors.dateOfBirth}</p>
+                  <p className="text-sm text-destructive">
+                    {errors.dateOfBirth}
+                  </p>
                 )}
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="gender">Genre *</Label>
-                <Select value={formData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
-                  <SelectTrigger className={errors.gender ? 'border-destructive' : ''}>
+                <Select
+                  value={formData.gender}
+                  onValueChange={(value) => handleInputChange("gender", value)}
+                >
+                  <SelectTrigger
+                    className={errors.gender ? "border-destructive" : ""}
+                  >
                     <SelectValue placeholder="Sélectionnez votre genre" />
                   </SelectTrigger>
                   <SelectContent>
@@ -231,7 +278,9 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
 
           {/* Section 2: Contact */}
           <div className="bg-blue-50 rounded-lg p-4">
-            <h3 className="text-lg font-semibold text-blue-800 mb-4">Informations de Contact</h3>
+            <h3 className="text-lg font-semibold text-blue-800 mb-4">
+              Informations de Contact
+            </h3>
 
             <div className="space-y-4">
               <div className="space-y-2">
@@ -244,7 +293,7 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
                     placeholder="votre@email.com"
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
-                    className={`pl-10 ${errors.email ? 'border-destructive' : ''}`}
+                    className={`pl-10 ${errors.email ? "border-destructive" : ""}`}
                     disabled={loading}
                   />
                 </div>
@@ -262,7 +311,7 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
                     placeholder="+243 123 456 789"
                     value={formData.phone}
                     onChange={(e) => handleInputChange("phone", e.target.value)}
-                    className={`pl-10 ${errors.phone ? 'border-destructive' : ''}`}
+                    className={`pl-10 ${errors.phone ? "border-destructive" : ""}`}
                     disabled={loading}
                   />
                 </div>
@@ -279,8 +328,10 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
                     id="address"
                     placeholder="Votre adresse complète de livraison"
                     value={formData.address}
-                    onChange={(e) => handleInputChange("address", e.target.value)}
-                    className={`pl-10 ${errors.address ? 'border-destructive' : ''} min-h-[80px]`}
+                    onChange={(e) =>
+                      handleInputChange("address", e.target.value)
+                    }
+                    className={`pl-10 ${errors.address ? "border-destructive" : ""} min-h-[80px]`}
                     disabled={loading}
                   />
                 </div>
@@ -293,21 +344,31 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
 
           {/* Section 3: Contact d'urgence */}
           <div className="bg-orange-50 rounded-lg p-4">
-            <h3 className="text-lg font-semibold text-orange-800 mb-4">Contact d'Urgence</h3>
+            <h3 className="text-lg font-semibold text-orange-800 mb-4">
+              Contact d'Urgence
+            </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="emergencyContact">Nom du contact d'urgence *</Label>
+                <Label htmlFor="emergencyContact">
+                  Nom du contact d'urgence *
+                </Label>
                 <Input
                   id="emergencyContact"
                   placeholder="Nom de votre contact d'urgence"
                   value={formData.emergencyContact}
-                  onChange={(e) => handleInputChange("emergencyContact", e.target.value)}
-                  className={errors.emergencyContact ? 'border-destructive' : ''}
+                  onChange={(e) =>
+                    handleInputChange("emergencyContact", e.target.value)
+                  }
+                  className={
+                    errors.emergencyContact ? "border-destructive" : ""
+                  }
                   disabled={loading}
                 />
                 {errors.emergencyContact && (
-                  <p className="text-sm text-destructive">{errors.emergencyContact}</p>
+                  <p className="text-sm text-destructive">
+                    {errors.emergencyContact}
+                  </p>
                 )}
               </div>
 
@@ -319,13 +380,17 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
                     id="emergencyPhone"
                     placeholder="+243 987 654 321"
                     value={formData.emergencyPhone}
-                    onChange={(e) => handleInputChange("emergencyPhone", e.target.value)}
-                    className={`pl-10 ${errors.emergencyPhone ? 'border-destructive' : ''}`}
+                    onChange={(e) =>
+                      handleInputChange("emergencyPhone", e.target.value)
+                    }
+                    className={`pl-10 ${errors.emergencyPhone ? "border-destructive" : ""}`}
                     disabled={loading}
                   />
                 </div>
                 {errors.emergencyPhone && (
-                  <p className="text-sm text-destructive">{errors.emergencyPhone}</p>
+                  <p className="text-sm text-destructive">
+                    {errors.emergencyPhone}
+                  </p>
                 )}
               </div>
             </div>
@@ -333,17 +398,23 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
 
           {/* Section 4: Préférences */}
           <div className="bg-purple-50 rounded-lg p-4">
-            <h3 className="text-lg font-semibold text-purple-800 mb-4">Préférences Alimentaires</h3>
+            <h3 className="text-lg font-semibold text-purple-800 mb-4">
+              Préférences Alimentaires
+            </h3>
 
             <div className="space-y-2">
-              <Label htmlFor="preferences">Préférences alimentaires, allergies (optionnel)</Label>
+              <Label htmlFor="preferences">
+                Préférences alimentaires, allergies (optionnel)
+              </Label>
               <div className="relative">
                 <Heart className="absolute left-3 top-3 text-muted-foreground w-4 h-4" />
                 <Textarea
                   id="preferences"
                   placeholder="Ex: Végétarien, allergique aux noix, préfère épicé, etc."
                   value={formData.preferences}
-                  onChange={(e) => handleInputChange("preferences", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("preferences", e.target.value)
+                  }
                   className="pl-10 min-h-[80px]"
                   disabled={loading}
                 />
@@ -353,7 +424,9 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
 
           {/* Section 5: Sécurité */}
           <div className="bg-red-50 rounded-lg p-4">
-            <h3 className="text-lg font-semibold text-red-800 mb-4">Sécurité du Compte</h3>
+            <h3 className="text-lg font-semibold text-red-800 mb-4">
+              Sécurité du Compte
+            </h3>
 
             <div className="space-y-4">
               <div className="space-y-2">
@@ -365,8 +438,10 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
                     type={showPassword ? "text" : "password"}
                     placeholder="Créer un mot de passe"
                     value={formData.password}
-                    onChange={(e) => handleInputChange("password", e.target.value)}
-                    className={`pl-10 pr-10 ${errors.password ? 'border-destructive' : ''}`}
+                    onChange={(e) =>
+                      handleInputChange("password", e.target.value)
+                    }
+                    className={`pl-10 pr-10 ${errors.password ? "border-destructive" : ""}`}
                     disabled={loading}
                   />
                   <Button
@@ -377,7 +452,11 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
                     onClick={() => setShowPassword(!showPassword)}
                     disabled={loading}
                   >
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    {showPassword ? (
+                      <EyeOff className="w-4 h-4" />
+                    ) : (
+                      <Eye className="w-4 h-4" />
+                    )}
                   </Button>
                 </div>
                 {errors.password && (
@@ -386,7 +465,9 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword">Confirmer le mot de passe *</Label>
+                <Label htmlFor="confirmPassword">
+                  Confirmer le mot de passe *
+                </Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                   <Input
@@ -394,8 +475,10 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
                     type={showConfirmPassword ? "text" : "password"}
                     placeholder="Confirmer votre mot de passe"
                     value={formData.confirmPassword}
-                    onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
-                    className={`pl-10 pr-10 ${errors.confirmPassword ? 'border-destructive' : ''}`}
+                    onChange={(e) =>
+                      handleInputChange("confirmPassword", e.target.value)
+                    }
+                    className={`pl-10 pr-10 ${errors.confirmPassword ? "border-destructive" : ""}`}
                     disabled={loading}
                   />
                   <Button
@@ -406,11 +489,17 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     disabled={loading}
                   >
-                    {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    {showConfirmPassword ? (
+                      <EyeOff className="w-4 h-4" />
+                    ) : (
+                      <Eye className="w-4 h-4" />
+                    )}
                   </Button>
                 </div>
                 {errors.confirmPassword && (
-                  <p className="text-sm text-destructive">{errors.confirmPassword}</p>
+                  <p className="text-sm text-destructive">
+                    {errors.confirmPassword}
+                  </p>
                 )}
               </div>
             </div>
@@ -435,7 +524,8 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
                 <Button variant="link" className="p-0 h-auto text-sm underline">
                   Politique de Confidentialité
                 </Button>{" "}
-                de Congo Food. Je confirme que toutes les informations fournies sont exactes.
+                de Congo Food. Je confirme que toutes les informations fournies
+                sont exactes.
               </Label>
             </div>
             {errors.terms && (

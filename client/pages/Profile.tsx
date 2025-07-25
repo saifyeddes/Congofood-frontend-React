@@ -27,7 +27,7 @@ import {
   ShoppingBag,
   Settings,
   Truck,
-  Gift
+  Gift,
 } from "lucide-react";
 
 export default function Profile() {
@@ -42,7 +42,7 @@ export default function Profile() {
     dateOfBirth: "1990-05-15",
     preferences: "Plats épicés, sans noix",
     emergencyContact: "Marie Mukendi",
-    emergencyPhone: "+243 987 654 321"
+    emergencyPhone: "+243 987 654 321",
   });
 
   const handleSave = () => {
@@ -54,9 +54,9 @@ export default function Profile() {
   const stats = {
     totalOrders: 24,
     favoriteRestaurant: "Chez Mama Congo",
-    totalSpent: 586.50,
+    totalSpent: 586.5,
     memberSince: "Janvier 2024",
-    loyaltyPoints: 1240
+    loyaltyPoints: 1240,
   };
 
   const recentOrders = [
@@ -66,16 +66,16 @@ export default function Profile() {
       items: ["Moambé au Poulet", "Fufu na Ndakala"],
       total: 28.98,
       date: "2024-01-15",
-      status: "delivered"
+      status: "delivered",
     },
     {
       id: "ORD-2024-002",
       restaurant: "Le Jardin Tropical",
       items: ["Salade Fusion"],
-      total: 14.50,
+      total: 14.5,
       date: "2024-01-12",
-      status: "delivered"
-    }
+      status: "delivered",
+    },
   ];
 
   return (
@@ -93,7 +93,9 @@ export default function Profile() {
                   <h1 className="text-4xl font-black mb-2">
                     {authState.user?.firstName} {authState.user?.lastName}
                   </h1>
-                  <p className="text-xl text-emerald-100 mb-2">{authState.user?.email}</p>
+                  <p className="text-xl text-emerald-100 mb-2">
+                    {authState.user?.email}
+                  </p>
                   <div className="flex items-center space-x-4">
                     <Badge className="bg-green-500 text-white">
                       <Award className="w-3 h-3 mr-1" />
@@ -127,7 +129,11 @@ export default function Profile() {
                         onClick={() => setIsEditing(!isEditing)}
                         className="text-white hover:bg-white/20"
                       >
-                        {isEditing ? <X className="w-4 h-4" /> : <Edit className="w-4 h-4" />}
+                        {isEditing ? (
+                          <X className="w-4 h-4" />
+                        ) : (
+                          <Edit className="w-4 h-4" />
+                        )}
                       </Button>
                     </div>
                   </CardHeader>
@@ -138,7 +144,12 @@ export default function Profile() {
                         <Input
                           id="firstName"
                           value={profileData.firstName}
-                          onChange={(e) => setProfileData({...profileData, firstName: e.target.value})}
+                          onChange={(e) =>
+                            setProfileData({
+                              ...profileData,
+                              firstName: e.target.value,
+                            })
+                          }
                           disabled={!isEditing}
                           className={!isEditing ? "bg-gray-50" : ""}
                         />
@@ -148,7 +159,12 @@ export default function Profile() {
                         <Input
                           id="lastName"
                           value={profileData.lastName}
-                          onChange={(e) => setProfileData({...profileData, lastName: e.target.value})}
+                          onChange={(e) =>
+                            setProfileData({
+                              ...profileData,
+                              lastName: e.target.value,
+                            })
+                          }
                           disabled={!isEditing}
                           className={!isEditing ? "bg-gray-50" : ""}
                         />
@@ -160,7 +176,12 @@ export default function Profile() {
                           <Input
                             id="email"
                             value={profileData.email}
-                            onChange={(e) => setProfileData({...profileData, email: e.target.value})}
+                            onChange={(e) =>
+                              setProfileData({
+                                ...profileData,
+                                email: e.target.value,
+                              })
+                            }
                             disabled={!isEditing}
                             className={`pl-10 ${!isEditing ? "bg-gray-50" : ""}`}
                           />
@@ -173,7 +194,12 @@ export default function Profile() {
                           <Input
                             id="phone"
                             value={profileData.phone}
-                            onChange={(e) => setProfileData({...profileData, phone: e.target.value})}
+                            onChange={(e) =>
+                              setProfileData({
+                                ...profileData,
+                                phone: e.target.value,
+                              })
+                            }
                             disabled={!isEditing}
                             className={`pl-10 ${!isEditing ? "bg-gray-50" : ""}`}
                           />
@@ -187,18 +213,30 @@ export default function Profile() {
                             id="dateOfBirth"
                             type="date"
                             value={profileData.dateOfBirth}
-                            onChange={(e) => setProfileData({...profileData, dateOfBirth: e.target.value})}
+                            onChange={(e) =>
+                              setProfileData({
+                                ...profileData,
+                                dateOfBirth: e.target.value,
+                              })
+                            }
                             disabled={!isEditing}
                             className={`pl-10 ${!isEditing ? "bg-gray-50" : ""}`}
                           />
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="emergencyContact">Contact d'urgence</Label>
+                        <Label htmlFor="emergencyContact">
+                          Contact d'urgence
+                        </Label>
                         <Input
                           id="emergencyContact"
                           value={profileData.emergencyContact}
-                          onChange={(e) => setProfileData({...profileData, emergencyContact: e.target.value})}
+                          onChange={(e) =>
+                            setProfileData({
+                              ...profileData,
+                              emergencyContact: e.target.value,
+                            })
+                          }
                           disabled={!isEditing}
                           className={!isEditing ? "bg-gray-50" : ""}
                         />
@@ -213,7 +251,12 @@ export default function Profile() {
                           <Textarea
                             id="address"
                             value={profileData.address}
-                            onChange={(e) => setProfileData({...profileData, address: e.target.value})}
+                            onChange={(e) =>
+                              setProfileData({
+                                ...profileData,
+                                address: e.target.value,
+                              })
+                            }
                             disabled={!isEditing}
                             className={`pl-10 ${!isEditing ? "bg-gray-50" : ""}`}
                             rows={3}
@@ -221,13 +264,20 @@ export default function Profile() {
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="preferences">Préférences alimentaires</Label>
+                        <Label htmlFor="preferences">
+                          Préférences alimentaires
+                        </Label>
                         <div className="relative">
                           <Heart className="absolute left-3 top-3 text-gray-400 w-4 h-4" />
                           <Textarea
                             id="preferences"
                             value={profileData.preferences}
-                            onChange={(e) => setProfileData({...profileData, preferences: e.target.value})}
+                            onChange={(e) =>
+                              setProfileData({
+                                ...profileData,
+                                preferences: e.target.value,
+                              })
+                            }
                             disabled={!isEditing}
                             className={`pl-10 ${!isEditing ? "bg-gray-50" : ""}`}
                             rows={3}
@@ -238,11 +288,17 @@ export default function Profile() {
 
                     {isEditing && (
                       <div className="flex space-x-4 mt-6 pt-6 border-t">
-                        <Button onClick={handleSave} className="bg-emerald-500 hover:bg-emerald-600 text-white">
+                        <Button
+                          onClick={handleSave}
+                          className="bg-emerald-500 hover:bg-emerald-600 text-white"
+                        >
                           <Save className="w-4 h-4 mr-2" />
                           Sauvegarder
                         </Button>
-                        <Button variant="outline" onClick={() => setIsEditing(false)}>
+                        <Button
+                          variant="outline"
+                          onClick={() => setIsEditing(false)}
+                        >
                           <X className="w-4 h-4 mr-2" />
                           Annuler
                         </Button>
@@ -262,15 +318,26 @@ export default function Profile() {
                   <CardContent className="p-6">
                     <div className="space-y-4">
                       {recentOrders.map((order) => (
-                        <div key={order.id} className="bg-gray-50 rounded-lg p-4">
+                        <div
+                          key={order.id}
+                          className="bg-gray-50 rounded-lg p-4"
+                        >
                           <div className="flex items-center justify-between mb-2">
-                            <h4 className="font-bold text-gray-900">{order.restaurant}</h4>
-                            <Badge className="bg-green-500 text-white">Livré</Badge>
+                            <h4 className="font-bold text-gray-900">
+                              {order.restaurant}
+                            </h4>
+                            <Badge className="bg-green-500 text-white">
+                              Livré
+                            </Badge>
                           </div>
-                          <p className="text-sm text-gray-600 mb-2">{order.items.join(", ")}</p>
+                          <p className="text-sm text-gray-600 mb-2">
+                            {order.items.join(", ")}
+                          </p>
                           <div className="flex items-center justify-between text-sm">
                             <span className="text-gray-500">{order.date}</span>
-                            <span className="font-bold text-emerald-600">${order.total}</span>
+                            <span className="font-bold text-emerald-600">
+                              ${order.total}
+                            </span>
                           </div>
                         </div>
                       ))}
@@ -287,22 +354,34 @@ export default function Profile() {
                 {/* Stats Cards */}
                 <Card className="border-0 shadow-xl">
                   <CardHeader className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
-                    <CardTitle className="text-xl font-bold">Statistiques</CardTitle>
+                    <CardTitle className="text-xl font-bold">
+                      Statistiques
+                    </CardTitle>
                   </CardHeader>
                   <CardContent className="p-6 space-y-4">
                     <div className="text-center">
-                      <div className="text-3xl font-black text-gray-900 mb-1">{stats.totalOrders}</div>
-                      <div className="text-sm text-gray-600">Commandes totales</div>
+                      <div className="text-3xl font-black text-gray-900 mb-1">
+                        {stats.totalOrders}
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        Commandes totales
+                      </div>
                     </div>
                     <Separator />
                     <div className="text-center">
-                      <div className="text-3xl font-black text-green-600 mb-1">${stats.totalSpent}</div>
+                      <div className="text-3xl font-black text-green-600 mb-1">
+                        ${stats.totalSpent}
+                      </div>
                       <div className="text-sm text-gray-600">Total dépensé</div>
                     </div>
                     <Separator />
                     <div className="text-center">
-                      <div className="text-lg font-bold text-purple-600 mb-1">{stats.favoriteRestaurant}</div>
-                      <div className="text-sm text-gray-600">Restaurant favori</div>
+                      <div className="text-lg font-bold text-purple-600 mb-1">
+                        {stats.favoriteRestaurant}
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        Restaurant favori
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -317,11 +396,18 @@ export default function Profile() {
                   </CardHeader>
                   <CardContent className="p-6">
                     <div className="text-center mb-4">
-                      <div className="text-4xl font-black text-yellow-600">{stats.loyaltyPoints}</div>
-                      <div className="text-sm text-gray-600">points disponibles</div>
+                      <div className="text-4xl font-black text-yellow-600">
+                        {stats.loyaltyPoints}
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        points disponibles
+                      </div>
                     </div>
                     <div className="bg-gray-200 rounded-full h-2 mb-4">
-                      <div className="bg-yellow-500 h-2 rounded-full" style={{width: "62%"}}></div>
+                      <div
+                        className="bg-yellow-500 h-2 rounded-full"
+                        style={{ width: "62%" }}
+                      ></div>
                     </div>
                     <p className="text-xs text-gray-600 text-center mb-4">
                       Plus que 760 points pour devenir membre Gold
@@ -335,7 +421,9 @@ export default function Profile() {
                 {/* Quick Actions */}
                 <Card className="border-0 shadow-xl">
                   <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-                    <CardTitle className="text-xl font-bold">Actions Rapides</CardTitle>
+                    <CardTitle className="text-xl font-bold">
+                      Actions Rapides
+                    </CardTitle>
                   </CardHeader>
                   <CardContent className="p-6 space-y-3">
                     <Button variant="outline" className="w-full justify-start">

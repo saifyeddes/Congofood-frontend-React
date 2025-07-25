@@ -2,7 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useCart } from "@/contexts/CartContext";
@@ -22,7 +28,7 @@ import {
   Leaf,
   Flame,
   Award,
-  TrendingUp
+  TrendingUp,
 } from "lucide-react";
 
 interface MenuItem {
@@ -50,67 +56,73 @@ export default function Menu() {
     {
       id: 1,
       name: "Moambé au Poulet",
-      description: "Poulet mijoté dans une sauce onctueuse aux noix de palme, servi avec du riz",
+      description:
+        "Poulet mijoté dans une sauce onctueuse aux noix de palme, servi avec du riz",
       price: 15.99,
       image: "https://picsum.photos/300/200?random=1",
       rating: 4.9,
       category: "plats",
       preparationTime: "25-30 min",
-      isPopular: true
+      isPopular: true,
     },
     {
       id: 2,
       name: "Poisson à la Congolaise",
-      description: "Poisson frais grillé aux épices locales, accompagné de légumes sautés",
+      description:
+        "Poisson frais grillé aux épices locales, accompagné de légumes sautés",
       price: 18.99,
       image: "https://picsum.photos/300/200?random=2",
       rating: 4.8,
       category: "plats",
       preparationTime: "20-25 min",
-      isPopular: true
+      isPopular: true,
     },
     {
       id: 3,
       name: "Saka-Saka aux Crevettes",
-      description: "Feuilles de manioc cuisinées avec des crevettes fraîches et arachides",
+      description:
+        "Feuilles de manioc cuisinées avec des crevettes fraîches et arachides",
       price: 16.99,
       image: "https://picsum.photos/300/200?random=3",
       rating: 4.7,
       category: "plats",
       preparationTime: "30-35 min",
-      isPopular: true
+      isPopular: true,
     },
     {
       id: 4,
       name: "Liboke de Porc",
-      description: "Porc mariné et cuit à la vapeur dans des feuilles de bananier",
+      description:
+        "Porc mariné et cuit à la vapeur dans des feuilles de bananier",
       price: 19.99,
       image: "https://picsum.photos/300/200?random=4",
       rating: 4.6,
       category: "plats",
       preparationTime: "35-40 min",
-      isPopular: true
+      isPopular: true,
     },
     {
       id: 5,
       name: "Ntaba na Makemba",
-      description: "Agneau grillé accompagné de bananes plantains et légumes du pays",
+      description:
+        "Agneau grillé accompagné de bananes plantains et légumes du pays",
       price: 22.99,
       image: "https://picsum.photos/300/200?random=5",
       rating: 4.8,
       category: "plats",
-      preparationTime: "30-35 min"
+      preparationTime: "30-35 min",
     },
     {
       id: 6,
       name: "Salade de Madesu",
-      description: "Salade fraîche aux haricots verts, tomates et vinaigrette à l'huile de palme",
+      description:
+        "Salade fraîche aux haricots verts, tomates et vinaigrette à l'huile de palme",
       price: 8.99,
       image: "https://picsum.photos/300/200?random=6",
       rating: 4.5,
       category: "accompagnements",
       preparationTime: "8-12 min",
-      isVegetarian: true
+      isVegetarian: true,
     },
     {
       id: 7,
@@ -121,7 +133,7 @@ export default function Menu() {
       rating: 4.7,
       category: "plats",
       preparationTime: "20-25 min",
-      isSpicy: true
+      isSpicy: true,
     },
     {
       id: 8,
@@ -132,17 +144,18 @@ export default function Menu() {
       rating: 4.8,
       category: "desserts",
       preparationTime: "15-20 min",
-      isVegetarian: true
+      isVegetarian: true,
     },
     {
       id: 9,
       name: "Fufu na Ndakala",
-      description: "Fufu traditionnel accompagné de sauce aux petits poissons séchés",
+      description:
+        "Fufu traditionnel accompagné de sauce aux petits poissons séchés",
       price: 12.99,
       image: "https://picsum.photos/300/200?random=9",
       rating: 4.6,
       category: "plats",
-      preparationTime: "25-30 min"
+      preparationTime: "25-30 min",
     },
     {
       id: 10,
@@ -153,21 +166,36 @@ export default function Menu() {
       rating: 4.4,
       category: "accompagnements",
       preparationTime: "20-25 min",
-      isVegetarian: true
-    }
+      isVegetarian: true,
+    },
   ];
 
   const categories = [
     { id: "all", name: "Tous les Plats", count: menuItems.length },
-    { id: "plats", name: "Plats Principaux", count: menuItems.filter(item => item.category === "plats").length },
-    { id: "accompagnements", name: "Accompagnements", count: menuItems.filter(item => item.category === "accompagnements").length },
-    { id: "desserts", name: "Desserts", count: menuItems.filter(item => item.category === "desserts").length }
+    {
+      id: "plats",
+      name: "Plats Principaux",
+      count: menuItems.filter((item) => item.category === "plats").length,
+    },
+    {
+      id: "accompagnements",
+      name: "Accompagnements",
+      count: menuItems.filter((item) => item.category === "accompagnements")
+        .length,
+    },
+    {
+      id: "desserts",
+      name: "Desserts",
+      count: menuItems.filter((item) => item.category === "desserts").length,
+    },
   ];
 
-  const filteredItems = menuItems.filter(item => {
-    const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
-    const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         item.description.toLowerCase().includes(searchQuery.toLowerCase());
+  const filteredItems = menuItems.filter((item) => {
+    const matchesCategory =
+      selectedCategory === "all" || item.category === selectedCategory;
+    const matchesSearch =
+      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -178,28 +206,28 @@ export default function Menu() {
         id: item.id,
         name: item.name,
         price: item.price,
-        image: item.image
-      }
+        image: item.image,
+      },
     });
   };
 
   const removeFromCart = (itemId: number) => {
-    const currentItem = state.items.find(item => item.id === itemId);
+    const currentItem = state.items.find((item) => item.id === itemId);
     if (currentItem && currentItem.quantity > 1) {
       dispatch({
         type: "UPDATE_QUANTITY",
-        payload: { id: itemId, quantity: currentItem.quantity - 1 }
+        payload: { id: itemId, quantity: currentItem.quantity - 1 },
       });
     } else {
       dispatch({
         type: "REMOVE_ITEM",
-        payload: itemId
+        payload: itemId,
       });
     }
   };
 
   const getItemQuantity = (itemId: number) => {
-    const item = state.items.find(item => item.id === itemId);
+    const item = state.items.find((item) => item.id === itemId);
     return item ? item.quantity : 0;
   };
 
@@ -237,14 +265,26 @@ export default function Menu() {
                 {[
                   { icon: Award, number: "50+", label: "Plats Authentiques" },
                   { icon: Star, number: "4.9★", label: "Note Moyenne" },
-                  { icon: TrendingUp, number: "15K+", label: "Commandes Servies" }
+                  {
+                    icon: TrendingUp,
+                    number: "15K+",
+                    label: "Commandes Servies",
+                  },
                 ].map((stat, index) => (
-                  <div key={index} className="text-center group animate-in fade-in duration-1000" style={{ animationDelay: `${index * 200}ms` }}>
+                  <div
+                    key={index}
+                    className="text-center group animate-in fade-in duration-1000"
+                    style={{ animationDelay: `${index * 200}ms` }}
+                  >
                     <div className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
                       <stat.icon className="w-8 h-8 text-emerald-600" />
                     </div>
-                    <div className="text-3xl font-black text-gray-900 mb-1">{stat.number}</div>
-                    <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                    <div className="text-3xl font-black text-gray-900 mb-1">
+                      {stat.number}
+                    </div>
+                    <div className="text-sm text-gray-600 font-medium">
+                      {stat.label}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -312,8 +352,12 @@ export default function Menu() {
                   <CardContent className="p-6">
                     <div className="space-y-4">
                       <div className="flex justify-between items-center p-3 bg-white/70 rounded-xl">
-                        <span className="font-medium text-gray-700">Articles:</span>
-                        <Badge className="bg-emerald-500 text-white px-3 py-1">{state.totalItems}</Badge>
+                        <span className="font-medium text-gray-700">
+                          Articles:
+                        </span>
+                        <Badge className="bg-emerald-500 text-white px-3 py-1">
+                          {state.totalItems}
+                        </Badge>
                       </div>
                       <div className="flex justify-between items-center p-4 bg-gradient-to-r from-emerald-500 to-green-500 text-white rounded-xl font-bold text-lg">
                         <span>Total:</span>
@@ -399,7 +443,9 @@ export default function Menu() {
                         </CardTitle>
                         <div className="flex items-center space-x-1 bg-yellow-50 px-3 py-1 rounded-full">
                           <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                          <span className="text-sm font-bold text-yellow-600">{item.rating}</span>
+                          <span className="text-sm font-bold text-yellow-600">
+                            {item.rating}
+                          </span>
                         </div>
                       </div>
 
@@ -408,8 +454,13 @@ export default function Menu() {
                       </p>
 
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-2xl font-black text-emerald-600">${item.price}</span>
-                        <Badge variant="outline" className="text-xs font-medium border-emerald-200 text-emerald-700">
+                        <span className="text-2xl font-black text-emerald-600">
+                          ${item.price}
+                        </span>
+                        <Badge
+                          variant="outline"
+                          className="text-xs font-medium border-emerald-200 text-emerald-700"
+                        >
                           Authentique
                         </Badge>
                       </div>
@@ -442,7 +493,10 @@ export default function Menu() {
                           <div className="text-right">
                             <div className="text-sm text-gray-500">Total</div>
                             <div className="text-lg font-bold text-emerald-600">
-                              ${(item.price * getItemQuantity(item.id)).toFixed(2)}
+                              $
+                              {(item.price * getItemQuantity(item.id)).toFixed(
+                                2,
+                              )}
                             </div>
                           </div>
                         </div>
@@ -465,7 +519,9 @@ export default function Menu() {
                   <div className="w-24 h-24 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
                     <Search className="w-12 h-12 text-gray-400" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-700 mb-2">Aucun plat trouvé</h3>
+                  <h3 className="text-2xl font-bold text-gray-700 mb-2">
+                    Aucun plat trouvé
+                  </h3>
                   <p className="text-gray-500 text-lg max-w-md mx-auto">
                     Aucun plat ne correspond à vos critères de recherche.
                     Essayez avec d'autres mots-clés ou changez de catégorie.

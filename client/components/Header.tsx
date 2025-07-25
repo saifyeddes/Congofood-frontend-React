@@ -2,8 +2,26 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
-import { ShoppingCart, Menu, X, Phone, User, LogOut, Settings, Search, Calendar, Clock, Receipt } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
+import {
+  ShoppingCart,
+  Menu,
+  X,
+  Phone,
+  User,
+  LogOut,
+  Settings,
+  Search,
+  Calendar,
+  Clock,
+  Receipt,
+} from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useAuth } from "@/contexts/AuthContext";
 import AuthModal from "./auth/AuthModal";
@@ -39,7 +57,9 @@ export default function Header() {
               <h1 className="text-2xl font-black bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
                 Congo Food
               </h1>
-              <p className="text-sm text-gray-600 font-medium">Saveurs Authentiques • Livraison Express</p>
+              <p className="text-sm text-gray-600 font-medium">
+                Saveurs Authentiques • Livraison Express
+              </p>
             </div>
           </Link>
 
@@ -50,7 +70,7 @@ export default function Header() {
               { to: "/menu", label: "Menu" },
               { to: "/restaurants", label: "Restaurants" },
               { to: "/reservations", label: "Réserver" },
-              { to: "/contact", label: "Contact" }
+              { to: "/contact", label: "Contact" },
             ].map((link) => (
               <Link
                 key={link.to}
@@ -74,7 +94,9 @@ export default function Header() {
               className="text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-all duration-300 rounded-xl px-4 py-2"
             >
               <Phone className="w-4 h-4 mr-2" />
-              <span className="hidden lg:inline font-medium">+243 123 456 789</span>
+              <span className="hidden lg:inline font-medium">
+                +243 123 456 789
+              </span>
             </Button>
             {authState.isAuthenticated ? (
               <DropdownMenu>
@@ -85,23 +107,37 @@ export default function Header() {
                     className="bg-gradient-to-r from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 border border-blue-200/50 rounded-xl px-4 py-2 transition-all duration-300"
                   >
                     <User className="w-4 h-4 mr-2 text-blue-600" />
-                    <span className="hidden lg:inline font-medium text-gray-700">{authState.user?.firstName}</span>
+                    <span className="hidden lg:inline font-medium text-gray-700">
+                      {authState.user?.firstName}
+                    </span>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56 border-0 shadow-2xl bg-white/95 backdrop-blur-md rounded-2xl">
-                  <DropdownMenuItem asChild className="rounded-xl m-1 hover:bg-emerald-50">
+                <DropdownMenuContent
+                  align="end"
+                  className="w-56 border-0 shadow-2xl bg-white/95 backdrop-blur-md rounded-2xl"
+                >
+                  <DropdownMenuItem
+                    asChild
+                    className="rounded-xl m-1 hover:bg-emerald-50"
+                  >
                     <Link to="/profile">
                       <User className="w-4 h-4 mr-2" />
                       Mon Profil
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild className="rounded-xl m-1 hover:bg-blue-50">
+                  <DropdownMenuItem
+                    asChild
+                    className="rounded-xl m-1 hover:bg-blue-50"
+                  >
                     <Link to="/order-history">
                       <Receipt className="w-4 h-4 mr-2" />
                       Mes Commandes
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild className="rounded-xl m-1 hover:bg-purple-50">
+                  <DropdownMenuItem
+                    asChild
+                    className="rounded-xl m-1 hover:bg-purple-50"
+                  >
                     <Link to="/order-tracking">
                       <Clock className="w-4 h-4 mr-2" />
                       Suivi Commande
@@ -112,7 +148,10 @@ export default function Header() {
                     Paramètres
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={signOut} className="rounded-xl m-1 hover:bg-red-50 text-red-600">
+                  <DropdownMenuItem
+                    onClick={signOut}
+                    className="rounded-xl m-1 hover:bg-red-50 text-red-600"
+                  >
                     <LogOut className="w-4 h-4 mr-2" />
                     Déconnexion
                   </DropdownMenuItem>
@@ -137,9 +176,7 @@ export default function Header() {
                 <ShoppingCart className="w-4 h-4 mr-2" />
                 <span className="hidden lg:inline font-medium">Panier</span>
                 {state.totalItems > 0 && (
-                  <Badge
-                    className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center text-xs p-0 bg-red-500 text-white border-2 border-white rounded-full animate-pulse"
-                  >
+                  <Badge className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center text-xs p-0 bg-red-500 text-white border-2 border-white rounded-full animate-pulse">
                     {state.totalItems}
                   </Badge>
                 )}
@@ -156,9 +193,7 @@ export default function Header() {
               <Link to="/cart">
                 <ShoppingCart className="w-5 h-5" />
                 {state.totalItems > 0 && (
-                  <Badge
-                    className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center text-xs p-0 bg-red-500 text-white border-2 border-white rounded-full animate-pulse"
-                  >
+                  <Badge className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center text-xs p-0 bg-red-500 text-white border-2 border-white rounded-full animate-pulse">
                     {state.totalItems}
                   </Badge>
                 )}
@@ -170,7 +205,11 @@ export default function Header() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-xl p-2 transition-all duration-300"
             >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </Button>
           </div>
         </div>
@@ -184,7 +223,7 @@ export default function Header() {
                 { to: "/menu", label: "Menu" },
                 { to: "/restaurants", label: "Restaurants" },
                 { to: "/reservations", label: "Réserver" },
-                { to: "/contact", label: "Contact" }
+                { to: "/contact", label: "Contact" },
               ].map((link) => (
                 <Link
                   key={link.to}
@@ -229,7 +268,10 @@ export default function Header() {
                       size="sm"
                       className="w-full justify-start bg-gradient-to-r from-emerald-50 to-green-50 hover:from-emerald-100 hover:to-green-100 text-gray-700 rounded-xl py-3"
                     >
-                      <Link to="/order-history" onClick={() => setIsMenuOpen(false)}>
+                      <Link
+                        to="/order-history"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
                         <Receipt className="w-4 h-4 mr-3" />
                         Mes Commandes
                       </Link>
@@ -240,7 +282,10 @@ export default function Header() {
                       size="sm"
                       className="w-full justify-start bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 text-gray-700 rounded-xl py-3"
                     >
-                      <Link to="/order-tracking" onClick={() => setIsMenuOpen(false)}>
+                      <Link
+                        to="/order-tracking"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
                         <Clock className="w-4 h-4 mr-3" />
                         Suivi Commande
                       </Link>

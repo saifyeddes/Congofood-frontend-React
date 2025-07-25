@@ -1,4 +1,10 @@
-import { createContext, useContext, useReducer, ReactNode, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useReducer,
+  ReactNode,
+  useEffect,
+} from "react";
 
 export interface User {
   id: string;
@@ -15,7 +21,7 @@ interface AuthState {
   isLoading: boolean;
 }
 
-type AuthAction = 
+type AuthAction =
   | { type: "SET_LOADING"; payload: boolean }
   | { type: "SIGN_IN_SUCCESS"; payload: User }
   | { type: "SIGN_OUT" }
@@ -38,29 +44,29 @@ function authReducer(state: AuthState, action: AuthAction): AuthState {
   switch (action.type) {
     case "SET_LOADING":
       return { ...state, isLoading: action.payload };
-    
+
     case "SIGN_IN_SUCCESS":
       return {
         ...state,
         user: action.payload,
         isAuthenticated: true,
-        isLoading: false
+        isLoading: false,
       };
-    
+
     case "SIGN_OUT":
       return {
         ...state,
         user: null,
         isAuthenticated: false,
-        isLoading: false
+        isLoading: false,
       };
-    
+
     case "UPDATE_USER":
       return {
         ...state,
-        user: state.user ? { ...state.user, ...action.payload } : null
+        user: state.user ? { ...state.user, ...action.payload } : null,
       };
-    
+
     default:
       return state;
   }
@@ -70,7 +76,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(authReducer, {
     user: null,
     isAuthenticated: false,
-    isLoading: false
+    isLoading: false,
   });
 
   // Load user from localStorage on mount
@@ -88,11 +94,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signIn = async (email: string, password: string): Promise<void> => {
     dispatch({ type: "SET_LOADING", payload: true });
-    
+
     try {
       // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       // Mock authentication - in real app, this would be an API call
       if (email === "admin@admin.com" && password === "admin@admin.com") {
         const user: User = {
@@ -101,7 +107,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           lastName: "Congo Food",
           email: "admin@admin.com",
           phone: "+243 (0) 123-456-789",
-          role: "admin"
+          role: "admin",
         };
 
         localStorage.setItem("foodie_user", JSON.stringify(user));
@@ -113,21 +119,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           lastName: "Tshisekedi",
           email: "jacques.tshisekedi@congofood.com",
           phone: "+243 (0) 111-222-333",
-          role: "driver"
+          role: "driver",
         };
 
         localStorage.setItem("foodie_user", JSON.stringify(user));
         dispatch({ type: "SIGN_IN_SUCCESS", payload: user });
-      } else if (email === "client@client.com" && password === "client@client.com") {
+      } else if (
+        email === "client@client.com" &&
+        password === "client@client.com"
+      ) {
         const user: User = {
           id: "1",
           firstName: "Client",
           lastName: "Test",
           email: "client@client.com",
           phone: "+243 (0) 123-456-789",
-          role: "client"
+          role: "client",
         };
-        
+
         localStorage.setItem("foodie_user", JSON.stringify(user));
         dispatch({ type: "SIGN_IN_SUCCESS", payload: user });
       } else {
@@ -147,11 +156,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     password: string;
   }): Promise<void> => {
     dispatch({ type: "SET_LOADING", payload: true });
-    
+
     try {
       // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
       // Mock user creation - in real app, this would be an API call
       const user: User = {
         id: Date.now().toString(),
@@ -159,9 +168,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         lastName: userData.lastName,
         email: userData.email,
         phone: userData.phone,
-        role: "client"
+        role: "client",
       };
-      
+
       localStorage.setItem("foodie_user", JSON.stringify(user));
       dispatch({ type: "SIGN_IN_SUCCESS", payload: user });
     } catch (error) {

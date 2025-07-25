@@ -41,7 +41,7 @@ import {
   Target,
   Map,
   Crosshair,
-  RefreshCw
+  RefreshCw,
 } from "lucide-react";
 
 export default function RestaurantSearch() {
@@ -52,7 +52,10 @@ export default function RestaurantSearch() {
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
 
   // Géolocalisation
-  const [userLocation, setUserLocation] = useState<{lat: number, lng: number} | null>(null);
+  const [userLocation, setUserLocation] = useState<{
+    lat: number;
+    lng: number;
+  } | null>(null);
   const [locationCity, setLocationCity] = useState("");
   const [locationCountry, setLocationCountry] = useState("Congo (RDC)");
   const [isGettingLocation, setIsGettingLocation] = useState(false);
@@ -76,10 +79,11 @@ export default function RestaurantSearch() {
       deliveryTime: "25-35 min",
       specialties: ["Moambé", "Saka-Saka", "Fufu"],
       features: ["Livraison", "Sur place", "À emporter"],
-      description: "Restaurant traditionnel congolais offrant une expérience culinaire authentique dans un cadre chaleureux.",
+      description:
+        "Restaurant traditionnel congolais offrant une expérience culinaire authentique dans un cadre chaleureux.",
       coordinates: { lat: -4.3317, lng: 15.3139 }, // Kinshasa centre
       city: "Kinshasa",
-      country: "Congo (RDC)"
+      country: "Congo (RDC)",
     },
     {
       id: 2,
@@ -97,10 +101,11 @@ export default function RestaurantSearch() {
       deliveryTime: "30-40 min",
       specialties: ["Plats fusion", "Grillades", "Salades"],
       features: ["Terrasse", "Livraison", "Parking"],
-      description: "Restaurant moderne proposant une cuisine fusion créative dans un cadre élégant avec terrasse.",
+      description:
+        "Restaurant moderne proposant une cuisine fusion créative dans un cadre élégant avec terrasse.",
       coordinates: { lat: -4.3276, lng: 15.3222 }, // Gombe
       city: "Kinshasa",
-      country: "Congo (RDC)"
+      country: "Congo (RDC)",
     },
     {
       id: 3,
@@ -118,10 +123,11 @@ export default function RestaurantSearch() {
       deliveryTime: "20-30 min",
       specialties: ["Thieboudienne", "Attiéké", "Yassa"],
       features: ["Buffet", "Livraison", "Musique live"],
-      description: "Découvrez les saveurs authentiques de l'Afrique dans une ambiance conviviale et musicale.",
-      coordinates: { lat: -4.3290, lng: 15.3180 }, // Av. des Poids Lourds
+      description:
+        "Découvrez les saveurs authentiques de l'Afrique dans une ambiance conviviale et musicale.",
+      coordinates: { lat: -4.329, lng: 15.318 }, // Av. des Poids Lourds
       city: "Kinshasa",
-      country: "Congo (RDC)"
+      country: "Congo (RDC)",
     },
     {
       id: 4,
@@ -139,10 +145,11 @@ export default function RestaurantSearch() {
       deliveryTime: "15-25 min",
       specialties: ["Burgers", "Sandwichs", "Salades"],
       features: ["Drive", "24h/24", "Wifi gratuit"],
-      description: "Fast-food moderne proposant des plats rapides et savoureux disponibles 24h/24.",
-      coordinates: { lat: -4.3400, lng: 15.3300 }, // Centre Commercial
+      description:
+        "Fast-food moderne proposant des plats rapides et savoureux disponibles 24h/24.",
+      coordinates: { lat: -4.34, lng: 15.33 }, // Centre Commercial
       city: "Kinshasa",
-      country: "Congo (RDC)"
+      country: "Congo (RDC)",
     },
     // Restaurants dans d'autres villes
     {
@@ -161,10 +168,11 @@ export default function RestaurantSearch() {
       deliveryTime: "N/A",
       specialties: ["Grillades", "Poissons", "Steaks"],
       features: ["Terrasse", "Bar", "Parking"],
-      description: "Restaurant élégant au cœur de Lubumbashi avec vue panoramique.",
+      description:
+        "Restaurant élégant au cœur de Lubumbashi avec vue panoramique.",
       coordinates: { lat: -11.6709, lng: 27.4794 }, // Lubumbashi
       city: "Lubumbashi",
-      country: "Congo (RDC)"
+      country: "Congo (RDC)",
     },
     {
       id: 6,
@@ -182,23 +190,31 @@ export default function RestaurantSearch() {
       deliveryTime: "N/A",
       specialties: ["Sambaza", "Poisson du lac", "Légumes frais"],
       features: ["Vue sur lac", "Terrasse", "Spécialités locales"],
-      description: "Restaurant familial avec vue sur le lac Kivu et spécialités de Bukavu.",
+      description:
+        "Restaurant familial avec vue sur le lac Kivu et spécialités de Bukavu.",
       coordinates: { lat: -2.5088, lng: 28.8632 }, // Bukavu
       city: "Bukavu",
-      country: "Congo (RDC)"
-    }
+      country: "Congo (RDC)",
+    },
   ];
 
   // Fonction pour calculer la distance entre deux points (formule de Haversine)
-  const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number): number => {
+  const calculateDistance = (
+    lat1: number,
+    lng1: number,
+    lat2: number,
+    lng2: number,
+  ): number => {
     const R = 6371; // Rayon de la Terre en kilomètres
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLng = (lng2 - lng1) * Math.PI / 180;
+    const dLat = ((lat2 - lat1) * Math.PI) / 180;
+    const dLng = ((lng2 - lng1) * Math.PI) / 180;
     const a =
-      Math.sin(dLat/2) * Math.sin(dLat/2) +
-      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-      Math.sin(dLng/2) * Math.sin(dLng/2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos((lat1 * Math.PI) / 180) *
+        Math.cos((lat2 * Math.PI) / 180) *
+        Math.sin(dLng / 2) *
+        Math.sin(dLng / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c;
   };
 
@@ -214,14 +230,18 @@ export default function RestaurantSearch() {
           setLocationCity("Position actuelle");
           setSortByDistance(true);
           setIsGettingLocation(false);
-          alert("Localisation détectée ! Les restaurants sont maintenant triés par distance.");
+          alert(
+            "Localisation détectée ! Les restaurants sont maintenant triés par distance.",
+          );
         },
         (error) => {
           setIsGettingLocation(false);
           console.error("Erreur de géolocalisation:", error);
-          alert("Impossible d'obtenir votre localisation. Veuillez saisir votre ville manuellement.");
+          alert(
+            "Impossible d'obtenir votre localisation. Veuillez saisir votre ville manuellement.",
+          );
         },
-        { timeout: 10000, maximumAge: 600000 }
+        { timeout: 10000, maximumAge: 600000 },
       );
     } else {
       setIsGettingLocation(false);
@@ -237,32 +257,46 @@ export default function RestaurantSearch() {
     }
 
     // Simulation de géocodage pour quelques villes du Congo
-    const cityCoordinates: { [key: string]: { lat: number, lng: number } } = {
-      "kinshasa": { lat: -4.3317, lng: 15.3139 },
-      "lubumbashi": { lat: -11.6709, lng: 27.4794 },
-      "bukavu": { lat: -2.5088, lng: 28.8632 },
-      "goma": { lat: -1.6792, lng: 29.2228 },
-      "kisangani": { lat: 0.5167, lng: 25.2000 },
-      "kananga": { lat: -5.8956, lng: 22.4669 },
-      "mbuji-mayi": { lat: -6.1360, lng: 23.5897 }
+    const cityCoordinates: { [key: string]: { lat: number; lng: number } } = {
+      kinshasa: { lat: -4.3317, lng: 15.3139 },
+      lubumbashi: { lat: -11.6709, lng: 27.4794 },
+      bukavu: { lat: -2.5088, lng: 28.8632 },
+      goma: { lat: -1.6792, lng: 29.2228 },
+      kisangani: { lat: 0.5167, lng: 25.2 },
+      kananga: { lat: -5.8956, lng: 22.4669 },
+      "mbuji-mayi": { lat: -6.136, lng: 23.5897 },
     };
 
     const cityKey = locationCity.toLowerCase().trim();
     if (cityCoordinates[cityKey]) {
       setUserLocation(cityCoordinates[cityKey]);
       setSortByDistance(true);
-      alert(`Localisation définie pour ${locationCity}. Les restaurants sont triés par distance.`);
+      alert(
+        `Localisation définie pour ${locationCity}. Les restaurants sont triés par distance.`,
+      );
     } else {
       // Coordonnées par défaut (Kinshasa)
       setUserLocation({ lat: -4.3317, lng: 15.3139 });
       setSortByDistance(true);
-      alert(`Ville "${locationCity}" non trouvée. Position définie sur Kinshasa par défaut.`);
+      alert(
+        `Ville "${locationCity}" non trouvée. Position définie sur Kinshasa par défaut.`,
+      );
     }
   };
 
   const countries = [
-    "Congo (RDC)", "Congo (Brazzaville)", "Angola", "Zambie", "Tanzanie",
-    "Burundi", "Rwanda", "Ouganda", "Cameroun", "Gabon", "France", "Belgique"
+    "Congo (RDC)",
+    "Congo (Brazzaville)",
+    "Angola",
+    "Zambie",
+    "Tanzanie",
+    "Burundi",
+    "Rwanda",
+    "Ouganda",
+    "Cameroun",
+    "Gabon",
+    "France",
+    "Belgique",
   ];
 
   const categories = [
@@ -271,7 +305,7 @@ export default function RestaurantSearch() {
     { value: "africaine", label: "Cuisine Africaine" },
     { value: "fusion", label: "Cuisine Fusion" },
     { value: "fastfood", label: "Fast Food" },
-    { value: "internationale", label: "Cuisine Internationale" }
+    { value: "internationale", label: "Cuisine Internationale" },
   ];
 
   const priceRanges = [
@@ -279,7 +313,7 @@ export default function RestaurantSearch() {
     { value: "$", label: "$ - Économique" },
     { value: "$$", label: "$$ - Modéré" },
     { value: "$$$", label: "$$$ - Élevé" },
-    { value: "$$$$", label: "$$$$ - Luxe" }
+    { value: "$$$$", label: "$$$$ - Luxe" },
   ];
 
   const ratingOptions = [
@@ -287,32 +321,46 @@ export default function RestaurantSearch() {
     { value: "4.5", label: "4.5+ étoiles" },
     { value: "4.0", label: "4.0+ étoiles" },
     { value: "3.5", label: "3.5+ étoiles" },
-    { value: "3.0", label: "3.0+ étoiles" }
+    { value: "3.0", label: "3.0+ étoiles" },
   ];
 
   const filteredRestaurants = restaurants
-    .filter(restaurant => {
-      const matchesSearch = restaurant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           restaurant.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           restaurant.specialties.some(specialty =>
-                             specialty.toLowerCase().includes(searchTerm.toLowerCase()));
+    .filter((restaurant) => {
+      const matchesSearch =
+        restaurant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        restaurant.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        restaurant.specialties.some((specialty) =>
+          specialty.toLowerCase().includes(searchTerm.toLowerCase()),
+        );
 
-      const matchesCategory = selectedCategory === "all" ||
-                             restaurant.category.toLowerCase().includes(selectedCategory);
+      const matchesCategory =
+        selectedCategory === "all" ||
+        restaurant.category.toLowerCase().includes(selectedCategory);
 
-      const matchesPrice = selectedPrice === "all" || restaurant.priceRange === selectedPrice;
+      const matchesPrice =
+        selectedPrice === "all" || restaurant.priceRange === selectedPrice;
 
-      const matchesRating = selectedRating === "all" ||
-                           restaurant.rating >= parseFloat(selectedRating);
+      const matchesRating =
+        selectedRating === "all" ||
+        restaurant.rating >= parseFloat(selectedRating);
 
       // Filtrage par ville/pays si spécifié
-      const matchesLocation = !locationCity ||
-                             restaurant.city.toLowerCase().includes(locationCity.toLowerCase()) ||
-                             restaurant.country.toLowerCase().includes(locationCountry.toLowerCase());
+      const matchesLocation =
+        !locationCity ||
+        restaurant.city.toLowerCase().includes(locationCity.toLowerCase()) ||
+        restaurant.country
+          .toLowerCase()
+          .includes(locationCountry.toLowerCase());
 
-      return matchesSearch && matchesCategory && matchesPrice && matchesRating && matchesLocation;
+      return (
+        matchesSearch &&
+        matchesCategory &&
+        matchesPrice &&
+        matchesRating &&
+        matchesLocation
+      );
     })
-    .map(restaurant => {
+    .map((restaurant) => {
       // Calculer la distance si on a la localisation de l'utilisateur
       let calculatedDistance = null;
       if (userLocation && restaurant.coordinates) {
@@ -320,7 +368,7 @@ export default function RestaurantSearch() {
           userLocation.lat,
           userLocation.lng,
           restaurant.coordinates.lat,
-          restaurant.coordinates.lng
+          restaurant.coordinates.lng,
         );
       }
 
@@ -331,11 +379,15 @@ export default function RestaurantSearch() {
           ? calculatedDistance < 1
             ? `${Math.round(calculatedDistance * 1000)}m`
             : `${calculatedDistance.toFixed(1)}km`
-          : restaurant.distance
+          : restaurant.distance,
       };
     })
     .sort((a, b) => {
-      if (sortByDistance && a.calculatedDistance !== null && b.calculatedDistance !== null) {
+      if (
+        sortByDistance &&
+        a.calculatedDistance !== null &&
+        b.calculatedDistance !== null
+      ) {
         return a.calculatedDistance - b.calculatedDistance;
       }
       return 0; // Garder l'ordre original si pas de tri par distance
@@ -346,8 +398,8 @@ export default function RestaurantSearch() {
       <Star
         key={i}
         className={`w-4 h-4 ${
-          i < Math.floor(rating) 
-            ? "text-yellow-400 fill-current" 
+          i < Math.floor(rating)
+            ? "text-yellow-400 fill-current"
             : "text-gray-300"
         }`}
       />
@@ -361,7 +413,11 @@ export default function RestaurantSearch() {
           <ChefHat className="w-16 h-16 text-white/80" />
         </div>
         <div className="absolute top-4 right-4">
-          <Button size="sm" variant="ghost" className="bg-white/90 hover:bg-white text-red-500 hover:text-red-600">
+          <Button
+            size="sm"
+            variant="ghost"
+            className="bg-white/90 hover:bg-white text-red-500 hover:text-red-600"
+          >
             <Heart className="w-4 h-4" />
           </Button>
         </div>
@@ -395,10 +451,12 @@ export default function RestaurantSearch() {
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
               <MapPin className="w-4 h-4 text-emerald-500" />
-              <span className="text-sm text-gray-600">{restaurant.address}</span>
+              <span className="text-sm text-gray-600">
+                {restaurant.address}
+              </span>
               <Badge
                 variant="outline"
-                className={`text-xs ${restaurant.calculatedDistance ? 'bg-emerald-100 text-emerald-700 border-emerald-300' : ''}`}
+                className={`text-xs ${restaurant.calculatedDistance ? "bg-emerald-100 text-emerald-700 border-emerald-300" : ""}`}
               >
                 {restaurant.displayDistance}
               </Badge>
@@ -411,19 +469,25 @@ export default function RestaurantSearch() {
             </div>
             <div className="flex items-center space-x-2">
               <Clock className="w-4 h-4 text-blue-500" />
-              <span className="text-sm text-gray-600">{restaurant.openingHours}</span>
+              <span className="text-sm text-gray-600">
+                {restaurant.openingHours}
+              </span>
             </div>
           </div>
 
           {/* Specialties */}
           <div>
-            <p className="text-sm font-semibold text-gray-900 mb-2">Spécialités:</p>
+            <p className="text-sm font-semibold text-gray-900 mb-2">
+              Spécialités:
+            </p>
             <div className="flex flex-wrap gap-1">
-              {restaurant.specialties.map((specialty: string, index: number) => (
-                <Badge key={index} variant="outline" className="text-xs">
-                  {specialty}
-                </Badge>
-              ))}
+              {restaurant.specialties.map(
+                (specialty: string, index: number) => (
+                  <Badge key={index} variant="outline" className="text-xs">
+                    {specialty}
+                  </Badge>
+                ),
+              )}
             </div>
           </div>
 
@@ -440,15 +504,19 @@ export default function RestaurantSearch() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <DollarSign className="w-4 h-4 text-green-500" />
-              <span className="font-bold text-green-600">{restaurant.priceRange}</span>
+              <span className="font-bold text-green-600">
+                {restaurant.priceRange}
+              </span>
             </div>
           </div>
 
           {/* Actions */}
           <div className="flex space-x-2 pt-4 border-t border-gray-100">
-            <Button 
+            <Button
               className="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white"
-              onClick={() => window.location.href = `/restaurant/${restaurant.id}`}
+              onClick={() =>
+                (window.location.href = `/restaurant/${restaurant.id}`)
+              }
             >
               <Eye className="w-4 h-4 mr-2" />
               Voir Menu
@@ -475,9 +543,9 @@ export default function RestaurantSearch() {
                       <SelectValue placeholder="Nombre de personnes" />
                     </SelectTrigger>
                     <SelectContent>
-                      {[1,2,3,4,5,6,7,8].map(num => (
+                      {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                         <SelectItem key={num} value={num.toString()}>
-                          {num} personne{num > 1 ? 's' : ''}
+                          {num} personne{num > 1 ? "s" : ""}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -501,7 +569,9 @@ export default function RestaurantSearch() {
         <div className="bg-gradient-to-r from-emerald-600 to-blue-600 text-white py-16">
           <div className="container mx-auto px-6">
             <div className="text-center mb-8">
-              <h1 className="text-5xl font-black mb-4">Trouvez Votre Restaurant</h1>
+              <h1 className="text-5xl font-black mb-4">
+                Trouvez Votre Restaurant
+              </h1>
               <p className="text-xl text-emerald-100">
                 Découvrez les meilleurs restaurants près de chez vous
               </p>
@@ -520,21 +590,24 @@ export default function RestaurantSearch() {
                       className="pl-12 bg-white/20 border-white/30 text-white placeholder:text-white/70 text-lg py-6"
                     />
                   </div>
-                  <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                  <Select
+                    value={selectedCategory}
+                    onValueChange={setSelectedCategory}
+                  >
                     <SelectTrigger className="bg-white/20 border-white/30 text-white md:w-48">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {categories.map(category => (
+                      {categories.map((category) => (
                         <SelectItem key={category.value} value={category.value}>
                           {category.label}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
-                  <Button 
+                  <Button
                     onClick={() => setShowAdvancedSearch(!showAdvancedSearch)}
-                    variant="outline" 
+                    variant="outline"
                     className="bg-white/20 border-white/30 text-white hover:bg-white/30"
                   >
                     <SlidersHorizontal className="w-5 h-5 mr-2" />
@@ -571,7 +644,8 @@ export default function RestaurantSearch() {
                       </Button>
                       {userLocation && (
                         <div className="text-xs text-emerald-200 text-center">
-                          Position: {userLocation.lat.toFixed(4)}, {userLocation.lng.toFixed(4)}
+                          Position: {userLocation.lat.toFixed(4)},{" "}
+                          {userLocation.lng.toFixed(4)}
                         </div>
                       )}
                     </div>
@@ -597,12 +671,15 @@ export default function RestaurantSearch() {
                         </Button>
                       </div>
 
-                      <Select value={locationCountry} onValueChange={setLocationCountry}>
+                      <Select
+                        value={locationCountry}
+                        onValueChange={setLocationCountry}
+                      >
                         <SelectTrigger className="bg-white/20 border-white/30 text-white">
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          {countries.map(country => (
+                          {countries.map((country) => (
                             <SelectItem key={country} value={country}>
                               {country}
                             </SelectItem>
@@ -627,7 +704,9 @@ export default function RestaurantSearch() {
                     </div>
 
                     <div className="text-xs text-emerald-200">
-                      {filteredRestaurants.length} restaurant{filteredRestaurants.length > 1 ? 's' : ''} trouvé{filteredRestaurants.length > 1 ? 's' : ''}
+                      {filteredRestaurants.length} restaurant
+                      {filteredRestaurants.length > 1 ? "s" : ""} trouvé
+                      {filteredRestaurants.length > 1 ? "s" : ""}
                     </div>
                   </div>
                 </div>
@@ -636,24 +715,30 @@ export default function RestaurantSearch() {
                 {showAdvancedSearch && (
                   <div className="mt-6 pt-6 border-t border-white/20">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <Select value={selectedPrice} onValueChange={setSelectedPrice}>
+                      <Select
+                        value={selectedPrice}
+                        onValueChange={setSelectedPrice}
+                      >
                         <SelectTrigger className="bg-white/20 border-white/30 text-white">
                           <SelectValue placeholder="Gamme de prix" />
                         </SelectTrigger>
                         <SelectContent>
-                          {priceRanges.map(price => (
+                          {priceRanges.map((price) => (
                             <SelectItem key={price.value} value={price.value}>
                               {price.label}
                             </SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
-                      <Select value={selectedRating} onValueChange={setSelectedRating}>
+                      <Select
+                        value={selectedRating}
+                        onValueChange={setSelectedRating}
+                      >
                         <SelectTrigger className="bg-white/20 border-white/30 text-white">
                           <SelectValue placeholder="Note minimum" />
                         </SelectTrigger>
                         <SelectContent>
-                          {ratingOptions.map(rating => (
+                          {ratingOptions.map((rating) => (
                             <SelectItem key={rating.value} value={rating.value}>
                               {rating.label}
                             </SelectItem>
@@ -722,28 +807,40 @@ export default function RestaurantSearch() {
                     <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
                       <MapPin className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-700 mb-2">Carte Interactive</h3>
+                    <h3 className="text-xl font-bold text-gray-700 mb-2">
+                      Carte Interactive
+                    </h3>
                     <p className="text-gray-500 mb-4">
                       {userLocation
-                        ? `${filteredRestaurants.length} restaurant${filteredRestaurants.length > 1 ? 's' : ''} près de vous`
-                        : 'Activez la géolocalisation pour voir les distances'
-                      }
+                        ? `${filteredRestaurants.length} restaurant${filteredRestaurants.length > 1 ? "s" : ""} près de vous`
+                        : "Activez la géolocalisation pour voir les distances"}
                     </p>
 
                     {/* Légende des restaurants */}
                     <div className="flex flex-wrap justify-center gap-4 text-xs">
-                      {filteredRestaurants.slice(0, 4).map((restaurant, index) => (
-                        <div key={restaurant.id} className="flex items-center space-x-2">
-                          <div className={`w-3 h-3 rounded-full ${
-                            index === 0 ? 'bg-red-500' :
-                            index === 1 ? 'bg-blue-500' :
-                            index === 2 ? 'bg-green-500' : 'bg-purple-500'
-                          }`}></div>
-                          <span className="text-gray-600">
-                            {restaurant.name} ({restaurant.displayDistance})
-                          </span>
-                        </div>
-                      ))}
+                      {filteredRestaurants
+                        .slice(0, 4)
+                        .map((restaurant, index) => (
+                          <div
+                            key={restaurant.id}
+                            className="flex items-center space-x-2"
+                          >
+                            <div
+                              className={`w-3 h-3 rounded-full ${
+                                index === 0
+                                  ? "bg-red-500"
+                                  : index === 1
+                                    ? "bg-blue-500"
+                                    : index === 2
+                                      ? "bg-green-500"
+                                      : "bg-purple-500"
+                              }`}
+                            ></div>
+                            <span className="text-gray-600">
+                              {restaurant.name} ({restaurant.displayDistance})
+                            </span>
+                          </div>
+                        ))}
                     </div>
                   </div>
                 </div>
@@ -775,7 +872,7 @@ export default function RestaurantSearch() {
               <p className="text-gray-600 mb-6">
                 Essayez de modifier vos critères de recherche
               </p>
-              <Button 
+              <Button
                 onClick={() => {
                   setSearchTerm("");
                   setSelectedCategory("all");
