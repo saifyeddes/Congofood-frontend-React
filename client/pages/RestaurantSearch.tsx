@@ -396,7 +396,18 @@ export default function RestaurantSearch() {
             <div className="flex items-center space-x-2">
               <MapPin className="w-4 h-4 text-emerald-500" />
               <span className="text-sm text-gray-600">{restaurant.address}</span>
-              <Badge variant="outline" className="text-xs">{restaurant.distance}</Badge>
+              <Badge
+                variant="outline"
+                className={`text-xs ${restaurant.calculatedDistance ? 'bg-emerald-100 text-emerald-700 border-emerald-300' : ''}`}
+              >
+                {restaurant.displayDistance}
+              </Badge>
+              {restaurant.calculatedDistance && (
+                <Badge className="bg-blue-500 text-white text-xs">
+                  <Crosshair className="w-3 h-3 mr-1" />
+                  GPS
+                </Badge>
+              )}
             </div>
             <div className="flex items-center space-x-2">
               <Clock className="w-4 h-4 text-blue-500" />
