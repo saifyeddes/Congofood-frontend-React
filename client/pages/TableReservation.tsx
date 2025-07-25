@@ -227,6 +227,7 @@ export default function TableReservation() {
 
   return (
     <Layout>
+      <ProtectedRoute>
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-blue-50 to-purple-50">
         {/* Hero Section */}
         <div className="bg-gradient-to-r from-emerald-600 to-blue-600 text-white py-16">
@@ -504,6 +505,7 @@ export default function TableReservation() {
           </div>
         </div>
       </div>
+      </ProtectedRoute>
     </Layout>
   );
 }
