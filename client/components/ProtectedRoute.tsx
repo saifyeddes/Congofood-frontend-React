@@ -55,25 +55,17 @@ export default function ProtectedRoute({
               </p>
             </div>
 
-            <div className="bg-emerald-50 rounded-lg p-4 border border-emerald-200">
-              <h4 className="font-semibold text-emerald-800 mb-2">Compte de test disponible :</h4>
-              <div className="text-sm text-emerald-700 space-y-1">
-                <p><strong>Email :</strong> client@client.com</p>
-                <p><strong>Mot de passe :</strong> client@client.com</p>
-              </div>
-            </div>
-
             <div className="space-y-3">
-              <Button 
+              <Button
                 onClick={() => setShowAuthModal(true)}
                 className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white py-3 text-lg"
               >
                 <User className="w-5 h-5 mr-2" />
                 Se Connecter
               </Button>
-              
-              <Button 
-                variant="outline" 
+
+              <Button
+                variant="outline"
                 onClick={() => window.history.back()}
                 className="w-full border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50"
               >
