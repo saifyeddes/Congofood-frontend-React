@@ -300,74 +300,155 @@ export default function Dashboard() {
           ))}
         </div>
 
-        {/* Recent Activity */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Enhanced Recent Activity */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Recent Orders */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Commandes Récentes</CardTitle>
-              <CardDescription>
-                Les dernières commandes passées
-              </CardDescription>
+          <Card className="border-0 shadow-2xl bg-white overflow-hidden animate-in slide-in-from-left duration-1000 delay-1000">
+            <CardHeader className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-8">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center">
+                  <BarChart3 className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <CardTitle className="text-2xl font-bold">Commandes Récentes</CardTitle>
+                  <CardDescription className="text-blue-100 font-medium">
+                    Suivi en temps réel des dernières commandes
+                  </CardDescription>
+                </div>
+              </div>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {recentOrders.map((order) => (
-                  <div key={order.id} className="flex items-center justify-between p-3 border rounded-lg">
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="font-medium">{order.id}</span>
-                        {getStatusBadge(order.status)}
+            <CardContent className="p-8">
+              <div className="space-y-6">
+                {recentOrders.map((order, index) => (
+                  <div
+                    key={order.id}
+                    className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 animate-in slide-in-from-bottom duration-1000"
+                    style={{ animationDelay: `${index * 200 + 1200}ms` }}
+                  >
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center text-white font-bold">
+                          {order.id.slice(-2)}
+                        </div>
+                        <div>
+                          <span className="font-bold text-gray-900">{order.id}</span>
+                          <p className="text-sm text-gray-600">{order.time}</p>
+                        </div>
                       </div>
-                      <p className="text-sm text-muted-foreground">{order.customer}</p>
-                      <p className="text-xs text-muted-foreground">{order.address}</p>
-                      <p className="text-xs text-muted-foreground">
-                        {order.items.join(", ")}
-                      </p>
+                      {getStatusBadge(order.status)}
                     </div>
-                    <div className="text-right">
-                      <p className="font-semibold">${order.total}</p>
-                      <p className="text-xs text-muted-foreground">{order.time}</p>
+
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <Users className="w-4 h-4 text-blue-500" />
+                        <span className="font-semibold text-gray-900">{order.customer}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <MapPin className="w-4 h-4 text-emerald-500" />
+                        <span className="text-sm text-gray-600">{order.address}</span>
+                      </div>
+                      <div className="bg-white rounded-xl p-3 border border-gray-200">
+                        <p className="text-sm text-gray-700 font-medium">
+                          {order.items.join(" • ")}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-200">
+                      <span className="text-2xl font-black text-emerald-600">${order.total}</span>
+                      <Button size="sm" variant="outline" className="rounded-xl">
+                        <Eye className="w-4 h-4 mr-2" />
+                        Détails
+                      </Button>
                     </div>
                   </div>
                 ))}
               </div>
-              <Button asChild variant="outline" className="w-full mt-4">
-                <Link to="/admin/orders">Voir Toutes les Commandes</Link>
+              <Button
+                asChild
+                className="w-full mt-8 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl"
+              >
+                <Link to="/admin/orders">
+                  <Sparkles className="w-5 h-5 mr-2" />
+                  Voir Toutes les Commandes
+                </Link>
               </Button>
             </CardContent>
           </Card>
 
           {/* Active Deliveries */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Livraisons en Cours</CardTitle>
-              <CardDescription>
-                Suivi des livraisons actives
-              </CardDescription>
+          <Card className="border-0 shadow-2xl bg-white overflow-hidden animate-in slide-in-from-right duration-1000 delay-1200">
+            <CardHeader className="bg-gradient-to-r from-emerald-500 to-green-500 text-white p-8">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center">
+                  <Truck className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <CardTitle className="text-2xl font-bold">Livraisons en Cours</CardTitle>
+                  <CardDescription className="text-emerald-100 font-medium">
+                    Suivi en temps réel des livraisons actives
+                  </CardDescription>
+                </div>
+              </div>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {activeDeliveries.map((delivery) => (
-                  <div key={delivery.id} className="flex items-center justify-between p-3 border rounded-lg">
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="font-medium">{delivery.driver}</span>
-                        {getStatusBadge(delivery.status)}
+            <CardContent className="p-8">
+              <div className="space-y-6">
+                {activeDeliveries.map((delivery, index) => (
+                  <div
+                    key={delivery.id}
+                    className="bg-gradient-to-r from-gray-50 to-emerald-50 rounded-2xl p-6 border border-emerald-100 hover:shadow-lg transition-all duration-300 animate-in slide-in-from-bottom duration-1000"
+                    style={{ animationDelay: `${index * 200 + 1400}ms` }}
+                  >
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-green-500 rounded-xl flex items-center justify-center text-white font-bold">
+                          <Truck className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <span className="font-bold text-gray-900">{delivery.driver}</span>
+                          <p className="text-sm text-gray-600">Livreur</p>
+                        </div>
                       </div>
-                      <p className="text-sm text-muted-foreground">{delivery.customer}</p>
-                      <p className="text-xs text-muted-foreground">Commande: {delivery.order}</p>
-                      <p className="text-xs text-muted-foreground">{delivery.phone}</p>
+                      {getStatusBadge(delivery.status)}
                     </div>
-                    <div className="text-right">
-                      <p className="font-semibold text-primary">{delivery.estimatedTime}</p>
-                      <p className="text-xs text-muted-foreground">ETA</p>
+
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <Users className="w-4 h-4 text-emerald-500" />
+                        <span className="font-semibold text-gray-900">{delivery.customer}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Phone className="w-4 h-4 text-blue-500" />
+                        <span className="text-sm text-gray-600">{delivery.phone}</span>
+                      </div>
+                      <div className="bg-white rounded-xl p-3 border border-gray-200">
+                        <p className="text-sm text-gray-700 font-medium">
+                          Commande: {delivery.order}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex justify-between items-center mt-4 pt-4 border-t border-gray-200">
+                      <div className="flex items-center space-x-2">
+                        <Clock className="w-5 h-5 text-orange-500" />
+                        <span className="text-lg font-bold text-orange-600">{delivery.estimatedTime}</span>
+                      </div>
+                      <Button size="sm" variant="outline" className="rounded-xl">
+                        <MapPin className="w-4 h-4 mr-2" />
+                        Localiser
+                      </Button>
                     </div>
                   </div>
                 ))}
               </div>
-              <Button asChild variant="outline" className="w-full mt-4">
-                <Link to="/admin/deliveries">Gérer les Livraisons</Link>
+              <Button
+                asChild
+                className="w-full mt-8 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-2xl"
+              >
+                <Link to="/admin/deliveries">
+                  <Activity className="w-5 h-5 mr-2" />
+                  Gérer les Livraisons
+                </Link>
               </Button>
             </CardContent>
           </Card>
