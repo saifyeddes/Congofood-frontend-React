@@ -182,6 +182,8 @@ export default function Header() {
               {[
                 { to: "/", label: "Accueil" },
                 { to: "/menu", label: "Menu" },
+                { to: "/restaurants", label: "Restaurants" },
+                { to: "/reservations", label: "Réserver" },
                 { to: "/contact", label: "Contact" }
               ].map((link) => (
                 <Link
