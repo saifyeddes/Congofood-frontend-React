@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -36,7 +36,12 @@ import {
   Users,
   ChefHat,
   Award,
-  Zap
+  Zap,
+  Navigation,
+  Target,
+  Map,
+  Crosshair,
+  RefreshCw
 } from "lucide-react";
 
 export default function RestaurantSearch() {
