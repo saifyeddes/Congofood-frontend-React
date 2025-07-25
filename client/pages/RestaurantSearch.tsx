@@ -58,7 +58,7 @@ export default function RestaurantSearch() {
   const [isGettingLocation, setIsGettingLocation] = useState(false);
   const [sortByDistance, setSortByDistance] = useState(false);
 
-  // Mock data for restaurants
+  // Mock data for restaurants with coordinates
   const restaurants = [
     {
       id: 1,
@@ -76,7 +76,10 @@ export default function RestaurantSearch() {
       deliveryTime: "25-35 min",
       specialties: ["Moambé", "Saka-Saka", "Fufu"],
       features: ["Livraison", "Sur place", "À emporter"],
-      description: "Restaurant traditionnel congolais offrant une expérience culinaire authentique dans un cadre chaleureux."
+      description: "Restaurant traditionnel congolais offrant une expérience culinaire authentique dans un cadre chaleureux.",
+      coordinates: { lat: -4.3317, lng: 15.3139 }, // Kinshasa centre
+      city: "Kinshasa",
+      country: "Congo (RDC)"
     },
     {
       id: 2,
@@ -94,7 +97,10 @@ export default function RestaurantSearch() {
       deliveryTime: "30-40 min",
       specialties: ["Plats fusion", "Grillades", "Salades"],
       features: ["Terrasse", "Livraison", "Parking"],
-      description: "Restaurant moderne proposant une cuisine fusion créative dans un cadre élégant avec terrasse."
+      description: "Restaurant moderne proposant une cuisine fusion créative dans un cadre élégant avec terrasse.",
+      coordinates: { lat: -4.3276, lng: 15.3222 }, // Gombe
+      city: "Kinshasa",
+      country: "Congo (RDC)"
     },
     {
       id: 3,
