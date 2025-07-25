@@ -91,17 +91,42 @@ export default function Dashboard() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "en_cours":
-        return <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">En Cours</Badge>;
+        return (
+          <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white border-0 px-4 py-1 font-bold animate-pulse">
+            <Clock className="w-3 h-3 mr-1" />
+            En Cours
+          </Badge>
+        );
       case "pret":
-        return <Badge variant="secondary" className="bg-blue-100 text-blue-800">Prêt</Badge>;
+        return (
+          <Badge className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white border-0 px-4 py-1 font-bold">
+            <CheckCircle className="w-3 h-3 mr-1" />
+            Prêt
+          </Badge>
+        );
       case "livre":
-        return <Badge variant="secondary" className="bg-green-100 text-green-800">Livré</Badge>;
+        return (
+          <Badge className="bg-gradient-to-r from-green-500 to-emerald-500 text-white border-0 px-4 py-1 font-bold">
+            <CheckCircle className="w-3 h-3 mr-1" />
+            Livré
+          </Badge>
+        );
       case "en_route":
-        return <Badge variant="secondary" className="bg-orange-100 text-orange-800">En Route</Badge>;
+        return (
+          <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white border-0 px-4 py-1 font-bold animate-pulse">
+            <Truck className="w-3 h-3 mr-1" />
+            En Route
+          </Badge>
+        );
       case "collecte":
-        return <Badge variant="secondary" className="bg-purple-100 text-purple-800">Collecte</Badge>;
+        return (
+          <Badge className="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-0 px-4 py-1 font-bold">
+            <Activity className="w-3 h-3 mr-1" />
+            Collecte
+          </Badge>
+        );
       default:
-        return <Badge variant="secondary">{status}</Badge>;
+        return <Badge className="bg-gray-500 text-white border-0 px-4 py-1 font-bold">{status}</Badge>;
     }
   };
 
