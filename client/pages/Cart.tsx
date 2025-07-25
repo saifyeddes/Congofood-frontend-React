@@ -62,6 +62,7 @@ export default function Cart() {
   if (state.items.length === 0) {
     return (
       <Layout>
+        <ProtectedRoute>
         <div className="min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-white via-emerald-50/30 to-white">
           <div className="text-center space-y-8 max-w-lg mx-auto px-6 animate-in fade-in duration-1000">
             <div className="relative">
@@ -103,12 +104,14 @@ export default function Cart() {
             </div>
           </div>
         </div>
+        </ProtectedRoute>
       </Layout>
     );
   }
 
   return (
     <Layout>
+      <ProtectedRoute>
       <div className="min-h-screen bg-gradient-to-b from-white via-emerald-50/30 to-white">
         {/* Header */}
         <section className="relative bg-gradient-to-br from-emerald-50 via-blue-50 to-purple-50 py-20 overflow-hidden">
@@ -421,6 +424,7 @@ export default function Cart() {
           </div>
         </div>
       </div>
+      </ProtectedRoute>
     </Layout>
   );
 }
