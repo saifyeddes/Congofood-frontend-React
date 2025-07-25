@@ -59,27 +59,7 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div className="flex space-x-4">
-              <Button
-                asChild
-                variant="outline"
-                className="bg-white/80 backdrop-blur-sm border-emerald-200 hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-300 px-6 py-3 font-semibold"
-              >
-                <Link to="/admin/orders">
-                  <Eye className="w-5 h-5 mr-2" />
-                  Voir Commandes
-                </Link>
-              </Button>
-              <Button
-                asChild
-                className="bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white px-6 py-3 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-              >
-                <Link to="/admin/dishes">
-                  <Plus className="w-5 h-5 mr-2" />
-                  Nouveau Plat
-                </Link>
-              </Button>
-            </div>
+
           </div>
         </div>
 
