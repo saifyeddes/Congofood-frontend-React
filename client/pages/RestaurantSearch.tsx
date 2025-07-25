@@ -189,6 +189,82 @@ export default function RestaurantSearch() {
     }
   ];
 
+  // Fonction pour calculer la distance entre deux points (formule de Haversine)
+  const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number): number => {
+    const R = 6371; // Rayon de la Terre en kilomètres
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLng = (lng2 - lng1) * Math.PI / 180;
+    const a =
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+      Math.sin(dLng/2) * Math.sin(dLng/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
+  };
+
+  // Fonction pour obtenir la localisation de l'utilisateur
+  const getCurrentLocation = () => {
+    setIsGettingLocation(true);
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation({ lat: latitude, lng: longitude });
+          setLocationCity("Position actuelle");
+          setSortByDistance(true);
+          setIsGettingLocation(false);
+          alert("Localisation détectée ! Les restaurants sont maintenant triés par distance.");
+        },
+        (error) => {
+          setIsGettingLocation(false);
+          console.error("Erreur de géolocalisation:", error);
+          alert("Impossible d'obtenir votre localisation. Veuillez saisir votre ville manuellement.");
+        },
+        { timeout: 10000, maximumAge: 600000 }
+      );
+    } else {
+      setIsGettingLocation(false);
+      alert("La géolocalisation n'est pas supportée par votre navigateur.");
+    }
+  };
+
+  // Fonction pour geocoder une ville (simulation)
+  const searchByCity = () => {
+    if (!locationCity.trim()) {
+      alert("Veuillez saisir une ville.");
+      return;
+    }
+
+    // Simulation de géocodage pour quelques villes du Congo
+    const cityCoordinates: { [key: string]: { lat: number, lng: number } } = {
+      "kinshasa": { lat: -4.3317, lng: 15.3139 },
+      "lubumbashi": { lat: -11.6709, lng: 27.4794 },
+      "bukavu": { lat: -2.5088, lng: 28.8632 },
+      "goma": { lat: -1.6792, lng: 29.2228 },
+      "kisangani": { lat: 0.5167, lng: 25.2000 },
+      "kananga": { lat: -5.8956, lng: 22.4669 },
+      "mbuji-mayi": { lat: -6.1360, lng: 23.5897 }
+    };
+
+    const cityKey = locationCity.toLowerCase().trim();
+    if (cityCoordinates[cityKey]) {
+      setUserLocation(cityCoordinates[cityKey]);
+      setSortByDistance(true);
+      alert(`Localisation définie pour ${locationCity}. Les restaurants sont triés par distance.`);
+    } else {
+      // Coordonnées par défaut (Kinshasa)
+      setUserLocation({ lat: -4.3317, lng: 15.3139 });
+      setSortByDistance(true);
+      alert(`Ville "${locationCity}" non trouvée. Position définie sur Kinshasa par défaut.`);
+    }
+  };
+
+  const countries = [
+    "Congo (RDC)", "Congo (Brazzaville)", "Angola", "Zambie", "Tanzanie",
+    "Burundi", "Rwanda", "Ouganda", "Cameroun", "Gabon", "France", "Belgique"
+  ];
+
   const categories = [
     { value: "all", label: "Toutes catégories" },
     { value: "congolaise", label: "Cuisine Congolaise" },
