@@ -16,6 +16,12 @@ interface SignUpFormProps {
     email: string;
     phone: string;
     password: string;
+    address: string;
+    dateOfBirth: string;
+    gender: string;
+    preferences: string;
+    emergencyContact: string;
+    emergencyPhone: string;
   }) => Promise<void>;
   onSwitchToSignIn: () => void;
   loading?: boolean;
@@ -28,7 +34,13 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
     email: "",
     phone: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    address: "",
+    dateOfBirth: "",
+    gender: "",
+    preferences: "",
+    emergencyContact: "",
+    emergencyPhone: ""
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
