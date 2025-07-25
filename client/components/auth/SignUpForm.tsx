@@ -416,41 +416,50 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
             </div>
           </div>
 
-          <div className="flex items-center space-x-2">
-            <Checkbox 
-              id="terms" 
-              checked={acceptTerms}
-              onCheckedChange={(checked) => setAcceptTerms(!!checked)}
-              disabled={loading}
-            />
-            <Label htmlFor="terms" className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              I agree to the{" "}
-              <Button variant="link" className="p-0 h-auto text-sm">
-                Terms & Conditions
-              </Button>{" "}
-              and{" "}
-              <Button variant="link" className="p-0 h-auto text-sm">
-                Privacy Policy
-              </Button>
-            </Label>
+          {/* Conditions */}
+          <div className="bg-gray-50 rounded-lg p-4 border">
+            <div className="flex items-start space-x-3">
+              <Checkbox
+                id="terms"
+                checked={acceptTerms}
+                onCheckedChange={(checked) => setAcceptTerms(!!checked)}
+                disabled={loading}
+                className="mt-1"
+              />
+              <Label htmlFor="terms" className="text-sm leading-relaxed flex-1">
+                J'accepte les{" "}
+                <Button variant="link" className="p-0 h-auto text-sm underline">
+                  Conditions d'Utilisation
+                </Button>{" "}
+                et la{" "}
+                <Button variant="link" className="p-0 h-auto text-sm underline">
+                  Politique de Confidentialité
+                </Button>{" "}
+                de Congo Food. Je confirme que toutes les informations fournies sont exactes.
+              </Label>
+            </div>
+            {errors.terms && (
+              <p className="text-sm text-destructive mt-2">{errors.terms}</p>
+            )}
           </div>
-          {errors.terms && (
-            <p className="text-sm text-destructive">{errors.terms}</p>
-          )}
         </CardContent>
-        <CardFooter className="flex flex-col space-y-4">
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Creating account..." : "Create Account"}
+        <CardFooter className="flex flex-col space-y-4 flex-shrink-0 border-t bg-gray-50/50">
+          <Button
+            type="submit"
+            className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white py-3 text-lg"
+            disabled={loading}
+          >
+            {loading ? "Création en cours..." : "Créer mon Compte"}
           </Button>
           <div className="text-center text-sm text-muted-foreground">
-            Already have an account?{" "}
-            <Button 
-              variant="link" 
-              className="p-0 h-auto"
+            Vous avez déjà un compte ?{" "}
+            <Button
+              variant="link"
+              className="p-0 h-auto text-emerald-600 hover:text-emerald-700"
               onClick={onSwitchToSignIn}
               disabled={loading}
             >
-              Sign in
+              Se connecter
             </Button>
           </div>
         </CardFooter>
