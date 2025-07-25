@@ -332,9 +332,41 @@ export default function Cart() {
                 </CardHeader>
                 <CardContent className="p-8 space-y-4">
                   {[
-                    { value: "cash", label: "Paiement à la livraison (Espèces)", icon: "💰" },
-                    { value: "mobile", label: "Mobile Money", icon: "📱" },
-                    { value: "card", label: "Carte de crédit", icon: "💳" }
+                    {
+                      value: "cash",
+                      label: "Paiement à la livraison (Espèces)",
+                      icon: "💰",
+                      description: "Payez en espèces lors de la livraison",
+                      secure: true
+                    },
+                    {
+                      value: "mobile",
+                      label: "Mobile Money (M-Pesa, Orange Money)",
+                      icon: "📱",
+                      description: "Paiement mobile sécurisé instantané",
+                      secure: true
+                    },
+                    {
+                      value: "card",
+                      label: "Carte de crédit/débit",
+                      icon: "💳",
+                      description: "Visa, Mastercard - Paiement sécurisé SSL",
+                      secure: true
+                    },
+                    {
+                      value: "bank",
+                      label: "Virement bancaire",
+                      icon: "🏦",
+                      description: "Virement direct depuis votre banque",
+                      secure: true
+                    },
+                    {
+                      value: "wallet",
+                      label: "Portefeuille numérique",
+                      icon: "💼",
+                      description: "PayPal, Skrill ou autres",
+                      secure: true
+                    }
                   ].map((payment) => (
                     <label
                       key={payment.value}
