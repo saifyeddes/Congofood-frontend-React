@@ -151,135 +151,269 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
               <AlertDescription>{errors.general}</AlertDescription>
             </Alert>
           )}
-          
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="firstName">First Name</Label>
-              <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+
+          {/* Section 1: Informations personnelles */}
+          <div className="bg-emerald-50 rounded-lg p-4">
+            <h3 className="text-lg font-semibold text-emerald-800 mb-4">Informations Personnelles</h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="firstName">Prénom *</Label>
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                  <Input
+                    id="firstName"
+                    placeholder="Votre prénom"
+                    value={formData.firstName}
+                    onChange={(e) => handleInputChange("firstName", e.target.value)}
+                    className={`pl-10 ${errors.firstName ? 'border-destructive' : ''}`}
+                    disabled={loading}
+                  />
+                </div>
+                {errors.firstName && (
+                  <p className="text-sm text-destructive">{errors.firstName}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="lastName">Nom de famille *</Label>
                 <Input
-                  id="firstName"
-                  placeholder="First name"
-                  value={formData.firstName}
-                  onChange={(e) => handleInputChange("firstName", e.target.value)}
-                  className={`pl-10 ${errors.firstName ? 'border-destructive' : ''}`}
+                  id="lastName"
+                  placeholder="Votre nom de famille"
+                  value={formData.lastName}
+                  onChange={(e) => handleInputChange("lastName", e.target.value)}
+                  className={errors.lastName ? 'border-destructive' : ''}
+                  disabled={loading}
+                />
+                {errors.lastName && (
+                  <p className="text-sm text-destructive">{errors.lastName}</p>
+                )}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div className="space-y-2">
+                <Label htmlFor="dateOfBirth">Date de naissance *</Label>
+                <div className="relative">
+                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                  <Input
+                    id="dateOfBirth"
+                    type="date"
+                    value={formData.dateOfBirth}
+                    onChange={(e) => handleInputChange("dateOfBirth", e.target.value)}
+                    className={`pl-10 ${errors.dateOfBirth ? 'border-destructive' : ''}`}
+                    disabled={loading}
+                  />
+                </div>
+                {errors.dateOfBirth && (
+                  <p className="text-sm text-destructive">{errors.dateOfBirth}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="gender">Genre *</Label>
+                <Select value={formData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
+                  <SelectTrigger className={errors.gender ? 'border-destructive' : ''}>
+                    <SelectValue placeholder="Sélectionnez votre genre" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="homme">Homme</SelectItem>
+                    <SelectItem value="femme">Femme</SelectItem>
+                    <SelectItem value="autre">Autre</SelectItem>
+                  </SelectContent>
+                </Select>
+                {errors.gender && (
+                  <p className="text-sm text-destructive">{errors.gender}</p>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Section 2: Contact */}
+          <div className="bg-blue-50 rounded-lg p-4">
+            <h3 className="text-lg font-semibold text-blue-800 mb-4">Informations de Contact</h3>
+
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="email">Email *</Label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="votre@email.com"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    className={`pl-10 ${errors.email ? 'border-destructive' : ''}`}
+                    disabled={loading}
+                  />
+                </div>
+                {errors.email && (
+                  <p className="text-sm text-destructive">{errors.email}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="phone">Téléphone *</Label>
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                  <Input
+                    id="phone"
+                    placeholder="+243 123 456 789"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange("phone", e.target.value)}
+                    className={`pl-10 ${errors.phone ? 'border-destructive' : ''}`}
+                    disabled={loading}
+                  />
+                </div>
+                {errors.phone && (
+                  <p className="text-sm text-destructive">{errors.phone}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="address">Adresse complète *</Label>
+                <div className="relative">
+                  <MapPin className="absolute left-3 top-3 text-muted-foreground w-4 h-4" />
+                  <Textarea
+                    id="address"
+                    placeholder="Votre adresse complète de livraison"
+                    value={formData.address}
+                    onChange={(e) => handleInputChange("address", e.target.value)}
+                    className={`pl-10 ${errors.address ? 'border-destructive' : ''} min-h-[80px]`}
+                    disabled={loading}
+                  />
+                </div>
+                {errors.address && (
+                  <p className="text-sm text-destructive">{errors.address}</p>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Section 3: Contact d'urgence */}
+          <div className="bg-orange-50 rounded-lg p-4">
+            <h3 className="text-lg font-semibold text-orange-800 mb-4">Contact d'Urgence</h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="emergencyContact">Nom du contact d'urgence *</Label>
+                <Input
+                  id="emergencyContact"
+                  placeholder="Nom de votre contact d'urgence"
+                  value={formData.emergencyContact}
+                  onChange={(e) => handleInputChange("emergencyContact", e.target.value)}
+                  className={errors.emergencyContact ? 'border-destructive' : ''}
+                  disabled={loading}
+                />
+                {errors.emergencyContact && (
+                  <p className="text-sm text-destructive">{errors.emergencyContact}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="emergencyPhone">Téléphone d'urgence *</Label>
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                  <Input
+                    id="emergencyPhone"
+                    placeholder="+243 987 654 321"
+                    value={formData.emergencyPhone}
+                    onChange={(e) => handleInputChange("emergencyPhone", e.target.value)}
+                    className={`pl-10 ${errors.emergencyPhone ? 'border-destructive' : ''}`}
+                    disabled={loading}
+                  />
+                </div>
+                {errors.emergencyPhone && (
+                  <p className="text-sm text-destructive">{errors.emergencyPhone}</p>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Section 4: Préférences */}
+          <div className="bg-purple-50 rounded-lg p-4">
+            <h3 className="text-lg font-semibold text-purple-800 mb-4">Préférences Alimentaires</h3>
+
+            <div className="space-y-2">
+              <Label htmlFor="preferences">Préférences alimentaires, allergies (optionnel)</Label>
+              <div className="relative">
+                <Heart className="absolute left-3 top-3 text-muted-foreground w-4 h-4" />
+                <Textarea
+                  id="preferences"
+                  placeholder="Ex: Végétarien, allergique aux noix, préfère épicé, etc."
+                  value={formData.preferences}
+                  onChange={(e) => handleInputChange("preferences", e.target.value)}
+                  className="pl-10 min-h-[80px]"
                   disabled={loading}
                 />
               </div>
-              {errors.firstName && (
-                <p className="text-sm text-destructive">{errors.firstName}</p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="lastName">Last Name</Label>
-              <Input
-                id="lastName"
-                placeholder="Last name"
-                value={formData.lastName}
-                onChange={(e) => handleInputChange("lastName", e.target.value)}
-                className={errors.lastName ? 'border-destructive' : ''}
-                disabled={loading}
-              />
-              {errors.lastName && (
-                <p className="text-sm text-destructive">{errors.lastName}</p>
-              )}
             </div>
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <Input
-                id="email"
-                type="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={(e) => handleInputChange("email", e.target.value)}
-                className={`pl-10 ${errors.email ? 'border-destructive' : ''}`}
-                disabled={loading}
-              />
-            </div>
-            {errors.email && (
-              <p className="text-sm text-destructive">{errors.email}</p>
-            )}
-          </div>
+          {/* Section 5: Sécurité */}
+          <div className="bg-red-50 rounded-lg p-4">
+            <h3 className="text-lg font-semibold text-red-800 mb-4">Sécurité du Compte</h3>
 
-          <div className="space-y-2">
-            <Label htmlFor="phone">Phone Number</Label>
-            <div className="relative">
-              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <Input
-                id="phone"
-                placeholder="Enter your phone number"
-                value={formData.phone}
-                onChange={(e) => handleInputChange("phone", e.target.value)}
-                className={`pl-10 ${errors.phone ? 'border-destructive' : ''}`}
-                disabled={loading}
-              />
-            </div>
-            {errors.phone && (
-              <p className="text-sm text-destructive">{errors.phone}</p>
-            )}
-          </div>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="password">Mot de passe *</Label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Créer un mot de passe"
+                    value={formData.password}
+                    onChange={(e) => handleInputChange("password", e.target.value)}
+                    className={`pl-10 pr-10 ${errors.password ? 'border-destructive' : ''}`}
+                    disabled={loading}
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0"
+                    onClick={() => setShowPassword(!showPassword)}
+                    disabled={loading}
+                  >
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </Button>
+                </div>
+                {errors.password && (
+                  <p className="text-sm text-destructive">{errors.password}</p>
+                )}
+              </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <Input
-                id="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Create a password"
-                value={formData.password}
-                onChange={(e) => handleInputChange("password", e.target.value)}
-                className={`pl-10 pr-10 ${errors.password ? 'border-destructive' : ''}`}
-                disabled={loading}
-              />
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0"
-                onClick={() => setShowPassword(!showPassword)}
-                disabled={loading}
-              >
-                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-              </Button>
+              <div className="space-y-2">
+                <Label htmlFor="confirmPassword">Confirmer le mot de passe *</Label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                  <Input
+                    id="confirmPassword"
+                    type={showConfirmPassword ? "text" : "password"}
+                    placeholder="Confirmer votre mot de passe"
+                    value={formData.confirmPassword}
+                    onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
+                    className={`pl-10 pr-10 ${errors.confirmPassword ? 'border-destructive' : ''}`}
+                    disabled={loading}
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    disabled={loading}
+                  >
+                    {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </Button>
+                </div>
+                {errors.confirmPassword && (
+                  <p className="text-sm text-destructive">{errors.confirmPassword}</p>
+                )}
+              </div>
             </div>
-            {errors.password && (
-              <p className="text-sm text-destructive">{errors.password}</p>
-            )}
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="confirmPassword">Confirm Password</Label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <Input
-                id="confirmPassword"
-                type={showConfirmPassword ? "text" : "password"}
-                placeholder="Confirm your password"
-                value={formData.confirmPassword}
-                onChange={(e) => handleInputChange("confirmPassword", e.target.value)}
-                className={`pl-10 pr-10 ${errors.confirmPassword ? 'border-destructive' : ''}`}
-                disabled={loading}
-              />
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                disabled={loading}
-              >
-                {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-              </Button>
-            </div>
-            {errors.confirmPassword && (
-              <p className="text-sm text-destructive">{errors.confirmPassword}</p>
-            )}
           </div>
 
           <div className="flex items-center space-x-2">
