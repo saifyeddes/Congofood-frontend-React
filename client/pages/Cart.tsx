@@ -370,9 +370,9 @@ export default function Cart() {
                   ].map((payment) => (
                     <label
                       key={payment.value}
-                      className={`flex items-center space-x-4 p-4 rounded-2xl border-2 cursor-pointer transition-all duration-300 ${
+                      className={`block p-4 rounded-2xl border-2 cursor-pointer transition-all duration-300 hover:scale-105 ${
                         paymentMethod === payment.value
-                          ? "border-emerald-500 bg-emerald-50"
+                          ? "border-emerald-500 bg-emerald-50 shadow-lg"
                           : "border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/50"
                       }`}
                     >
@@ -384,11 +384,24 @@ export default function Cart() {
                         onChange={(e) => setPaymentMethod(e.target.value)}
                         className="hidden"
                       />
-                      <div className="text-2xl">{payment.icon}</div>
-                      <span className="font-medium text-gray-700 flex-1">{payment.label}</span>
-                      {paymentMethod === payment.value && (
-                        <CheckCircle className="w-5 h-5 text-emerald-500" />
-                      )}
+                      <div className="flex items-center space-x-4">
+                        <div className="text-2xl">{payment.icon}</div>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between">
+                            <span className="font-bold text-gray-900">{payment.label}</span>
+                            {paymentMethod === payment.value && (
+                              <CheckCircle className="w-5 h-5 text-emerald-500" />
+                            )}
+                          </div>
+                          <p className="text-sm text-gray-600 mt-1">{payment.description}</p>
+                          {payment.secure && (
+                            <div className="flex items-center space-x-1 mt-2">
+                              <Shield className="w-3 h-3 text-green-500" />
+                              <span className="text-xs text-green-600 font-medium">Paiement sécurisé</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                     </label>
                   ))}
                 </CardContent>
