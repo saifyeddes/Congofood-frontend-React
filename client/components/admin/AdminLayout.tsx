@@ -153,9 +153,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             </div>
           </div>
 
-          {/* Navigation */}
-          <nav className="relative z-10 flex-1 p-6">
-            <div className="space-y-2">
+          {/* Enhanced Navigation */}
+          <nav className="relative z-10 flex-1 p-6 overflow-y-auto">
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider px-2 mb-6">Menu Principal</h4>
               {menuItems.map((item, index) => {
                 const isActive = location.pathname === item.href;
                 return (
@@ -163,23 +164,53 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                     key={item.href}
                     to={item.href}
                     className={`
-                      group flex items-center justify-between w-full px-4 py-3 rounded-xl font-medium transition-all duration-300 animate-in slide-in-from-left
+                      group block w-full p-5 rounded-2xl font-medium transition-all duration-500 animate-in slide-in-from-left hover:shadow-xl
                       ${isActive
-                        ? 'bg-gradient-to-r from-emerald-500 to-blue-500 text-white shadow-lg transform scale-105'
-                        : 'text-gray-300 hover:text-white hover:bg-white/10 hover:transform hover:scale-105'
+                        ? 'bg-gradient-to-br from-emerald-500 via-blue-500 to-purple-500 text-white shadow-2xl transform scale-105'
+                        : 'text-gray-300 hover:text-white bg-white/5 hover:bg-gradient-to-br hover:from-white/10 hover:to-white/5 hover:transform hover:scale-105'
                       }
                     `}
                     onClick={() => setSidebarOpen(false)}
-                    style={{ animationDelay: `${index * 50}ms` }}
+                    style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <div className="flex items-center space-x-3">
-                      <item.icon className={`w-5 h-5 ${isActive ? 'animate-pulse' : 'group-hover:scale-110 transition-transform duration-300'}`} />
-                      <span className="font-semibold">{item.label}</span>
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center space-x-4">
+                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${
+                          isActive
+                            ? 'bg-white/20 shadow-lg'
+                            : 'bg-white/10 group-hover:bg-white/20'
+                        }`}>
+                          <item.icon className={`w-6 h-6 ${isActive ? 'text-white animate-pulse' : 'text-gray-300 group-hover:text-white'}`} />
+                        </div>
+                        <div>
+                          <div className={`font-black text-lg ${
+                            isActive ? 'text-white' : 'text-gray-200 group-hover:text-white'
+                          }`}>
+                            {item.label}
+                          </div>
+                          <div className={`text-xs font-medium ${
+                            isActive ? 'text-white/80' : 'text-gray-400 group-hover:text-gray-200'
+                          }`}>
+                            {item.description}
+                          </div>
+                        </div>
+                      </div>
+                      {item.badge && (
+                        <Badge className={`text-xs font-bold px-3 py-1.5 ${
+                          isActive
+                            ? 'bg-white/25 text-white border-white/30'
+                            : 'bg-gradient-to-r from-emerald-500 to-green-500 text-white border-0 shadow-lg animate-pulse'
+                        }`}>
+                          {item.badge}
+                        </Badge>
+                      )}
                     </div>
-                    {item.badge && (
-                      <Badge className="bg-red-500 text-white border-0 animate-pulse">
-                        {item.badge}
-                      </Badge>
+
+                    {/* Progress indicator for active item */}
+                    {isActive && (
+                      <div className="w-full h-1.5 bg-white/30 rounded-full overflow-hidden">
+                        <div className="w-full h-full bg-white rounded-full animate-pulse"></div>
+                      </div>
                     )}
                   </Link>
                 );
