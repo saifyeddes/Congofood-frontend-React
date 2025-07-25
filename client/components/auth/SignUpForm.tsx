@@ -123,10 +123,16 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
         lastName: formData.lastName,
         email: formData.email,
         phone: formData.phone,
-        password: formData.password
+        password: formData.password,
+        address: formData.address,
+        dateOfBirth: formData.dateOfBirth,
+        gender: formData.gender,
+        preferences: formData.preferences,
+        emergencyContact: formData.emergencyContact,
+        emergencyPhone: formData.emergencyPhone
       });
     } catch (error) {
-      setErrors({ general: error instanceof Error ? error.message : "Sign up failed" });
+      setErrors({ general: error instanceof Error ? error.message : "Inscription échouée" });
     }
   };
 
