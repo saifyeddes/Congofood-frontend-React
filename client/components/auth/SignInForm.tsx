@@ -64,59 +64,80 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
               <AlertDescription>{errors.general}</AlertDescription>
             </Alert>
           )}
-          
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <Input
-                id="email"
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className={`pl-10 ${errors.email ? 'border-destructive' : ''}`}
-                disabled={loading}
-              />
+
+          {/* Section Connexion */}
+          <div className="bg-blue-50 rounded-lg p-4">
+            <h3 className="text-lg font-semibold text-blue-800 mb-4">Informations de Connexion</h3>
+
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="email">Adresse Email *</Label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="votre@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className={`pl-10 ${errors.email ? 'border-destructive' : ''}`}
+                    disabled={loading}
+                  />
+                </div>
+                {errors.email && (
+                  <p className="text-sm text-destructive">{errors.email}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="password">Mot de Passe *</Label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Votre mot de passe"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className={`pl-10 pr-10 ${errors.password ? 'border-destructive' : ''}`}
+                    disabled={loading}
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0"
+                    onClick={() => setShowPassword(!showPassword)}
+                    disabled={loading}
+                  >
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </Button>
+                </div>
+                {errors.password && (
+                  <p className="text-sm text-destructive">{errors.password}</p>
+                )}
+              </div>
+
+              <div className="text-right">
+                <Button variant="link" className="text-sm p-0 h-auto text-blue-600 hover:text-blue-700">
+                  Mot de passe oublié ?
+                </Button>
+              </div>
             </div>
-            {errors.email && (
-              <p className="text-sm text-destructive">{errors.email}</p>
-            )}
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <Input
-                id="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className={`pl-10 pr-10 ${errors.password ? 'border-destructive' : ''}`}
-                disabled={loading}
-              />
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                className="absolute right-1 top-1/2 transform -translate-y-1/2 h-8 w-8 p-0"
-                onClick={() => setShowPassword(!showPassword)}
-                disabled={loading}
-              >
-                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-              </Button>
+          {/* Section Aide */}
+          <div className="bg-emerald-50 rounded-lg p-4 border border-emerald-200">
+            <h4 className="font-semibold text-emerald-800 mb-2">Besoin d'aide ?</h4>
+            <p className="text-sm text-emerald-700 mb-3">
+              Si vous n'avez pas encore de compte, vous pouvez en créer un gratuitement.
+            </p>
+            <div className="space-y-2 text-xs text-emerald-600">
+              <p>• Accès à toutes vos commandes et réservations</p>
+              <p>• Programme de fidélité et points bonus</p>
+              <p>• Suivi en temps réel de vos livraisons</p>
+              <p>• Adresses de livraison sauvegardées</p>
             </div>
-            {errors.password && (
-              <p className="text-sm text-destructive">{errors.password}</p>
-            )}
-          </div>
-
-          <div className="text-right">
-            <Button variant="link" className="text-sm p-0 h-auto">
-              Forgot password?
-            </Button>
           </div>
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
