@@ -4,17 +4,24 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { 
-  ShoppingBag, 
-  Truck, 
-  Users, 
-  DollarSign, 
-  TrendingUp, 
+import {
+  ShoppingBag,
+  Truck,
+  Users,
+  DollarSign,
+  TrendingUp,
   Clock,
   CheckCircle,
   AlertCircle,
   Plus,
-  Eye
+  Eye,
+  Activity,
+  Zap,
+  Crown,
+  Sparkles,
+  BarChart3,
+  MapPin,
+  Phone
 } from "lucide-react";
 
 export default function Dashboard() {
