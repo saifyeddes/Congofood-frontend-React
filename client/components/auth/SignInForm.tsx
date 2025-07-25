@@ -140,19 +140,24 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
             </div>
           </div>
         </CardContent>
-        <CardFooter className="flex flex-col space-y-4">
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Signing in..." : "Sign In"}
+
+        <CardFooter className="flex flex-col space-y-4 flex-shrink-0 border-t bg-gray-50/50">
+          <Button
+            type="submit"
+            className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white py-3 text-lg"
+            disabled={loading}
+          >
+            {loading ? "Connexion en cours..." : "Se Connecter"}
           </Button>
           <div className="text-center text-sm text-muted-foreground">
-            Don't have an account?{" "}
-            <Button 
-              variant="link" 
-              className="p-0 h-auto"
+            Vous n'avez pas de compte ?{" "}
+            <Button
+              variant="link"
+              className="p-0 h-auto text-emerald-600 hover:text-emerald-700"
               onClick={onSwitchToSignUp}
               disabled={loading}
             >
-              Sign up
+              Créer un compte
             </Button>
           </div>
         </CardFooter>
