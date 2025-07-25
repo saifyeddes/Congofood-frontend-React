@@ -27,6 +27,8 @@ import DeliveryMap from "./pages/delivery/Map";
 import DeliveryHistory from "./pages/delivery/History";
 import DeliveryProfile from "./pages/delivery/Profile";
 import DeliverySettings from "./pages/delivery/Settings";
+import RestaurantLayout from "./components/restaurant/RestaurantLayout";
+import RestaurantDashboard from "./pages/restaurant/Dashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
