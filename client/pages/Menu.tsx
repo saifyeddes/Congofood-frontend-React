@@ -172,6 +172,11 @@ export default function Menu() {
   });
 
   const addToCart = (item: MenuItem) => {
+    if (!authState.isAuthenticated) {
+      setShowAuthModal(true);
+      return;
+    }
+
     dispatch({
       type: "ADD_ITEM",
       payload: {
