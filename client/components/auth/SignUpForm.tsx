@@ -137,15 +137,15 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
   };
 
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl">Create Account</CardTitle>
+    <Card className="w-full max-w-2xl max-h-[90vh] flex flex-col">
+      <CardHeader className="text-center flex-shrink-0">
+        <CardTitle className="text-2xl">Créer un Compte</CardTitle>
         <CardDescription>
           Rejoignez Congo Food pour commander plus rapidement
         </CardDescription>
       </CardHeader>
-      <form onSubmit={handleSubmit}>
-        <CardContent className="space-y-4">
+      <form onSubmit={handleSubmit} className="flex flex-col flex-1 overflow-hidden">
+        <CardContent className="space-y-4 overflow-y-auto flex-1 px-6">
           {errors.general && (
             <Alert variant="destructive">
               <AlertDescription>{errors.general}</AlertDescription>
