@@ -33,6 +33,7 @@ import RestaurantSearch from "./pages/RestaurantSearch";
 import TableReservation from "./pages/TableReservation";
 import OrderHistory from "./pages/OrderHistory";
 import OrderTracking from "./pages/OrderTracking";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
