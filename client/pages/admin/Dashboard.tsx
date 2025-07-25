@@ -107,28 +107,62 @@ export default function Dashboard() {
 
   return (
     <AdminLayout>
-      <div className="space-y-8">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
-            <p className="text-muted-foreground">
-              Vue d'ensemble de Congo Food - {new Date().toLocaleDateString('fr-FR')}
-            </p>
+      <div className="space-y-12">
+        {/* Enhanced Header */}
+        <div className="relative bg-gradient-to-br from-emerald-50 via-blue-50 to-purple-50 rounded-3xl p-8 overflow-hidden animate-in fade-in duration-1000">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-full blur-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full blur-2xl"></div>
           </div>
-          <div className="flex space-x-2">
-            <Button asChild variant="outline">
-              <Link to="/admin/orders">
-                <Eye className="w-4 h-4 mr-2" />
-                Voir Commandes
-              </Link>
-            </Button>
-            <Button asChild>
-              <Link to="/admin/dishes">
-                <Plus className="w-4 h-4 mr-2" />
-                Nouveau Plat
-              </Link>
-            </Button>
+
+          <div className="relative z-10 flex items-center justify-between">
+            <div className="space-y-4">
+              <div className="flex items-center space-x-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-2xl flex items-center justify-center shadow-xl">
+                  <Crown className="w-8 h-8 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-4xl font-black text-gray-900">Dashboard Administrateur</h1>
+                  <div className="flex items-center space-x-4 mt-2">
+                    <Badge className="bg-green-500 text-white border-0 px-4 py-1 animate-pulse">
+                      <Activity className="w-3 h-3 mr-2" />
+                      Système Actif
+                    </Badge>
+                    <p className="text-gray-600 font-medium">
+                      {new Date().toLocaleDateString('fr-FR', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex space-x-4">
+              <Button
+                asChild
+                variant="outline"
+                className="bg-white/80 backdrop-blur-sm border-emerald-200 hover:bg-emerald-50 hover:border-emerald-300 transition-all duration-300 px-6 py-3 font-semibold"
+              >
+                <Link to="/admin/orders">
+                  <Eye className="w-5 h-5 mr-2" />
+                  Voir Commandes
+                </Link>
+              </Button>
+              <Button
+                asChild
+                className="bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white px-6 py-3 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              >
+                <Link to="/admin/dishes">
+                  <Plus className="w-5 h-5 mr-2" />
+                  Nouveau Plat
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
 
