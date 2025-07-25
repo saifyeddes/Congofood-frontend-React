@@ -443,24 +443,11 @@ export default function Menu() {
                         </div>
                       ) : (
                         <Button
-                          className={`w-full font-semibold py-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ${
-                            authState.isAuthenticated
-                              ? "bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white"
-                              : "bg-gradient-to-r from-gray-400 to-gray-500 hover:from-amber-500 hover:to-orange-500 text-white"
-                          }`}
+                          className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white font-semibold py-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
                           onClick={() => addToCart(item)}
                         >
-                          {authState.isAuthenticated ? (
-                            <>
-                              <Plus className="w-5 h-5 mr-2" />
-                              Ajouter au Panier
-                            </>
-                          ) : (
-                            <>
-                              <Plus className="w-5 h-5 mr-2" />
-                              Se connecter pour commander
-                            </>
-                          )}
+                          <Plus className="w-5 h-5 mr-2" />
+                          Ajouter au Panier
                         </Button>
                       )}
                     </CardFooter>
