@@ -51,37 +51,57 @@ export default function SignUpForm({ onSignUp, onSwitchToSignIn, loading = false
     const newErrors: {[key: string]: string} = {};
 
     if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required";
+      newErrors.firstName = "Prénom requis";
     }
 
     if (!formData.lastName.trim()) {
-      newErrors.lastName = "Last name is required";
+      newErrors.lastName = "Nom de famille requis";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = "Email requis";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = "Veuillez entrer un email valide";
     }
 
     if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
+      newErrors.phone = "Numéro de téléphone requis";
     } else if (!/^\+?[\d\s-()]+$/.test(formData.phone)) {
-      newErrors.phone = "Please enter a valid phone number";
+      newErrors.phone = "Veuillez entrer un numéro valide";
+    }
+
+    if (!formData.address.trim()) {
+      newErrors.address = "Adresse requise";
+    }
+
+    if (!formData.dateOfBirth) {
+      newErrors.dateOfBirth = "Date de naissance requise";
+    }
+
+    if (!formData.gender) {
+      newErrors.gender = "Genre requis";
+    }
+
+    if (!formData.emergencyContact.trim()) {
+      newErrors.emergencyContact = "Contact d'urgence requis";
+    }
+
+    if (!formData.emergencyPhone.trim()) {
+      newErrors.emergencyPhone = "Téléphone d'urgence requis";
     }
 
     if (!formData.password.trim()) {
-      newErrors.password = "Password is required";
+      newErrors.password = "Mot de passe requis";
     } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
+      newErrors.password = "Mot de passe minimum 6 caractères";
     }
 
     if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
+      newErrors.confirmPassword = "Les mots de passe ne correspondent pas";
     }
 
     if (!acceptTerms) {
-      newErrors.terms = "You must accept the terms and conditions";
+      newErrors.terms = "Vous devez accepter les conditions";
     }
 
     setErrors(newErrors);
