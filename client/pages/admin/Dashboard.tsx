@@ -232,46 +232,72 @@ export default function Dashboard() {
           ))}
         </div>
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Clock className="w-5 h-5 mr-2" />
-                Commandes en Attente
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-orange-600">{stats.pendingOrders}</div>
-              <p className="text-sm text-muted-foreground">À traiter immédiatement</p>
-            </CardContent>
-          </Card>
+        {/* Enhanced Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Commandes en Attente",
+              value: stats.pendingOrders,
+              subtitle: "À traiter immédiatement",
+              icon: Clock,
+              color: "from-yellow-500 to-orange-500",
+              bgColor: "from-yellow-50 to-orange-50",
+              urgent: true
+            },
+            {
+              title: "Complétées Aujourd'hui",
+              value: stats.completedToday,
+              subtitle: `Sur ${stats.ordersToday} commandes`,
+              icon: CheckCircle,
+              color: "from-green-500 to-emerald-500",
+              bgColor: "from-green-50 to-emerald-50",
+              urgent: false
+            },
+            {
+              title: "Alertes Système",
+              value: 2,
+              subtitle: "Retards de livraison",
+              icon: AlertCircle,
+              color: "from-red-500 to-pink-500",
+              bgColor: "from-red-50 to-pink-50",
+              urgent: true
+            }
+          ].map((stat, index) => (
+            <Card
+              key={index}
+              className={`border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden bg-white animate-in slide-in-from-bottom duration-1000 ${stat.urgent ? 'ring-2 ring-red-200 animate-pulse' : ''}`}
+              style={{ animationDelay: `${index * 200 + 600}ms` }}
+            >
+              <CardContent className="p-8">
+                <div className={`bg-gradient-to-br ${stat.bgColor} rounded-2xl p-6 relative overflow-hidden`}>
+                  {stat.urgent && (
+                    <div className="absolute top-2 right-2">
+                      <Zap className="w-5 h-5 text-red-500 animate-pulse" />
+                    </div>
+                  )}
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <CheckCircle className="w-5 h-5 mr-2" />
-                Complétées Aujourd'hui
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-green-600">{stats.completedToday}</div>
-              <p className="text-sm text-muted-foreground">Sur {stats.ordersToday} commandes</p>
-            </CardContent>
-          </Card>
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center shadow-lg`}>
+                      <stat.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-1">{stat.title}</h3>
+                      <p className="text-sm text-gray-600">{stat.subtitle}</p>
+                    </div>
+                  </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <AlertCircle className="w-5 h-5 mr-2" />
-                Alertes
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-red-600">2</div>
-              <p className="text-sm text-muted-foreground">Retards de livraison</p>
-            </CardContent>
-          </Card>
+                  <div className="text-center">
+                    <div className="text-5xl font-black text-gray-900 mb-2">{stat.value}</div>
+                    {stat.urgent && (
+                      <Badge className="bg-red-500 text-white animate-bounce">
+                        Action Requise
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
         {/* Recent Activity */}
