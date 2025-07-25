@@ -290,22 +290,56 @@ export default function RestaurantSearch() {
     { value: "3.0", label: "3.0+ étoiles" }
   ];
 
-  const filteredRestaurants = restaurants.filter(restaurant => {
-    const matchesSearch = restaurant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         restaurant.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         restaurant.specialties.some(specialty => 
-                           specialty.toLowerCase().includes(searchTerm.toLowerCase()));
-    
-    const matchesCategory = selectedCategory === "all" || 
-                           restaurant.category.toLowerCase().includes(selectedCategory);
-    
-    const matchesPrice = selectedPrice === "all" || restaurant.priceRange === selectedPrice;
-    
-    const matchesRating = selectedRating === "all" || 
-                         restaurant.rating >= parseFloat(selectedRating);
+  const filteredRestaurants = restaurants
+    .filter(restaurant => {
+      const matchesSearch = restaurant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           restaurant.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           restaurant.specialties.some(specialty =>
+                             specialty.toLowerCase().includes(searchTerm.toLowerCase()));
 
-    return matchesSearch && matchesCategory && matchesPrice && matchesRating;
-  });
+      const matchesCategory = selectedCategory === "all" ||
+                             restaurant.category.toLowerCase().includes(selectedCategory);
+
+      const matchesPrice = selectedPrice === "all" || restaurant.priceRange === selectedPrice;
+
+      const matchesRating = selectedRating === "all" ||
+                           restaurant.rating >= parseFloat(selectedRating);
+
+      // Filtrage par ville/pays si spécifié
+      const matchesLocation = !locationCity ||
+                             restaurant.city.toLowerCase().includes(locationCity.toLowerCase()) ||
+                             restaurant.country.toLowerCase().includes(locationCountry.toLowerCase());
+
+      return matchesSearch && matchesCategory && matchesPrice && matchesRating && matchesLocation;
+    })
+    .map(restaurant => {
+      // Calculer la distance si on a la localisation de l'utilisateur
+      let calculatedDistance = null;
+      if (userLocation && restaurant.coordinates) {
+        calculatedDistance = calculateDistance(
+          userLocation.lat,
+          userLocation.lng,
+          restaurant.coordinates.lat,
+          restaurant.coordinates.lng
+        );
+      }
+
+      return {
+        ...restaurant,
+        calculatedDistance,
+        displayDistance: calculatedDistance
+          ? calculatedDistance < 1
+            ? `${Math.round(calculatedDistance * 1000)}m`
+            : `${calculatedDistance.toFixed(1)}km`
+          : restaurant.distance
+      };
+    })
+    .sort((a, b) => {
+      if (sortByDistance && a.calculatedDistance !== null && b.calculatedDistance !== null) {
+        return a.calculatedDistance - b.calculatedDistance;
+      }
+      return 0; // Garder l'ordre original si pas de tri par distance
+    });
 
   const getRatingStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
