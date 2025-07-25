@@ -50,16 +50,11 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
   };
 
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl">Welcome Back</CardTitle>
+    <Card className="w-full max-w-md max-h-[90vh] flex flex-col">
+      <CardHeader className="text-center flex-shrink-0">
+        <CardTitle className="text-2xl">Connexion</CardTitle>
         <CardDescription>
           Connectez-vous à votre compte Congo Food
-          <br />
-          <small className="text-muted-foreground">
-            Admin: admin@admin.com / admin@admin.com<br />
-            Livreur: driver / driver
-          </small>
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
