@@ -57,8 +57,8 @@ export default function SignInForm({ onSignIn, onSwitchToSignUp, loading = false
           Connectez-vous à votre compte Congo Food
         </CardDescription>
       </CardHeader>
-      <form onSubmit={handleSubmit}>
-        <CardContent className="space-y-4">
+      <form onSubmit={handleSubmit} className="flex flex-col flex-1 overflow-hidden">
+        <CardContent className="space-y-6 overflow-y-auto flex-1 px-6">
           {errors.general && (
             <Alert variant="destructive">
               <AlertDescription>{errors.general}</AlertDescription>
