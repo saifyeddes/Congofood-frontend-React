@@ -19,6 +19,8 @@ import Orders from "./pages/admin/Orders";
 import Deliveries from "./pages/admin/Deliveries";
 import Drivers from "./pages/admin/Drivers";
 import Admins from "./pages/admin/Admins";
+import Clients from "./pages/admin/Clients";
+import Restaurateurs from "./pages/admin/Restaurateurs";
 import DeliveryDashboard from "./pages/delivery/Dashboard";
 import DeliveryOrders from "./pages/delivery/Orders";
 import DeliveryMap from "./pages/delivery/Map";
