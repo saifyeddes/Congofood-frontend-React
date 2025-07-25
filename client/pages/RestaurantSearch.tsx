@@ -687,6 +687,70 @@ export default function RestaurantSearch() {
             </div>
           </div>
 
+          {/* Carte Interactive */}
+          {(userLocation || sortByDistance) && (
+            <Card className="border-0 shadow-xl mb-8">
+              <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+                <CardTitle className="flex items-center">
+                  <Map className="w-6 h-6 mr-3" />
+                  Carte des Restaurants
+                  {userLocation && (
+                    <Badge className="bg-white/20 text-white ml-auto">
+                      <Target className="w-3 h-3 mr-1" />
+                      Votre position
+                    </Badge>
+                  )}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div className="bg-gradient-to-br from-gray-100 to-gray-200 h-80 flex items-center justify-center relative overflow-hidden">
+                  {/* Fond de carte simulé */}
+                  <div className="absolute inset-0 opacity-20">
+                    <div className="absolute top-4 left-4 w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                    <div className="absolute top-12 right-8 w-2 h-2 bg-green-500 rounded-full"></div>
+                    <div className="absolute bottom-8 left-12 w-4 h-4 bg-red-500 rounded-full"></div>
+                    <div className="absolute bottom-4 right-4 w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
+                    {/* Grille simulée */}
+                    <div className="grid grid-cols-8 grid-rows-6 gap-1 p-4 h-full opacity-30">
+                      {Array.from({ length: 48 }).map((_, i) => (
+                        <div key={i} className="border border-gray-300"></div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="text-center z-10">
+                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                      <MapPin className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-700 mb-2">Carte Interactive</h3>
+                    <p className="text-gray-500 mb-4">
+                      {userLocation
+                        ? `${filteredRestaurants.length} restaurant${filteredRestaurants.length > 1 ? 's' : ''} près de vous`
+                        : 'Activez la géolocalisation pour voir les distances'
+                      }
+                    </p>
+
+                    {/* Légende des restaurants */}
+                    <div className="flex flex-wrap justify-center gap-4 text-xs">
+                      {filteredRestaurants.slice(0, 4).map((restaurant, index) => (
+                        <div key={restaurant.id} className="flex items-center space-x-2">
+                          <div className={`w-3 h-3 rounded-full ${
+                            index === 0 ? 'bg-red-500' :
+                            index === 1 ? 'bg-blue-500' :
+                            index === 2 ? 'bg-green-500' : 'bg-purple-500'
+                          }`}></div>
+                          <span className="text-gray-600">
+                            {restaurant.name} ({restaurant.displayDistance})
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
           {/* Restaurant Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {filteredRestaurants.map((restaurant, index) => (
