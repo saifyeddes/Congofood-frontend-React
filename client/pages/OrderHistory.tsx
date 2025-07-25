@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -411,6 +412,7 @@ export default function OrderHistory() {
 
   return (
     <Layout>
+      <ProtectedRoute>
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-blue-50 to-purple-50">
         {/* Hero Section */}
         <div className="bg-gradient-to-r from-emerald-600 to-blue-600 text-white py-16">
@@ -537,6 +539,7 @@ export default function OrderHistory() {
           )}
         </div>
       </div>
+      </ProtectedRoute>
     </Layout>
   );
 }
