@@ -54,6 +54,10 @@ export default function Cart() {
   const finalTotal = state.totalPrice + deliveryFee + tax;
 
   const handleCheckout = () => {
+    if (!authState.isAuthenticated) {
+      alert("Veuillez vous connecter pour finaliser votre commande.");
+      return;
+    }
     // In a real app, this would process the order
     alert("Commande passée avec succès! Merci pour votre commande.");
     clearCart();
