@@ -118,7 +118,10 @@ export default function RestaurantSearch() {
       deliveryTime: "20-30 min",
       specialties: ["Thieboudienne", "Attiéké", "Yassa"],
       features: ["Buffet", "Livraison", "Musique live"],
-      description: "Découvrez les saveurs authentiques de l'Afrique dans une ambiance conviviale et musicale."
+      description: "Découvrez les saveurs authentiques de l'Afrique dans une ambiance conviviale et musicale.",
+      coordinates: { lat: -4.3290, lng: 15.3180 }, // Av. des Poids Lourds
+      city: "Kinshasa",
+      country: "Congo (RDC)"
     },
     {
       id: 4,
@@ -136,7 +139,53 @@ export default function RestaurantSearch() {
       deliveryTime: "15-25 min",
       specialties: ["Burgers", "Sandwichs", "Salades"],
       features: ["Drive", "24h/24", "Wifi gratuit"],
-      description: "Fast-food moderne proposant des plats rapides et savoureux disponibles 24h/24."
+      description: "Fast-food moderne proposant des plats rapides et savoureux disponibles 24h/24.",
+      coordinates: { lat: -4.3400, lng: 15.3300 }, // Centre Commercial
+      city: "Kinshasa",
+      country: "Congo (RDC)"
+    },
+    // Restaurants dans d'autres villes
+    {
+      id: 5,
+      name: "La Terrasse de Lubumbashi",
+      category: "Cuisine Internationale",
+      rating: 4.5,
+      reviews: 78,
+      priceRange: "$$$",
+      image: "/api/placeholder/400/250",
+      address: "Centre-ville, Lubumbashi",
+      phone: "+243 998 765 432",
+      website: "www.terrasselubumbashi.cd",
+      openingHours: "12:00 - 22:00",
+      distance: "850 km",
+      deliveryTime: "N/A",
+      specialties: ["Grillades", "Poissons", "Steaks"],
+      features: ["Terrasse", "Bar", "Parking"],
+      description: "Restaurant élégant au cœur de Lubumbashi avec vue panoramique.",
+      coordinates: { lat: -11.6709, lng: 27.4794 }, // Lubumbashi
+      city: "Lubumbashi",
+      country: "Congo (RDC)"
+    },
+    {
+      id: 6,
+      name: "Chez Tantine Bukavu",
+      category: "Cuisine Congolaise",
+      rating: 4.6,
+      reviews: 124,
+      priceRange: "$$",
+      image: "/api/placeholder/400/250",
+      address: "Quartier Ibanda, Bukavu",
+      phone: "+243 812 345 678",
+      website: "www.cheztantine.cd",
+      openingHours: "10:00 - 20:00",
+      distance: "450 km",
+      deliveryTime: "N/A",
+      specialties: ["Sambaza", "Poisson du lac", "Légumes frais"],
+      features: ["Vue sur lac", "Terrasse", "Spécialités locales"],
+      description: "Restaurant familial avec vue sur le lac Kivu et spécialités de Bukavu.",
+      coordinates: { lat: -2.5088, lng: 28.8632 }, // Bukavu
+      city: "Bukavu",
+      country: "Congo (RDC)"
     }
   ];
 
