@@ -118,12 +118,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         localStorage.setItem("foodie_user", JSON.stringify(user));
         dispatch({ type: "SIGN_IN_SUCCESS", payload: user });
-      } else if (email === "demo@congofood.com" && password === "password") {
+      } else if (email === "client@client.com" && password === "client@client.com") {
         const user: User = {
           id: "1",
-          firstName: "Demo",
-          lastName: "User",
-          email: "demo@congofood.com",
+          firstName: "Client",
+          lastName: "Test",
+          email: "client@client.com",
           phone: "+243 (0) 123-456-789",
           role: "client"
         };
