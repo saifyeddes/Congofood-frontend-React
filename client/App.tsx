@@ -29,6 +29,10 @@ import DeliveryProfile from "./pages/delivery/Profile";
 import DeliverySettings from "./pages/delivery/Settings";
 import RestaurantLayout from "./components/restaurant/RestaurantLayout";
 import RestaurantDashboard from "./pages/restaurant/Dashboard";
+import RestaurantSearch from "./pages/RestaurantSearch";
+import TableReservation from "./pages/TableReservation";
+import OrderHistory from "./pages/OrderHistory";
+import OrderTracking from "./pages/OrderTracking";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
