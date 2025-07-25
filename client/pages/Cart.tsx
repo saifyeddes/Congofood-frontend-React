@@ -413,12 +413,16 @@ export default function Cart() {
 
               <Button
                 onClick={handleCheckout}
-                className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white py-4 text-xl font-bold shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 rounded-2xl"
+                className={`w-full py-4 text-xl font-bold shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 rounded-2xl ${
+                  authState.isAuthenticated
+                    ? "bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white"
+                    : "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white"
+                }`}
                 size="lg"
-                disabled={!deliveryAddress || !phoneNumber}
+                disabled={authState.isAuthenticated && (!deliveryAddress || !phoneNumber)}
               >
                 <Shield className="w-6 h-6 mr-3" />
-                Finaliser la Commande
+                {authState.isAuthenticated ? "Finaliser la Commande" : "Se connecter pour commander"}
               </Button>
             </div>
           </div>
